@@ -1,0 +1,1453 @@
+---
+title: "Module 1: Deep Dive Notes"
+subtitle: "The Geometry of Linear Algebra and the Mechanics of Optimization"
+author: "AI Mathematics Course"
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    code-fold: true
+    number-sections: false
+execute:
+  echo: true
+  warning: false
+jupyter: python3
+bibliography: references.bib
+---
+
+# Learning Objectives
+
+By the end of this module, you will be able to:
+
+1. **Visualize matrix operations** as transformations of space rather than mere calculations
+2. **Compute and interpret eigenvalues and eigenvectors** in the context of data analysis
+3. **Implement gradient descent** from scratch and understand its role in training neural networks
+4. **Apply Bayes' theorem** to update beliefs based on new evidence
+5. **Use Gaussian distributions** to model uncertainty in machine learning predictions
+6. **Perform hypothesis testing** to statistically compare model performances
+7. **Translate mathematical concepts** into working Python code using NumPy and Matplotlib
+
+
+
+# Part 1: Linear Algebra — The Language of AI
+
+## 1.1 Don't Just Calculate: See the Matrix
+
+Most of us were taught matrix multiplication using the "row picture"—taking the dot product of rows from the first matrix and columns from the second. It works, but it hides what is actually happening.
+
+In machine learning, we need to shift to the **Column Picture**.
+
+### The Row Picture (Traditional Approach)
+
+Given:
+$$ 
+A \mathbf{x} = \begin{bmatrix} 2 & -1 \\ 1 & 1 \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \end{bmatrix}
+$$
+
+The traditional method computes:
+$$
+\begin{bmatrix} 2x_1 + (-1)x_2 \\ 1x_1 + 1x_2 \end{bmatrix} = \begin{bmatrix} 2x_1 - x_2 \\ x_1 + x_2 \end{bmatrix}
+$$
+
+### The Column Picture (AI Perspective)
+
+Instead of computing the dots, think of $x_1$ and $x_2$ as *weights*. The matrix multiplication is simply a **linear combination of the columns of $A$**:
+
+$$
+x_1 \begin{bmatrix} 2 \\ 1 \end{bmatrix} + x_2 \begin{bmatrix} -1 \\ 1 \end{bmatrix}
+$$
+
+:::{.callout-tip}
+## Why the Column Picture Matters
+The column picture reveals that $A\mathbf{x}$ is a **linear combination of the columns of $A$**, with the entries of $\mathbf{x}$ as weights. This perspective is fundamental because:
+
+1. The **column space** of $A$ (all possible linear combinations of columns) tells us what outputs are achievable
+2. In neural networks, each layer transforms input data into a new space spanned by its weight matrix columns
+3. Understanding this helps visualize how data is "remixed" at each layer of a deep network
+:::
+
+### Why is This Profound for AI?
+
+Because every time a neural network layer processes data, it is taking your input vector and projecting it into a new space defined by the columns of the weight matrix. The matrix is a living, breathing transformation.
+
+## 1.2 Visualizing the Transformation
+
+Let's use Python to see what the matrix $A$ actually *does* to a set of points in 2D space.
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Create a grid of points (our original space)
+x = np.linspace(-5, 5, 10)
+y = np.linspace(-5, 5, 10)
+X, Y = np.meshgrid(x, y)
+points = np.vstack([X.flatten(), Y.flatten()])
+
+# Our Transformation Matrix A
+A = np.array([[2, -1], 
+              [1,  1]])
+
+# Apply the transformation
+transformed_points = A @ points
+
+# Plotting
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+
+ax1.scatter(points[0], points[1], c='blue', s=15, alpha=0.7)
+ax1.set_title("Original Space", fontsize=14, fontweight='bold')
+ax1.grid(True, alpha=0.3)
+ax1.axhline(0, color='black', linewidth=0.5)
+ax1.axvline(0, color='black', linewidth=0.5)
+ax1.set_xlim(-6, 6)
+ax1.set_ylim(-6, 6)
+ax1.set_aspect('equal')
+ax1.set_xlabel('$x_1$')
+ax1.set_ylabel('$x_2$')
+
+ax2.scatter(transformed_points[0], transformed_points[1], c='red', s=15, alpha=0.7)
+ax2.set_title("Space after Transformation by A", fontsize=14, fontweight='bold')
+ax2.grid(True, alpha=0.3)
+ax2.axhline(0, color='black', linewidth=0.5)
+ax2.axvline(0, color='black', linewidth=0.5)
+ax2.set_xlim(-15, 15)
+ax2.set_ylim(-15, 15)
+ax2.set_aspect('equal')
+ax2.set_xlabel("$x'_1$")
+ax2.set_ylabel("$x'_2$")
+
+plt.tight_layout()
+plt.show()
+```
+
+:::{.callout-note}
+## Key Insight
+The matrix $A$ is not just a set of numbers; it is a **function** that takes every point in the original space and moves it to a new location. This is the essence of how data flows through neural networks—each layer applies a transformation that reshapes the data into a form that makes it easier for the model to learn patterns.
+
+Notice how the grid is **sheared** and **rotated**. The matrix has **stretched** the space. In Deep Learning, we use these transformations (followed by non-linear activations) to warp our data until complex patterns become linearly separable @goodfellow2016deep.
+:::
+
+## 1.3 Additional Matrix Examples
+
+### Example 1: Identity Matrix (No Transformation)
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Create unit vectors
+i_hat = np.array([1, 0])
+j_hat = np.array([0, 1])
+
+# Identity matrix
+I = np.array([[1, 0], [0, 1]])
+
+# Apply transformation
+i_transformed = I @ i_hat
+j_transformed = I @ j_hat
+
+# Plot
+fig, ax = plt.subplots(figsize=(6, 6))
+ax.quiver(0, 0, i_hat[0], i_hat[1], angles='xy', scale_units='xy', scale=1, color='blue', label='î (original)', width=0.005)
+ax.quiver(0, 0, j_hat[0], j_hat[1], angles='xy', scale_units='xy', scale=1, color='green', label='ĵ (original)', width=0.005)
+ax.quiver(0, 0, i_transformed[0], i_transformed[1], angles='xy', scale_units='xy', scale=1, color='lightblue', width=0.005)
+ax.quiver(0, 0, j_transformed[0], j_transformed[1], angles='xy', scale_units='xy', scale=1, color='lightgreen', width=0.005)
+
+ax.set_xlim(-1.5, 1.5)
+ax.set_ylim(-1.5, 1.5)
+ax.set_aspect('equal')
+ax.grid(True, alpha=0.3)
+ax.axhline(0, color='black', linewidth=0.5)
+ax.axvline(0, color='black', linewidth=0.5)
+ax.set_title("Identity Matrix: I·v = v", fontsize=14)
+ax.legend()
+plt.show()
+```
+
+### Example 2: Rotation Matrix
+
+```{python}
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+theta = np.pi / 4  # 45 degrees rotation
+
+# Rotation matrix
+R = np.array([[np.cos(theta), -np.sin(theta)],
+              [np.sin(theta), np.cos(theta)]])
+
+# Original vectors
+i_hat = np.array([1, 0])
+j_hat = np.array([0, 1])
+v = np.array([1, 1])
+
+# Transformed vectors
+i_rot = R @ i_hat
+j_rot = R @ j_hat
+v_rot = R @ v
+
+# Plot
+fig, ax = plt.subplots(figsize=(6, 6))
+
+# Original vectors
+ax.quiver(0, 0, i_hat[0], i_hat[1], angles='xy', scale_units='xy', scale=1, color='blue', width=0.005, label='î')
+ax.quiver(0, 0, j_hat[0], j_hat[1], angles='xy', scale_units='xy', scale=1, color='green', width=0.005, label='ĵ')
+ax.scatter([v[0]], [v[1]], color='purple', s=100, zorder=5, label='v = (1,1)')
+
+# Rotated vectors
+ax.quiver(0, 0, i_rot[0], i_rot[1], angles='xy', scale_units='xy', scale=1, color='lightblue', width=0.005, label="R·î")
+ax.quiver(0, 0, j_rot[0], j_rot[1], angles='xy', scale_units='xy', scale=1, color='lightgreen', width=0.005, label="R·ĵ")
+ax.scatter([v_rot[0]], [v_rot[1]], color='pink', s=100, zorder=5, edgecolors='black', label="R·v")
+
+ax.set_xlim(-1.5, 1.5)
+ax.set_ylim(-1.5, 1.5)
+ax.set_aspect('equal')
+ax.grid(True, alpha=0.3)
+ax.axhline(0, color='black', linewidth=0.5)
+ax.axvline(0, color='black', linewidth=0.5)
+ax.set_title(f"Rotation Matrix (θ = {np.degrees(theta):.0f}°)", fontsize=14)
+ax.legend(loc='upper left', fontsize=9)
+plt.show()
+
+print(f"Rotation Matrix R:\n{R}")
+print(f"\nR·v = {v_rot}")
+```
+
+### Example 3: Scaling Matrix
+
+```{python}
+import numpy as np
+
+# Scaling matrix (stretch x by 2, compress y by 0.5)
+S = np.array([[2, 0], [0, 0.5]])
+
+# Test vector
+v = np.array([1, 1])
+
+# Apply scaling
+v_scaled = S @ v
+
+print(f"Scaling Matrix S:\n{S}")
+print(f"\nOriginal vector v = {v}")
+print(f"Scaled vector S·v = {v_scaled}")
+print(f"\nInterpretation: x-component doubled, y-component halved")
+```
+
+
+
+# Part 2: Eigenvectors — The Unchanging Axes
+
+## 2.1 Understanding Eigenvectors
+
+If matrices are transformations that push and pull space, what happens to the vectors inside that space? Most vectors get knocked off their original span. They change direction.
+
+But for a given square matrix, there are a few special vectors that are completely immune to being knocked off course. The matrix might stretch them or shrink them, but it **cannot change their direction**. These stubborn vectors are the **Eigenvectors**.
+
+### Mathematical Definition
+
+For a square matrix $A$, an eigenvector $\mathbf{v}$ and its corresponding eigenvalue $\lambda$ satisfy:
+
+$$ A \mathbf{v} = \lambda \mathbf{v} $$
+
+This means that when you apply the transformation $A$ to $\mathbf{v}$, it only gets **scaled** by $\lambda$ but does **not change direction**.
+
+### Visual Demonstration
+
+```{python}
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define a matrix A
+A = np.array([[2, -1], 
+              [1,  1]])
+
+# Compute eigenvalues and eigenvectors
+eigenvalues, eigenvectors = np.linalg.eig(A)
+
+# Create a grid of points
+x = np.linspace(-5, 5, 15)
+y = np.linspace(-5, 5, 15)
+X, Y = np.meshgrid(x, y)
+points = np.vstack([X.flatten(), Y.flatten()])
+
+# Transform the points
+transformed_points = A @ points
+
+# Plotting
+fig, ax = plt.subplots(figsize=(8, 8))
+
+# Plot original grid (light)
+ax.scatter(points[0], points[1], c='lightgray', s=5, alpha=0.5, label='Original grid')
+
+# Plot transformed grid
+ax.scatter(transformed_points[0], transformed_points[1], c='gray', s=5, alpha=0.3)
+
+# Plot eigenvectors (scaled for visibility)
+colors = ['red', 'blue']
+for i in range(len(eigenvalues)):
+    v = eigenvectors[:, i]
+    # Scale eigenvector for visualization
+    scale = 5
+    ax.quiver(0, 0, v[0]*scale, v[1]*scale, 
+              angles='xy', scale_units='xy', scale=1, 
+              color=colors[i], width=0.008, 
+              label=f'v{i+1}: λ={eigenvalues[i]:.3f}')
+    # Plot the transformed eigenvector
+    Av = A @ v
+    ax.quiver(0, 0, Av[0]*scale, Av[1]*scale, 
+              angles='xy', scale_units='xy', scale=1, 
+              color=colors[i], width=0.008, alpha=0.5, linestyle='--')
+
+ax.set_xlim(-15, 15)
+ax.set_ylim(-15, 15)
+ax.set_aspect('equal')
+ax.set_title('Eigenvectors of Matrix A', fontsize=14, fontweight='bold')
+ax.grid(True, alpha=0.3)
+ax.axhline(0, color='black', linewidth=0.5)
+ax.axvline(0, color='black', linewidth=0.5)
+ax.legend(fontsize=10)
+plt.show()
+
+print("Eigenvalues:", eigenvalues)
+print("\nEigenvectors (columns):")
+print(eigenvectors)
+
+# Verify: Av = λv
+print("\nVerification (Av = λv):")
+for i in range(len(eigenvalues)):
+    v = eigenvectors[:, i]
+    lam = eigenvalues[i]
+    Av = A @ v
+    lam_v = lam * v
+    print(f"\nEigenvector {i+1}:")
+    print(f"  A·v = {Av}")
+    print(f"  λ·v = {lam_v}")
+    print(f"  Match: {np.allclose(Av, lam_v)}")
+```
+
+## 2.2 Computing Eigenvalues and Eigenvectors in Python
+
+```{python}
+import numpy as np
+
+# Define a symmetric matrix (common in ML - e.g., covariance matrices)
+A = np.array([[4, 2],
+              [2, 3]])
+
+print("Matrix A:")
+print(A)
+
+# Compute eigenvalues and eigenvectors
+eigenvalues, eigenvectors = np.linalg.eig(A)
+
+print(f"\nEigenvalues: {eigenvalues}")
+print(f"\nEigenvectors (each column is an eigenvector):")
+print(eigenvectors)
+
+# Verify the eigendecomposition
+print("\nVerification:")
+for i in range(len(eigenvalues)):
+    v = eigenvectors[:, i]
+    lam = eigenvalues[i]
+    residual = np.linalg.norm(A @ v - lam * v)
+    print(f"  ||A·v{i+1} - λ{i+1}·v{i+1}|| = {residual:.2e}")
+
+# Reconstruct the matrix using eigendecomposition
+# A = V Λ V^(-1)
+Lambda = np.diag(eigenvalues)
+V = eigenvectors
+A_reconstructed = V @ Lambda @ np.linalg.inv(V)
+
+print(f"\nReconstructed A:")
+print(A_reconstructed)
+print(f"\nReconstruction error: {np.linalg.norm(A - A_reconstructed):.2e}")
+```
+
+## 2.3 Why Do Eigenvectors Matter in AI?
+
+### Principal Component Analysis (PCA)
+
+In machine learning, especially in dimensionality reduction techniques like **PCA**, we are looking for the directions in which our data varies the most. These directions are precisely the **eigenvectors of the covariance matrix** of the data. The **eigenvalues** tell us how much variance is captured along each eigenvector.
+
+```{python}
+
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+
+# Generate correlated 2D data
+np.random.seed(42)
+mean = [0, 0]
+cov = [[3, 2], [2, 2]]  # Covariance matrix
+data = np.random.multivariate_normal(mean, cov, 200)
+
+# Standardize the data
+scaler = StandardScaler()
+data_scaled = scaler.fit_transform(data)
+
+# Compute covariance matrix
+cov_matrix = np.cov(data_scaled.T)
+print("Covariance Matrix:")
+print(cov_matrix)
+
+# Compute eigenvalues and eigenvectors of covariance matrix
+eigenvalues, eigenvectors = np.linalg.eig(cov_matrix)
+
+print(f"\nEigenvalues (variance explained): {eigenvalues}")
+print(f"Proportion of variance: {eigenvalues / eigenvalues.sum()}")
+
+# Apply PCA
+pca = PCA(n_components=2)
+pca.fit(data_scaled)
+
+print(f"\nPCA Components (should match eigenvectors):")
+print(pca.components_)
+print(f"\nExplained variance: {pca.explained_variance_}")
+
+# Plot
+fig, ax = plt.subplots(figsize=(8, 6))
+ax.scatter(data_scaled[:, 0], data_scaled[:, 1], alpha=0.6, label='Data points')
+
+# Plot eigenvectors (scaled)
+for i in range(len(eigenvalues)):
+    v = eigenvectors[:, i] * np.sqrt(eigenvalues[i]) * 2
+    ax.quiver(0, 0, v[0], v[1], angles='xy', scale_units='xy', scale=1,
+              color='red', width=0.005, label=f'PC{i+1} ({eigenvalues[i]/eigenvalues.sum()*100:.1f}%)')
+
+ax.set_xlabel('Feature 1 (standardized)')
+ax.set_ylabel('Feature 2 (standardized)')
+ax.set_title('PCA: Eigenvectors Point in Directions of Maximum Variance')
+ax.legend()
+ax.grid(True, alpha=0.3)
+ax.set_aspect('equal')
+plt.show()
+```
+
+### Application: Face Recognition with Eigenfaces
+
+Eigenvectors are used in **Eigenfaces** for face recognition, where the eigenvectors of a set of face images form a basis for "face space" @turk1991eigenfaces.
+
+
+
+# Part 3: The Calculus of Learning — Gradient Descent
+
+## 3.1 The Optimization Problem
+
+We have a neural network, and it is making terrible predictions. We measure how terrible it is using a **Cost Function**, $J(\theta)$. We want to find the parameters $\theta$ that make $J(\theta)$ as close to zero as possible.
+
+Imagine you are blindfolded, standing on a rugged, mountainous landscape (the Cost Function). You want to reach the bottom of the valley. How do you do it?
+
+You feel the slope of the ground beneath your feet. You calculate the **derivative**.
+
+- If the slope is positive (going uphill), you take a step backwards.
+- If the slope is negative (going downhill), you take a step forwards.
+
+In multiple dimensions, this "slope" is the **Gradient**, $\nabla J$. It is a vector that always points in the direction of **steepest ascent**.
+
+To minimize our error, we simply walk in the **opposite direction** of the gradient. This is the update rule of Gradient Descent:
+
+$$ \theta = \theta - \alpha \nabla J(\theta) $$
+
+Where $\alpha$ is the **learning rate**, controlling how big our steps are. Too big, and we might overshoot the minimum. Too small, and we might take forever to get there.
+
+## 3.2 Building the Engine: Gradient Descent from Scratch
+
+Let's build the engine of optimization. We won't use libraries for this; we will write the raw math in Python.
+
+### Example 1: Simple 1D Gradient Descent
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+# 1. Our objective function: J(theta) = theta^2 + 5
+def J(theta):
+    return theta**2 + 5
+
+# 2. The derivative: dJ/dtheta = 2*theta
+def gradient(theta):
+    return 2 * theta
+
+# 3. The Optimization Loop
+theta = 10.0      # Start at a random high point on the mountain
+alpha = 0.1       # Step size (Learning rate)
+epochs = 15       # How many steps we take
+
+# Store history for plotting
+theta_history = [theta]
+cost_history = [J(theta)]
+
+print(f"Starting Theta: {theta:.4f}, Initial Cost: {J(theta):.4f}")
+print("-" * 50)
+
+for i in range(epochs):
+    grad = gradient(theta)
+    theta = theta - (alpha * grad)  # The update rule
+    
+    theta_history.append(theta)
+    cost_history.append(J(theta))
+    
+    if i % 3 == 0:
+        print(f"Step {i+1:>2}: Theta = {theta:.4f}, Cost = {J(theta):.4f}, Gradient = {grad:.4f}")
+
+print("-" * 50)
+print(f"Final Optimized Theta: {theta:.4f}")
+print(f"Final Cost: {J(theta):.4f}")
+
+# Visualization
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
+
+# Plot 1: Cost function with path
+theta_vals = np.linspace(-12, 12, 200)
+ax1.plot(theta_vals, J(theta_vals), 'b-', linewidth=2, label=r'$J(\theta) = \theta^2 + 5$')
+ax1.scatter(theta_history, cost_history, c='red', s=50, zorder=5, label='Gradient Descent Path')
+ax1.plot(theta_history, cost_history, 'r--', alpha=0.5)
+ax1.set_xlabel(r'$\theta$', fontsize=12)
+ax1.set_ylabel(r'$J(\theta)$', fontsize=12)
+ax1.set_title('Cost Function and GD Path', fontsize=14)
+ax1.legend()
+ax1.grid(True, alpha=0.3)
+
+# Plot 2: Cost over iterations
+ax2.plot(range(len(cost_history)), cost_history, 'g-', linewidth=2)
+ax2.set_xlabel('Iteration', fontsize=12)
+ax2.set_ylabel('Cost', fontsize=12)
+ax2.set_title('Cost Convergence', fontsize=14)
+ax2.grid(True, alpha=0.3)
+ax2.set_yscale('log')
+
+plt.tight_layout()
+plt.show()
+```
+
+### Example 2: Gradient Descent with Different Learning Rates
+
+```{python}
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+def J(theta):
+    return theta**2 + 5
+
+def gradient(theta):
+    return 2 * theta
+
+# Different learning rates
+learning_rates = [0.01, 0.1, 0.5, 0.9, 1.1]
+colors = ['blue', 'green', 'orange', 'red', 'purple']
+theta_init = 8.0
+
+fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+
+for lr, color in zip(learning_rates, colors):
+    theta = theta_init
+    theta_history = [theta]
+    cost_history = [J(theta)]
+    
+    for _ in range(20):
+        grad = gradient(theta)
+        theta = theta - lr * grad
+        theta_history.append(theta)
+        cost_history.append(J(theta))
+    
+    # Plot path on cost function
+    axes[0].plot(theta_history, cost_history, 'o-', color=color, alpha=0.7, 
+                 label=f'α = {lr}', markersize=4)
+    
+    # Plot cost convergence
+    axes[1].plot(range(len(cost_history)), cost_history, 'o-', color=color, alpha=0.7, 
+                 label=f'α = {lr}', markersize=4)
+
+axes[0].set_xlabel(r'$\theta$', fontsize=12)
+axes[0].set_ylabel(r'$J(\theta)$', fontsize=12)
+axes[0].set_title('GD Paths with Different Learning Rates', fontsize=14)
+axes[0].legend()
+axes[0].grid(True, alpha=0.3)
+
+axes[1].set_xlabel('Iteration', fontsize=12)
+axes[1].set_ylabel('Cost', fontsize=12)
+axes[1].set_title('Convergence Comparison', fontsize=14)
+axes[1].legend()
+axes[1].grid(True, alpha=0.3)
+axes[1].set_yscale('log')
+
+plt.tight_layout()
+plt.show()
+```
+
+### Example 3: 2D Gradient Descent
+
+```{python}
+
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+# Cost function: J(theta1, theta2) = theta1^2 + 2*theta2^2
+def J_2d(theta):
+    return theta[0]**2 + 2*theta[1]**2
+
+# Gradient
+def gradient_2d(theta):
+    return np.array([2*theta[0], 4*theta[1]])
+
+# Gradient Descent
+theta = np.array([5.0, 5.0])
+alpha = 0.1
+iterations = 30
+
+theta_history = [theta.copy()]
+cost_history = [J_2d(theta)]
+
+for _ in range(iterations):
+    grad = gradient_2d(theta)
+    theta = theta - alpha * grad
+    theta_history.append(theta.copy())
+    cost_history.append(J_2d(theta))
+
+theta_history = np.array(theta_history)
+cost_history = np.array(cost_history)
+
+# Create mesh for surface plot
+t1 = np.linspace(-6, 6, 100)
+t2 = np.linspace(-6, 6, 100)
+T1, T2 = np.meshgrid(t1, t2)
+J_surface = T1**2 + 2*T2**2
+
+# 3D Plot
+fig = plt.figure(figsize=(14, 5))
+
+ax1 = fig.add_subplot(131, projection='3d')
+ax1.plot_surface(T1, T2, J_surface, alpha=0.5, cmap='viridis')
+ax1.scatter(theta_history[:, 0], theta_history[:, 1], cost_history, 
+            c='red', s=30, label='GD Path')
+ax1.plot(theta_history[:, 0], theta_history[:, 1], cost_history, 'r--', alpha=0.5)
+ax1.set_xlabel(r'$\theta_1$')
+ax1.set_ylabel(r'$\theta_2$')
+ax1.set_zlabel(r'$J(\theta)$')
+ax1.set_title('3D View')
+
+ax2 = fig.add_subplot(132)
+contour = ax2.contour(T1, T2, J_surface, levels=20, cmap='viridis')
+ax2.scatter(theta_history[:, 0], theta_history[:, 1], c='red', s=30, zorder=5)
+ax2.plot(theta_history[:, 0], theta_history[:, 1], 'r--', alpha=0.5)
+ax2.set_xlabel(r'$\theta_1$')
+ax2.set_ylabel(r'$\theta_2$')
+ax2.set_title('Contour View')
+ax2.grid(True, alpha=0.3)
+ax2.set_aspect('equal')
+plt.colorbar(contour, ax=ax2)
+
+ax3 = fig.add_subplot(133)
+ax3.semilogy(range(len(cost_history)), cost_history, 'b-', linewidth=2)
+ax3.set_xlabel('Iteration')
+ax3.set_ylabel('Cost (log scale)')
+ax3.set_title('Convergence')
+ax3.grid(True, alpha=0.3)
+
+plt.tight_layout()
+plt.show()
+
+print(f"Initial point: ({theta_history[0, 0]:.2f}, {theta_history[0, 1]:.2f})")
+print(f"Final point: ({theta_history[-1, 0]:.6f}, {theta_history[-1, 1]:.6f})")
+print(f"Minimum is at (0, 0)")
+```
+
+## 3.3 Gradient Descent Variants
+
+### Batch vs. Stochastic Gradient Descent
+
+```{python}
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Generate some data for linear regression
+np.random.seed(42)
+X = 2 * np.random.randn(100, 1)
+y = 4 + 3 * X + np.random.randn(100, 1)
+
+# Add bias term
+X_b = np.c_[np.ones((100, 1)), X]
+
+# Cost function for linear regression
+def compute_cost(X, y, theta):
+    m = len(y)
+    return (1/(2*m)) * np.sum((X @ theta - y)**2)
+
+def compute_gradient(X, y, theta):
+    m = len(y)
+    return (1/m) * X.T @ (X @ theta - y)
+
+# Batch Gradient Descent
+def batch_gd(X, y, theta, alpha, epochs):
+    cost_history = []
+    for _ in range(epochs):
+        grad = compute_gradient(X, y, theta)
+        theta = theta - alpha * grad
+        cost_history.append(compute_cost(X, y, theta))
+    return theta, cost_history
+
+# Stochastic Gradient Descent
+def sgd(X, y, theta, alpha, epochs):
+    cost_history = []
+    m = len(y)
+    for epoch in range(epochs):
+        # Shuffle data
+        indices = np.random.permutation(m)
+        X_shuffled = X[indices]
+        y_shuffled = y[indices]
+        for i in range(m):
+            xi = X_shuffled[i:i+1]
+            yi = y_shuffled[i:i+1]
+            grad = (xi.T @ (xi @ theta - yi))  # Gradient for single sample
+            theta = theta - alpha * grad
+        cost_history.append(compute_cost(X, y, theta))
+    return theta, cost_history
+
+# Mini-batch Gradient Descent
+def mini_batch_gd(X, y, theta, alpha, epochs, batch_size=10):
+    cost_history = []
+    m = len(y)
+    for epoch in range(epochs):
+        indices = np.random.permutation(m)
+        X_shuffled = X[indices]
+        y_shuffled = y[indices]
+        for i in range(0, m, batch_size):
+            xi = X_shuffled[i:i+batch_size]
+            yi = y_shuffled[i:i+batch_size]
+            grad = (1/batch_size) * xi.T @ (xi @ theta - yi)
+            theta = theta - alpha * grad
+        cost_history.append(compute_cost(X, y, theta))
+    return theta, cost_history
+
+# Run all three
+theta_init = np.random.randn(2, 1)
+alpha = 0.1
+epochs = 50
+
+theta_batch, cost_batch = batch_gd(X_b, y, theta_init.copy(), alpha, epochs)
+theta_sgd, cost_sgd = sgd(X_b, y, theta_init.copy(), alpha, epochs)
+theta_mini, cost_mini = mini_batch_gd(X_b, y, theta_init.copy(), alpha, epochs, batch_size=10)
+
+# Plot
+fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+
+axes[0].plot(range(len(cost_batch)), cost_batch, 'b-', linewidth=2, label='Batch GD')
+axes[0].plot(range(len(cost_sgd)), cost_sgd, 'r-', linewidth=1, alpha=0.7, label='SGD')
+axes[0].plot(range(len(cost_mini)), cost_mini, 'g-', linewidth=1.5, alpha=0.8, label='Mini-batch GD')
+axes[0].set_xlabel('Epoch')
+axes[0].set_ylabel('Cost')
+axes[0].set_title('Cost Convergence Comparison')
+axes[0].legend()
+axes[0].grid(True, alpha=0.3)
+
+axes[1].semilogy(range(len(cost_batch)), cost_batch, 'b-', linewidth=2, label='Batch GD')
+axes[1].semilogy(range(len(cost_sgd)), cost_sgd, 'r-', linewidth=1, alpha=0.7, label='SGD')
+axes[1].semilogy(range(len(cost_mini)), cost_mini, 'g-', linewidth=1.5, alpha=0.8, label='Mini-batch GD')
+axes[1].set_xlabel('Epoch')
+axes[1].set_ylabel('Cost (log scale)')
+axes[1].set_title('Log Scale Comparison')
+axes[1].legend()
+axes[1].grid(True, alpha=0.3)
+
+plt.tight_layout()
+plt.show()
+
+print(f"Batch GD final theta: {theta_batch.flatten()}")
+print(f"SGD final theta: {theta_sgd.flatten()}")
+print(f"Mini-batch final theta: {theta_mini.flatten()}")
+print(f"\nTrue parameters: [4, 3]")
+```
+
+
+
+# Part 4: Probability — Dealing with the Unknown
+
+## 4.1 The Two Philosophies
+
+In calculus and linear algebra, we deal with certainties. A matrix transforms a vector to one specific place. A gradient points in one specific direction. But the real world is messy, and data is noisy.
+
+Machine learning is fundamentally about making **optimal decisions under uncertainty**. To do that, we need a mathematical framework for the unknown: **Probability**.
+
+### Frequentist vs. Bayesian
+
+Before we look at equations, we must understand the two radically different ways mathematicians view probability:
+
+1. **The Frequentist View (The Casino):** Probability is the long-run frequency of repeatable events. If you flip a coin 10,000 times, it will land on heads 50% of the time. In this view, parameters are fixed realities, and the data we collect is just a random sample.
+
+2. **The Bayesian View (The Detective):** Probability is a **degree of belief**. It quantifies our uncertainty about a proposition. In this view, our parameters are uncertain (random variables), and the data we observe is fixed.
+
+Modern AI, especially Generative AI, leans heavily on the Bayesian view. We start with a prior belief, observe some data, and update our belief @bishop2006pattern.
+
+## 4.2 Bayes' Theorem: The Engine of Updating
+
+Bayes' theorem is not just a formula; it is a **logical framework for changing your mind** when presented with new evidence.
+
+$$P(\text{Hypothesis} | \text{Data}) = \frac{P(\text{Data} | \text{Hypothesis}) \cdot P(\text{Hypothesis})}{P(\text{Data})}$$
+
+Let's translate this into the language of Machine Learning:
+
+| Term | ML Interpretation |
+|------|-------------------|
+| $P(\text{Hypothesis})$ | **Prior:** What we believed before seeing any data |
+| $P(\text{Data} | \text{Hypothesis})$ | **Likelihood:** How probable is the data we're looking at, assuming our hypothesis is true? |
+| $P(\text{Hypothesis} | \text{Data})$ | **Posterior:** Our newly updated belief. This is what we want to find! |
+| $P(\text{Data})$ | **Evidence:** Normalizing constant |
+
+When you train a neural network, you are essentially trying to find the parameters (Hypothesis) that maximize this Posterior probability given the training images (Data).
+
+### Example: Medical Testing
+
+```{python}
+import numpy as np
+
+# Medical testing example
+# Disease prevalence: 1% of population
+P_disease = 0.01
+
+# Test sensitivity: P(Positive | Disease) = 99%
+P_positive_given_disease = 0.99
+
+# Test specificity: P(Negative | No Disease) = 95%
+P_negative_given_no_disease = 0.95
+P_positive_given_no_disease = 1 - P_negative_given_no_disease
+
+# Question: If you test positive, what's the probability you actually have the disease?
+# P(Disease | Positive) = ?
+
+# Using Bayes' theorem:
+# P(Disease | Positive) = P(Positive | Disease) * P(Disease) / P(Positive)
+
+# P(Positive) = P(Positive | Disease) * P(Disease) + P(Positive | No Disease) * P(No Disease)
+P_positive = (P_positive_given_disease * P_disease + 
+              P_positive_given_no_disease * (1 - P_disease))
+
+P_disease_given_positive = (P_positive_given_disease * P_disease) / P_positive
+
+print("Medical Testing Example")
+print("=" * 50)
+print(f"Disease prevalence: {P_disease*100:.1f}%")
+print(f"Test sensitivity: {P_positive_given_disease*100:.1f}%")
+print(f"Test specificity: {P_negative_given_no_disease*100:.1f}%")
+print()
+print(f"P(Positive test) = {P_positive:.4f}")
+print(f"P(Disease | Positive test) = {P_disease_given_positive:.4f}")
+print(f"P(Disease | Positive test) = {P_disease_given_positive*100:.2f}%")
+print()
+print("Surprising result! Even with a 99% accurate test,")
+print(f"a positive result only means {P_disease_given_positive*100:.1f}% chance of disease.")
+print("This is because the disease is rare (base rate fallacy).")
+```
+
+### Visualizing Bayes' Theorem
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import beta
+
+# Prior: We believe the coin is fair (Beta distribution)
+alpha_prior = 2  # "pseudo-heads"
+beta_prior = 2   # "pseudo-tails"
+
+# Simulate coin flips
+np.random.seed(42)
+true_bias = 0.7  # The coin is actually biased towards heads
+flips = np.random.random(20) < true_bias
+
+# Update posterior after each flip
+posteriors = []
+x = np.linspace(0, 1, 200)
+
+fig, axes = plt.subplots(2, 2, figsize=(12, 10))
+axes = axes.flatten()
+
+# Plot prior
+ax = axes[0]
+prior = beta.pdf(x, alpha_prior, beta_prior)
+ax.plot(x, prior, 'b-', linewidth=2, label='Prior')
+ax.fill_between(x, prior, alpha=0.3, color='blue')
+ax.set_title(f'Prior: Beta({alpha_prior}, {beta_prior})')
+ax.set_xlabel('θ (probability of heads)')
+ax.set_ylabel('Density')
+ax.legend()
+ax.grid(True, alpha=0.3)
+
+# Update and plot after selected numbers of flips
+update_points = [1, 5, 15]
+for i, n_updates in enumerate(update_points):
+    ax = axes[i + 1]
+    
+    # Update parameters
+    alpha_post = alpha_prior + sum(flips[:n_updates])
+    beta_post = beta_prior + n_updates - sum(flips[:n_updates])
+    
+    posterior = beta.pdf(x, alpha_post, beta_post)
+    ax.plot(x, posterior, 'r-', linewidth=2, label=f'Posterior')
+    ax.fill_between(x, posterior, alpha=0.3, color='red')
+    ax.axvline(true_bias, color='green', linestyle='--', label=f'True θ = {true_bias}')
+    ax.axvline(alpha_post/(alpha_post+beta_post), color='orange', linestyle=':', 
+               label=f'MAP = {alpha_post/(alpha_post+beta_post):.2f}')
+    
+    heads = sum(flips[:n_updates])
+    ax.set_title(f'After {n_updates} flips: {heads}H, {n_updates-heads}T\nPosterior: Beta({alpha_post}, {beta_post})')
+    ax.set_xlabel('θ (probability of heads)')
+    ax.set_ylabel('Density')
+    ax.legend(fontsize=8)
+    ax.grid(True, alpha=0.3)
+
+plt.tight_layout()
+plt.show()
+```
+
+## 4.3 The Shape of Nature: Gaussian Distributions
+
+Why do we see the bell curve everywhere in statistics? Because of the **Central Limit Theorem**. It states that when you add up many independent random variables, their normalized sum tends toward a Gaussian distribution, regardless of their original distributions.
+
+Since noise in the real world (sensor errors, human variations, wind currents) is usually the sum of many small, random factors, that noise is almost always Gaussian.
+
+The Gaussian distribution is completely defined by just two parameters:
+- **Mean ($\mu$):** Where is the center of the data?
+- **Variance ($\sigma^2$):** How spread out is the data?
+
+$$f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}$$
+
+### Visualizing Gaussian Distributions
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import norm
+
+x = np.linspace(-10, 10, 1000)
+
+fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+
+# Effect of different means (same variance)
+ax1 = axes[0]
+for mu in [-2, 0, 3]:
+    y = norm.pdf(x, mu, 1)
+    ax1.plot(x, y, linewidth=2, label=f'μ = {mu}, σ = 1')
+ax1.set_title('Effect of Mean (μ) on Gaussian', fontsize=14)
+ax1.set_xlabel('x')
+ax1.set_ylabel('Probability Density')
+ax1.legend()
+ax1.grid(True, alpha=0.3)
+
+# Effect of different variances (same mean)
+ax2 = axes[1]
+for sigma in [0.5, 1, 2]:
+    y = norm.pdf(x, 0, sigma)
+    ax2.plot(x, y, linewidth=2, label=f'μ = 0, σ = {sigma}')
+ax2.set_title('Effect of Variance (σ) on Gaussian', fontsize=14)
+ax2.set_xlabel('x')
+ax2.set_ylabel('Probability Density')
+ax2.legend()
+ax2.grid(True, alpha=0.3)
+
+plt.tight_layout()
+plt.show()
+```
+
+### The 68-95-99.7 Rule
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import norm
+
+mu, sigma = 0, 1
+x = np.linspace(mu - 4*sigma, mu + 4*sigma, 1000)
+y = norm.pdf(x, mu, sigma)
+
+fig, ax = plt.subplots(figsize=(10, 5))
+ax.plot(x, y, 'b-', linewidth=2)
+ax.fill_between(x, y, alpha=0.1, color='blue')
+
+# 68% region
+x1 = np.linspace(mu - sigma, mu + sigma, 100)
+y1 = norm.pdf(x1, mu, sigma)
+ax.fill_between(x1, y1, alpha=0.3, color='green', label='68.27% within 1σ')
+
+# 95% region
+x2 = np.linspace(mu - 2*sigma, mu + 2*sigma, 100)
+y2 = norm.pdf(x2, mu, sigma)
+ax.fill_between(x2, y2, alpha=0.3, color='orange', label='95.45% within 2σ')
+
+# 99.7% region
+x3 = np.linspace(mu - 3*sigma, mu + 3*sigma, 100)
+y3 = norm.pdf(x3, mu, sigma)
+ax.fill_between(x3, y3, alpha=0.3, color='red', label='99.73% within 3σ')
+
+ax.axvline(mu, color='black', linestyle='--', alpha=0.5)
+ax.axvline(mu + sigma, color='green', linestyle=':', alpha=0.5)
+ax.axvline(mu - sigma, color='green', linestyle=':', alpha=0.5)
+
+ax.set_title('The 68-95-99.7 Rule (Empirical Rule)', fontsize=14, fontweight='bold')
+ax.set_xlabel('x')
+ax.set_ylabel('Probability Density')
+ax.legend(loc='upper right')
+ax.grid(True, alpha=0.3)
+plt.show()
+```
+
+## 4.4 Hypothesis Testing in AI
+
+### Did We Actually Build a Better Model?
+
+Suppose you train a standard Logistic Regression model (Model A) and it gets 85% accuracy. Then, you build a complex Deep Learning model (Model B) and it gets 87% accuracy.
+
+Is Model B *actually* better? Or did it just get lucky with the specific testing data you used?
+
+This is where **Hypothesis Testing** comes in.
+
+1. **The Null Hypothesis ($H_0$):** Model B is not better. Any difference in accuracy is just random noise.
+2. **The p-value:** The probability of seeing a 2% improvement *if the Null Hypothesis were true*.
+
+If the p-value is extremely low (typically $< 0.05$), we reject the Null Hypothesis and confidently say, "Model B is genuinely superior."
+
+### Comparing Model Performances
+
+```{python}
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import norm, ttest_ind
+
+# Simulated cross-validation accuracy data
+np.random.seed(42)
+
+# Model A: 10-fold cross-validation accuracies
+acc_A = np.array([0.84, 0.86, 0.83, 0.85, 0.87, 0.84, 0.85, 0.86, 0.84, 0.85])
+
+# Model B: 10-fold cross-validation accuracies
+acc_B = np.array([0.87, 0.88, 0.85, 0.89, 0.86, 0.88, 0.87, 0.86, 0.88, 0.87])
+
+mean_A, std_A = np.mean(acc_A), np.std(acc_A)
+mean_B, std_B = np.mean(acc_B), np.std(acc_B)
+
+print("Model Comparison Statistics")
+print("=" * 50)
+print(f"Model A: Mean = {mean_A:.4f}, Std = {std_A:.4f}")
+print(f"Model B: Mean = {mean_B:.4f}, Std = {std_B:.4f}")
+print(f"Difference: {mean_B - mean_A:.4f}")
+
+# Perform t-test
+t_stat, p_value = ttest_ind(acc_A, acc_B, alternative='less')  # One-tailed: is B > A?
+print(f"\nt-statistic: {t_stat:.4f}")
+print(f"p-value: {p_value:.6f}")
+
+if p_value < 0.05:
+    print(f"\n✓ Statistically significant! (p < 0.05)")
+    print("Model B is significantly better than Model A.")
+else:
+    print(f"\n✗ Not statistically significant (p >= 0.05)")
+    print("Cannot conclude Model B is better.")
+
+# Visualization
+x = np.linspace(0.75, 0.95, 200)
+
+fig, ax = plt.subplots(figsize=(10, 6))
+
+y_A = norm.pdf(x, mean_A, std_A)
+y_B = norm.pdf(x, mean_B, std_B)
+
+ax.plot(x, y_A, color='#153263', linewidth=2, label=f'Model A (μ={mean_A:.3f})')
+ax.fill_between(x, y_A, alpha=0.3, color='#153263')
+
+ax.plot(x, y_B, color='#e63946', linewidth=2, label=f'Model B (μ={mean_B:.3f})')
+ax.fill_between(x, y_B, alpha=0.3, color='#e63946')
+
+ax.axvline(mean_A, color='#153263', linestyle='--', alpha=0.5)
+ax.axvline(mean_B, color='#e63946', linestyle='--', alpha=0.5)
+
+# Add individual CV scores
+ax.scatter(acc_A, np.zeros_like(acc_A) + 0.02, color='#153263', s=50, zorder=5, marker='|')
+ax.scatter(acc_B, np.zeros_like(acc_B) + 0.04, color='#e63946', s=50, zorder=5, marker='|')
+
+ax.set_title(f'Model Comparison (p-value = {p_value:.6f})', fontsize=14, fontweight='bold')
+ax.set_xlabel('Accuracy')
+ax.set_ylabel('Probability Density')
+ax.legend()
+ax.grid(True, alpha=0.3)
+plt.show()
+```
+
+
+
+# Part 5: Practice Problems
+
+## Basic Level
+
+### Problem 1.1: Matrix Multiplication
+Given matrices:
+$$ A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}, \quad B = \begin{bmatrix} 5 & 6 \\ 7 & 8 \end{bmatrix} $$
+
+a) Compute $AB$ using the row picture (dot products).
+b) Compute $AB$ using the column picture (linear combinations).
+c) Verify both methods give the same result.
+
+### Problem 1.2: Vector Transformation
+Given the transformation matrix $T = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}$:
+
+a) What geometric transformation does $T$ represent?
+b) Apply $T$ to the vector $\mathbf{v} = \begin{bmatrix} 3 \\ 4 \end{bmatrix}$.
+c) Verify your answer by computing $T^2\mathbf{v}$ and $T^4\mathbf{v}$.
+
+### Problem 1.3: Basic Gradient Descent
+Minimize $f(x) = x^2 - 4x + 7$ using gradient descent.
+
+a) Compute the derivative $f'(x)$.
+b) Starting from $x_0 = 0$ with learning rate $\alpha = 0.1$, compute $x_1, x_2, x_3$.
+c) What is the true minimum? How close did you get?
+
+## Intermediate Level
+
+### Problem 2.1: Eigenvalues and Eigenvectors
+For the matrix $A = \begin{bmatrix} 3 & 1 \\ 0 & 2 \end{bmatrix}$:
+
+a) Find the eigenvalues by solving $\det(A - \lambda I) = 0$.
+b) Find the corresponding eigenvectors.
+c) Verify that $A\mathbf{v} = \lambda\mathbf{v}$ for each eigenpair.
+d) Use Python to verify your answers.
+
+### Problem 2.2: 2D Gradient Descent
+Minimize $J(\theta_1, \theta_2) = (\theta_1 - 1)^2 + (\theta_2 - 2)^2 + 3$.
+
+a) Compute the gradient $\nabla J(\theta_1, \theta_2)$.
+b) Starting from $(\theta_1, \theta_2) = (5, 5)$ with $\alpha = 0.1$, compute the first 3 iterations.
+c) What is the true minimum? Verify using Python.
+
+### Problem 2.3: Bayes' Theorem
+A spam filter has the following characteristics:
+
+- 30% of emails are spam
+- If an email is spam, there's a 90% chance it contains the word "free"
+- If an email is not spam, there's a 5% chance it contains the word "free"
+
+If an email contains the word "free", what is the probability it is spam?
+
+### Problem 2.4: Gaussian Probabilities
+Heights of adult males in a country follow $N(\mu=175, \sigma=7)$ cm.
+
+a) What percentage of males are taller than 182 cm?
+b) What percentage are between 168 cm and 182 cm?
+c) What height corresponds to the 95th percentile?
+
+## Advanced Level
+
+### Problem 3.1: PCA from Scratch
+Given the data matrix:
+$$ X = \begin{bmatrix} 1 & 2 \\ 2 & 1 \\ 3 & 4 \\ 4 & 3 \end{bmatrix} $$
+
+a) Center the data (subtract the mean of each column).
+b) Compute the covariance matrix.
+c) Find the eigenvalues and eigenvectors of the covariance matrix.
+d) What is the first principal component? How much variance does it explain?
+e) Implement this in Python and verify.
+
+### Problem 3.2: Gradient Descent with Momentum
+
+Implement gradient descent with momentum for $f(x) = x^2$:
+
+$$ v_{t+1} = \beta v_t + \alpha \nabla f(x_t) $$
+$$ x_{t+1} = x_t - v_{t+1} $$
+
+a) Compare convergence with standard gradient descent.
+b) Try different values of $\beta$ (0, 0.5, 0.9, 0.99).
+c) Explain why momentum helps.
+
+### Problem 3.3: Maximum Likelihood Estimation
+
+Given data points $x_1, ..., x_n$ assumed to come from $N(\mu, \sigma^2)$:
+
+a) Write the likelihood function $L(\mu, \sigma^2)$.
+b) Find the MLE for $\mu$ and $\sigma^2$ by maximizing the log-likelihood.
+c) Verify with Python using random samples from a known Gaussian.
+
+
+
+# Part 6: Solutions to Practice Problems
+
+## Basic Level Solutions
+
+### Solution 1.1: Matrix Multiplication
+
+**a) Row picture:**
+$$ AB = \begin{bmatrix} 1(5)+2(7) & 1(6)+2(8) \\ 3(5)+4(7) & 3(6)+4(8) \end{bmatrix} = \begin{bmatrix} 19 & 22 \\ 43 & 50 \end{bmatrix} $$
+
+**b) Column picture:**
+$$ AB = \begin{bmatrix} 1\begin{bmatrix}1\\3\end{bmatrix} + 7\begin{bmatrix}2\\4\end{bmatrix} & 6\begin{bmatrix}1\\3\end{bmatrix} + 8\begin{bmatrix}2\\4\end{bmatrix} \end{bmatrix} = \begin{bmatrix} 19 & 22 \\ 43 & 50 \end{bmatrix} $$
+
+```{python}
+import numpy as np
+A = np.array([[1, 2], [3, 4]])
+B = np.array([[5, 6], [7, 8]])
+print("A @ B =", A @ B)
+```
+
+### Solution 1.2: Vector Transformation
+
+**a)** $T$ represents a **90° counterclockwise rotation**.
+
+**b)** $T\mathbf{v} = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}\begin{bmatrix} 3 \\ 4 \end{bmatrix} = \begin{bmatrix} -4 \\ 3 \end{bmatrix}$
+
+**c)** $T^2 = \begin{bmatrix} -1 & 0 \\ 0 & -1 \end{bmatrix}$ (180° rotation), $T^4 = I$ (360° = identity)
+
+```{python}
+import numpy as np
+T = np.array([[0, -1], [1, 0]])
+v = np.array([3, 4])
+print("Tv =", T @ v)
+print("T²v =", T @ T @ v)
+print("T⁴v =", T @ T @ T @ T @ v)
+print("T⁴ =", T @ T @ T @ T)
+```
+
+### Solution 1.3: Basic Gradient Descent
+
+**a)** $f'(x) = 2x - 4$
+
+**b)** Starting from $x_0 = 0$:
+- $x_1 = 0 - 0.1(-4) = 0.4$
+- $x_2 = 0.4 - 0.1(2(0.4) - 4) = 0.4 - 0.1(-3.2) = 0.72$
+- $x_3 = 0.72 - 0.1(2(0.72) - 4) = 0.72 - 0.1(-2.56) = 0.976$
+
+**c)** True minimum at $f'(x) = 0 \Rightarrow x = 2$. After 3 iterations, we're at 0.976, approaching 2.
+
+## Intermediate Level Solutions
+
+### Solution 2.1: Eigenvalues and Eigenvectors
+
+**a)** $\det(A - \lambda I) = (3-\lambda)(2-\lambda) - 0 = 0$
+$\Rightarrow \lambda_1 = 3, \lambda_2 = 2$
+
+**b)** For $\lambda_1 = 3$: $(A - 3I)\mathbf{v} = 0 \Rightarrow \mathbf{v}_1 = \begin{bmatrix} 1 \\ 0 \end{bmatrix}$
+
+For $\lambda_2 = 2$: $(A - 2I)\mathbf{v} = 0 \Rightarrow \mathbf{v}_2 = \begin{bmatrix} -1 \\ 1 \end{bmatrix}$
+
+```{python}
+import numpy as np
+A = np.array([[3, 1], [0, 2]])
+eigenvalues, eigenvectors = np.linalg.eig(A)
+print("Eigenvalues:", eigenvalues)
+print("Eigenvectors:\n", eigenvectors)
+```
+
+### Solution 2.3: Bayes' Theorem
+
+$$P(\text{Spam}|\text{"free"}) = \frac{P(\text{"free"}|\text{Spam}) \cdot P(\text{Spam})}{P(\text{"free"})}$$
+
+$$P(\text{"free"}) = 0.9 \times 0.3 + 0.05 \times 0.7 = 0.27 + 0.035 = 0.305$$
+
+$$P(\text{Spam}|\text{"free"}) = \frac{0.9 \times 0.3}{0.305} = \frac{0.27}{0.305} \approx 0.885 = 88.5\%$$
+
+### Solution 2.4: Gaussian Probabilities
+
+```{python}
+from scipy.stats import norm
+
+mu, sigma = 175, 7
+
+# a) P(X > 182)
+p_a = 1 - norm.cdf(182, mu, sigma)
+print(f"a) P(X > 182) = {p_a:.4f} ({p_a*100:.2f}%)")
+
+# b) P(168 < X < 182)
+p_b = norm.cdf(182, mu, sigma) - norm.cdf(168, mu, sigma)
+print(f"b) P(168 < X < 182) = {p_b:.4f} ({p_b*100:.2f}%)")
+
+# c) 95th percentile
+height_95 = norm.ppf(0.95, mu, sigma)
+print(f"c) 95th percentile height = {height_95:.2f} cm")
+```
+
+## Advanced Level Solutions
+
+### Solution 3.1: PCA from Scratch
+
+```{python}
+import numpy as np
+
+# Data matrix
+X = np.array([[1, 2], [2, 1], [3, 4], [4, 3]])
+
+# a) Center the data
+mean = X.mean(axis=0)
+X_centered = X - mean
+print("Mean:", mean)
+print("Centered X:\n", X_centered)
+
+# b) Covariance matrix
+cov_matrix = np.cov(X_centered.T)
+print("\nCovariance matrix:\n", cov_matrix)
+
+# c) Eigenvalues and eigenvectors
+eigenvalues, eigenvectors = np.linalg.eig(cov_matrix)
+print("\nEigenvalues:", eigenvalues)
+print("Eigenvectors:\n", eigenvectors)
+
+# d) First principal component and variance explained
+idx = eigenvalues.argsort()[::-1]
+first_pc = eigenvectors[:, idx[0]]
+variance_explained = eigenvalues[idx[0]] / eigenvalues.sum()
+print(f"\nFirst PC: {first_pc}")
+print(f"Variance explained: {variance_explained*100:.2f}%")
+```
+
+### Solution 3.2: Gradient Descent with Momentum
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+def f(x):
+    return x**2
+
+def grad_f(x):
+    return 2*x
+
+# Standard GD
+def standard_gd(x0, alpha, epochs):
+    x = x0
+    history = [x]
+    for _ in range(epochs):
+        x = x - alpha * grad_f(x)
+        history.append(x)
+    return history
+
+# GD with momentum
+def momentum_gd(x0, alpha, beta, epochs):
+    x = x0
+    v = 0
+    history = [x]
+    for _ in range(epochs):
+        v = beta * v + alpha * grad_f(x)
+        x = x - v
+        history.append(x)
+    return history
+
+# Compare
+x0 = 10
+alpha = 0.1
+epochs = 20
+
+std_history = standard_gd(x0, alpha, epochs)
+moments = [0, 0.5, 0.9, 0.99]
+
+plt.figure(figsize=(10, 5))
+plt.plot(range(len(std_history)), std_history, 'b-', label='Standard GD', linewidth=2)
+
+for beta in moments:
+    mom_history = momentum_gd(x0, alpha, beta, epochs)
+    plt.plot(range(len(mom_history)), mom_history, '--', label=f'Momentum β={beta}', alpha=0.7)
+
+plt.xlabel('Iteration')
+plt.ylabel('x')
+plt.title('Gradient Descent with Momentum')
+plt.legend()
+plt.grid(True, alpha=0.3)
+plt.show()
+```
+
+### Solution 3.3: Maximum Likelihood Estimation
+
+```{python}
+import numpy as np
+from scipy.stats import norm
+
+# Generate data from known distribution
+np.random.seed(42)
+true_mu, true_sigma = 5.0, 2.0
+data = np.random.normal(true_mu, true_sigma, 1000)
+
+# MLE estimates
+mu_mle = np.mean(data)
+sigma2_mle = np.var(data)  # MLE uses n, not n-1
+
+print(f"True μ = {true_mu}, MLE μ̂ = {mu_mle:.4f}")
+print(f"True σ = {true_sigma}, MLE σ̂ = {np.sqrt(sigma2_mle):.4f}")
+
+# The MLE for μ is the sample mean
+# The MLE for σ² is the sample variance (with n, not n-1)
+```
+
+
+
+# Part 7: Summary and Key Takeaways
+
+## Linear Algebra
+- **Matrix multiplication** is best understood as a **linear combination of columns** — this is how neural networks transform data
+- **Eigenvectors** are the "unchanging axes" of a transformation; they point in directions of maximum variance in data (PCA)
+- **SVD** generalizes eigendecomposition and is fundamental to dimensionality reduction
+
+## Calculus & Optimization
+- **Gradient descent** is the workhorse of machine learning optimization
+- The **learning rate** controls step size — too large causes oscillation, too small causes slow convergence
+- **SGD** and **mini-batch GD** are faster alternatives to batch GD for large datasets
+- **Momentum** helps accelerate convergence and escape local minima
+
+## Probability
+- **Bayes' theorem** provides a framework for updating beliefs with new evidence
+- **Gaussian distributions** are ubiquitous due to the Central Limit Theorem
+- **Hypothesis testing** helps determine if model improvements are statistically significant
+
+
+# Part 8: Self-Assessment Questions
+
+Test your understanding with these questions (answers below):
+
+1. What is the geometric interpretation of $A\mathbf{x}$?
+2. Why are eigenvectors important in PCA?
+3. What happens if the learning rate in gradient descent is too large?
+4. Explain the difference between prior and posterior in Bayes' theorem.
+5. Why is the Gaussian distribution so common in nature?
+6. What does a p-value of 0.03 mean in hypothesis testing?
+
+<details>
+<summary>Click to reveal answers</summary>
+
+1. $A\mathbf{x}$ transforms vector $\mathbf{x}$ into a new space defined by the columns of $A$. It's a linear combination of $A$'s columns with weights from $\mathbf{x}$.
+
+2. Eigenvectors of the covariance matrix point in directions of maximum variance. The largest eigenvector is the first principal component.
+
+3. If the learning rate is too large, gradient descent may overshoot the minimum, oscillate, or even diverge.
+
+4. The **prior** is your belief before seeing data; the **posterior** is your updated belief after incorporating the evidence from data.
+
+5. Due to the Central Limit Theorem: sums of many independent random variables tend toward Gaussian distributions, and many natural phenomena are sums of small effects.
+
+6. A p-value of 0.03 means there's a 3% probability of observing the result (or more extreme) if the null hypothesis were true. Since 0.03 < 0.05, we typically reject the null hypothesis.
+
+</details>
+
+
+
+# Part 9: Further Reading
+
+## Textbooks
+- @goodfellow2016deep - *Deep Learning* by Goodfellow, Bengio, and Courville. Free online at [deeplearningbook.org](https://www.deeplearningbook.org)
+- @bishop2006pattern - *Pattern Recognition and Machine Learning* by Christopher Bishop
+- @strang2016introduction - *Introduction to Linear Algebra* by Gilbert Strang
+- @murphy2012machine - *Machine Learning: A Probabilistic Perspective* by Kevin Murphy
+
+## Online Resources
+- **3Blue1Brown** - "Essence of Linear Algebra" YouTube series for geometric intuition
+- **MIT OpenCourseWare** - Gilbert Strang's Linear Algebra lectures
+- **Khan Academy** - Calculus and Probability fundamentals
+- **Stanford CS229** - Machine Learning lecture notes
+
+## Python Libraries
+- **NumPy** - Fundamental array operations and linear algebra
+- **SciPy** - Scientific computing, including statistics
+- **scikit-learn** - Machine learning algorithms including PCA
+- **Matplotlib** - Visualization
+
+
+# References

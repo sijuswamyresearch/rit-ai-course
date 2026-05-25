@@ -1,0 +1,158 @@
+---
+title: "Module 2: Classical Machine Learning"
+subtitle: "Data Workflows, Supervised & Unsupervised Algorithms"
+author: "Siju Swamy"
+format: 
+  revealjs:
+    theme: simple
+    transition: fade
+    slide-number: true
+    chalkboard: true
+    scrollable: true
+    toc: true
+    toc-depth: 1
+    toc-title: "Module Contents"
+execute:
+  echo: true
+  warning: false
+jupyter: python3
+---
+
+# Part 1: Modern Data Workflows
+
+## The Machine Learning Lifecycle
+Before we train algorithms, we must manage our data and code. The modern AI engineer relies heavily on version control and open-source data repositories.
+
+1. **Source:** Fetching data via the Kaggle API.
+2. **Version:** Tracking code changes using Git and GitHub.
+3. **Explore:** Exploratory Data Analysis (EDA).
+4. **Engineer:** Feature scaling, encoding, and imputation.
+5. **Model:** Training and tuning.
+
+## GitHub Fundamentals
+Git is the version control system; GitHub is the cloud hosting platform. 
+In AI, we use it to track experiment iterations.
+
+* `git clone`: Download a repository to your local machine/Colab.
+* `git add .`: Stage your modified Jupyter notebooks.
+* `git commit -m "added XGBoost model"`: Save a snapshot of your progress.
+* `git push`: Send the snapshot to your GitHub portfolio.
+
+## Sourcing Data: The Kaggle API
+Kaggle hosts millions of datasets. Instead of downloading CSVs manually, we automate it using the Kaggle API.
+
+**Typical Colab Setup:**
+```python
+# 1. Upload your kaggle.json API token
+import os
+os.environ['KAGGLE_CONFIG_DIR'] = "/content"
+
+# 2. Download the dataset directly via CLI
+!kaggle competitions download -c titanic
+
+# 3. Unzip
+!unzip titanic.zip
+```
+
+# Part 2: Supervised Learning (Regression)
+
+## What is Supervised Learning?
+In supervised learning, we provide the algorithm with both the features (X) and the ground-truth labels (y). The goal is to learn a mapping function $f(x) \approx y$.
+
+
+- Regression: The target variable y is continuous (e.g., predicting house prices, temperature).
+
+- Classification: The target variable y is discrete/categorical (e.g., spam vs. not spam, identifying diseases).
+
+## Linear & Polynomial Regression
+Linear Regression assumes a straight-line relationship between inputs and outputs.
+$$ \hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_n x_n $$
+Optimized using Ordinary Least Squares (OLS) or Gradient Descent.
+
+Polynomial Regression transforms the features into higher degrees to fit non-linear data, though the equation itself remains a linear combination of weights.
+$$ \hat{y} = \beta_0 + \beta_1 x + \beta_2 x^2 + \beta_3 x^3 $$
+
+# Part 3: Supervised Learning (Classification)
+
+## Logistic Regression
+Despite its name, Logistic Regression is a classification algorithm. It takes a linear equation and passes it through a Sigmoid Activation Function to squash the output between 0 and 1, representing a probability.
+
+$$\sigma(z)= \frac{1}{1 + e^{-z}}$$
+Where $z = \beta_0 + \beta_1 x_1 + \dots + \beta_n x_n$ is the linear combination of features. If $\sigma(z) \geq 0.5$, we classify as Class 1; otherwise, Class 0.
+
+## Tree-Based Architectures
+
+Decision Trees split the data based on feature thresholds (e.g., "Is Age > 30?"). However, a single tree is highly prone to overfitting.
+
+The Solution: Ensembles
+
+- Random Forest (Bagging): Trains hundreds of independent trees on random subsets of data and averages their predictions. Excellent out-of-the-box performance.
+
+- XGBoost (Boosting): Trains trees sequentially. Each new tree focuses specifically on correcting the errors (residuals) made by the previous trees. The current king of tabular data competitions.
+
+# Part 4: Unsupervised Learning
+
+## The Unsupervised Paradigm
+
+In Unsupervised Learning, we only have features (X). There are no labels (y). The algorithm must discover the hidden structure, patterns, or groupings within the data on its own.
+
+Primary use cases:
+
+1. **Clustering:** Grouping similar data points together.
+
+2. **Dimensionality Reduction:** Compressing features while retaining information.
+
+## K-Means Clustering
+
+The most popular clustering algorithm. It partitions data into $K$ distinct clusters.
+The Algorithm:
+
+1. Randomly place $K$ centroids in the data space.
+2. **Assign:** Assign each data point to its nearest centroid.
+3. **Update:** Move the centroid to the mean position of all assigned points.
+4. **Repeat Steps 2 and 3 until the centroids stop moving (convergence).**
+
+# Part 5: Dimensionality Reduction
+
+## Why Reduce Dimensions?
+High-dimensional data (e.g., 1000+ features) suffers from the "Curse of Dimensionality." Distance metrics lose meaning, and models overfit. We must compress it.
+
+- **PCA (Principal Component Analysis):** A linear technique. It finds the orthogonal axes (Eigenvectors) of maximum variance and projects the data onto them. Great for general compression.
+
+- **t-SNE (t-Distributed Stochastic Neighbor Embedding):** A non-linear technique. It focuses on preserving local neighborhoods (keeping similar points close together). Exceptional for visualizing high-dimensional data in 2D or 3D.
+
+# Part 6: Hands-on Pipeline
+## End-to-End Scikit-Learn Pipeline
+
+Let's build a complete classification pipeline using a synthetic dataset. We will train a Random Forest and evaluate its decision boundary.
+```{python} 
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.datasets import make_moons
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
+
+# 1. Generate Non-Linear Data
+X, y = make_moons(n_samples=300, noise=0.25, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
+
+# 2. Initialize and Train the Model
+model = RandomForestClassifier(n_estimators=100, max_depth=5, random_state=42)
+model.fit(X_train, y_train)
+
+# 3. Evaluate
+predictions = model.predict(X_test)
+acc = accuracy_score(y_test, predictions)
+print(f"Random Forest Accuracy: {acc * 100:.2f}%")
+
+# 4. Visualize Decision Boundary
+xx, yy = np.meshgrid(np.linspace(-1.5, 2.5, 100), np.linspace(-1, 1.5, 100))
+Z = model.predict(np.c_[xx.ravel(), yy.ravel()]).reshape(xx.shape)
+
+plt.figure(figsize=(7, 4))
+plt.contourf(xx, yy, Z, alpha=0.3, cmap='coolwarm')
+plt.scatter(X_test[:, 0], X_test[:, 1], c=y_test, edgecolor='k', cmap='coolwarm')
+plt.title(f"Random Forest Decision Boundary (Acc: {acc*100:.0f}%)")
+plt.show()
+```

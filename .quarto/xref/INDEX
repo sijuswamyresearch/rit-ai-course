@@ -1,0 +1,20 @@
+{
+  "index.qmd": {
+    "index.html": "ada0b68d"
+  },
+  "syllabus.qmd": {
+    "syllabus.html": "f0bedcb2"
+  },
+  "modules/module1_math.qmd": {
+    "module1_math.html": "688a90b0"
+  },
+  "modules/module1_notes.qmd": {
+    "module1_notes.html": "cc5b76bf"
+  },
+  "modules/module2_ml.qmd": {
+    "module2_ml.html": "a0f9727f"
+  },
+  "modules/module2_notes.qmd": {
+    "module2_notes.html": "c2e7e602"
+  }
+}

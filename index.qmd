@@ -1,0 +1,31 @@
+---
+title: "Foundation of Applied AI & Machine Learning"
+subtitle: "Rajiv Gandhi Institute of Technology (RIT), Kottayam"
+author: "Siju Swamy"
+format: html
+---
+
+## Welcome to the Course
+This 20-hour intensive foundation course transitions engineering students from fundamental mathematics to deploying modern Generative AI applications. 
+
+### Pre-flight Checklist for Students
+Before our first session, please ensure you have completed the following:
+
+1. **GitHub Account:** Create a free account at [github.com](https://github.com/).
+2. **Kaggle Account:** Register at [kaggle.com](https://kaggle.com/) to access our datasets.
+3. **Google Colab:** Ensure you can access [Google Colab](https://colab.research.google.com/) using your personal or university email.
+
+---
+
+## Course Schedule & Quick Links
+
+| Session | Topic | Slides | Assessment Sheet |
+|:---|:---|:---:|:---:|
+| **1 & 2** | Mathematical Foundations for AI | [Module 1](modules/module1_math.qmd) | Quiz 1 |
+| **3, 4 & 5** | Classical Machine Learning & Workflows | [Module 2](modules/module2_ml.qmd) | Micro-Project 1 |
+| **6 & 7** | Deep Learning Architectures | [Module 3](modules/module3_dl.qmd) | Quiz 2 |
+| **8 & 9** | NLP & Generative AI | [Module 4](modules/module4_nlp.qmd) | Quiz 3 |
+| **10** | Capstone Integration & Deployment | [Module 5](modules/module5_capstone.qmd) | Capstone Rubric |
+
+***
+*This course is strictly aligned with the NBA Outcome-Based Education (OBE) framework.*

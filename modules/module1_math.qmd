@@ -1,0 +1,148 @@
+---
+title: "Module 1: Mathematical Foundations for AI"
+subtitle: "Linear Algebra, Calculus, Optimization, and Probability"
+author: "Course Instructor"
+format: 
+  revealjs:
+    theme: simple
+    transition: fade
+    slide-number: true
+    chalkboard: true
+    scrollable: true
+    toc: true
+    toc-depth: 1
+    toc-title: "Module Contents"
+execute:
+  echo: true
+  warning: false
+jupyter: python3
+---
+
+# Part 1: Linear Algebra in AI
+
+## Vector Spaces & Tensors
+In machine learning, data is represented numerically as arrays. These arrays generalize into tensors, residing within vector spaces.
+
+* **Scalar (0D Tensor):** A single magnitude.
+* **Vector (1D Tensor):** An array of numbers, representing a point in space $v \in \mathbb{R}^n$.
+* **Matrix (2D Tensor):** A 2D grid, representing a collection of vectors or linear transformations.
+
+**The Machine Learning Connection:** An image is often represented as a 3D tensor (Height $\times$ Width $\times$ Color Channels).
+
+## Orthogonality & Matrices
+Two vectors $u$ and $v$ are orthogonal if their dot product is zero:
+$$ u^T v = 0 $$
+Orthogonality is a critical concept in feature engineering—ideally, we want independent features that do not carry redundant information.
+
+A matrix $A \in \mathbb{R}^{m \times n}$ acts as a linear transformation mapping a vector from $\mathbb{R}^n$ to $\mathbb{R}^m$.
+$$ y = Ax $$
+
+## Eigenvalues & Eigenvectors
+For a square matrix $A$, an eigenvector $v$ is a non-zero vector that changes at most by a scalar factor (the eigenvalue $\lambda$) when the linear transformation $A$ is applied to it.
+
+$$ Av = \lambda v $$
+
+**Why it matters:** In AI, eigenvectors define the "principal axes" of our data sets, pointing in the direction of maximum variance.
+
+## Singular Value Decomposition (SVD)
+SVD generalizes eigendecomposition to non-square matrices and is the fundamental math behind Dimensionality Reduction (like PCA).
+
+Any matrix $A$ can be decomposed as:
+$$ A = U \Sigma V^T $$
+
+* $U$: Orthogonal matrix containing left singular vectors.
+* $\Sigma$: Diagonal matrix containing singular values (importance of each feature).
+* $V^T$: Orthogonal matrix containing right singular vectors.
+
+---
+
+# Part 2: Calculus & Optimization
+
+## Partial Derivatives
+In AI, we deal with functions of multiple variables (e.g., millions of neural network weights). The partial derivative measures how the function changes as we tweak just *one* variable, keeping others constant.
+
+For a cost function $J(\theta_1, \theta_2)$:
+$$ \frac{\partial J}{\partial \theta_1} $$
+
+## The Chain Rule & Backpropagation
+How do we find the derivative of a nested function? The Chain Rule.
+If $y = f(u)$ and $u = g(x)$, then:
+$$ \frac{dy}{dx} = \frac{dy}{du} \cdot \frac{du}{dx} $$
+
+**Intuition for AI:** In deep neural networks, the error at the output layer is propagated backwards through the hidden layers by multiplying the local gradients (derivatives) at each layer using the chain rule.
+
+## Gradient Descent Mechanics
+To train a model, we want to find the parameters $\theta$ that minimize the cost function $J(\theta)$. The gradient $\nabla_\theta J(\theta)$ points in the direction of steepest *ascent*. 
+
+We update parameters by moving in the opposite direction:
+$$ \theta_{t+1} = \theta_t - \alpha \nabla_{\theta} J(\theta_t) $$
+Where $\alpha$ is the learning rate.
+
+## Advanced Optimization: SGD & Adam
+* **Stochastic Gradient Descent (SGD):** Instead of calculating the gradient using the entire dataset, SGD uses a single random data point (or a small batch) per step. It is faster but noisy.
+* **Adam Optimizer:** Computes adaptive learning rates for each parameter. It keeps an exponentially decaying average of past gradients (momentum) and past squared gradients.
+
+---
+
+# Part 3: Probability Foundations
+
+## Bayesian vs. Frequentist Probability
+* **Frequentist:** Probability is the long-run frequency of repeatable events. Parameters are fixed, and data is a repeatable random sample.
+* **Bayesian:** Probability is a degree of belief. Parameters are treated as random variables with a prior distribution, updated as new data is observed.
+
+**Bayes' Theorem:**
+$$ P(A|B) = \frac{P(B|A)P(A)}{P(B)} $$
+
+## Gaussian Distributions & Hypothesis Testing
+The Normal (Gaussian) distribution is ubiquitous in AI due to the Central Limit Theorem.
+$$ f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2} $$
+
+**Hypothesis Testing in AI:** Used for model evaluation. Are the predictions of Model A statistically significantly better than Model B, or is the difference due to random noise? We use p-values to evaluate the null hypothesis.
+
+---
+
+# Part 4: Hands-On Component
+
+## Coding Gradient Descent from Scratch
+Let's minimize a simple cost function $J(\theta) = \theta^2 + 5$ using Python. 
+
+```{python}
+#| label: fig-gd-implementation
+#| fig-cap: "Visualizing the optimization path of Gradient Descent"
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Objective function and its derivative
+def cost_function(theta):
+    return theta**2 + 5
+
+def gradient(theta):
+    return 2 * theta
+
+# Gradient Descent Parameters
+theta = 8.0  # Initial guess
+learning_rate = 0.1
+iterations = 15
+history = []
+
+for _ in range(iterations):
+    history.append((theta, cost_function(theta)))
+    theta = theta - learning_rate * gradient(theta)
+
+# Visualization
+theta_vals = np.linspace(-10, 10, 100)
+plt.figure(figsize=(8, 5))
+plt.plot(theta_vals, cost_function(theta_vals), label=r'$J(\theta)$', zorder=1)
+
+# Plotting the steps
+history = np.array(history)
+plt.scatter(history[:, 0], history[:, 1], color='red', zorder=2, label='GD Steps')
+plt.plot(history[:, 0], history[:, 1], color='red', linestyle='--', zorder=2)
+
+plt.title('Gradient Descent Optimization')
+plt.xlabel(r'$\theta$')
+plt.ylabel(r'$J(\theta)$')
+plt.legend()
+plt.grid(True)
+plt.show()
+```

@@ -1,0 +1,38 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Foundation of Applied AI & ML"
+  description: "20-Hour Intensive Curriculum - RIT Kottayam"
+  site-url: "https://<your-github-username>.github.io/rit-ai-course"
+  
+  navbar:
+    background: "#153263" # Institutional Blue
+    left:
+      - text: "Home"
+        file: index.qmd
+      - text: "Syllabus"
+        file: syllabus.qmd
+      - text: "Module 1: Math Foundations"
+        menu:
+          - text: "Lecture Slides"
+            file: modules/module1_math.qmd
+          - text: "Detailed Study Notes"
+            file: modules/module1_notes.qmd
+      - text: "Module 2: Classical ML"
+        menu:
+          - text: "Lecture Slides"
+            file: modules/module2_ml.qmd  
+          - text: "Detailed Study Notes"
+            file: modules/module2_notes.qmd
+      - text: "Micro-Projects"
+        file: assessments/project_guide.qmd
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    number-sections: false
+    code-fold: true

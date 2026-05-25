@@ -1,0 +1,92 @@
+
+/* ==========================================================================
+   RIT Course Branding Styles
+   Theme: Institutional Blue (#153263)
+   ========================================================================== */
+
+/* Define Global Variables */
+:root {
+  --rit-blue: #153263;
+  --rit-blue-light: #1e4585;
+  --rit-accent: #e63946;
+  --text-main: #2c3e50;
+  --bg-light: #f8fafc;
+}
+
+/* Base Typography & Colors */
+body {
+  color: var(--text-main);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* Headings - Branded Blue */
+h1, h2, h3, h4, h5 {
+  color: var(--rit-blue);
+  font-weight: 600;
+  margin-top: 1.5em;
+}
+
+h2 {
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 8px;
+}
+
+/* Hyperlinks */
+a {
+  color: var(--rit-blue-light);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: var(--rit-accent);
+  text-decoration: underline;
+}
+
+/* Tables (Make them look like the LaTeX syllabus) */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 0.95em;
+}
+
+th {
+  background-color: var(--bg-light);
+  color: var(--rit-blue);
+  border-bottom: 2px solid var(--rit-blue) !important;
+  padding: 12px 8px;
+  text-align: left;
+}
+
+td {
+  border-bottom: 1px solid #e2e8f0;
+  padding: 10px 8px;
+}
+
+/* Callout Boxes (Overrides for the OBE Assessment Box) */
+div.callout-note {
+  border-left-color: var(--rit-blue) !important;
+  background-color: var(--bg-light);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+div.callout-note .callout-header {
+  background-color: rgba(21, 50, 99, 0.05) !important;
+  color: var(--rit-blue) !important;
+  font-weight: bold;
+}
+
+div.callout-note .callout-icon::before {
+  color: var(--rit-blue) !important;
+}
+
+/* Code block styling */
+pre.sourceCode {
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  background-color: #f1f5f9;
+}
