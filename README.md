@@ -17,7 +17,7 @@ The curriculum transitions engineering students from foundational mathematics (L
 
 ### 🌐 Live Course Website
 Access the fully rendered, interactive course materials here:  
-👉 **[Link to your GitHub Pages Site - e.g., https://yourusername.github.io/rit-ai-course]**
+👉 **[Course website](https://github.com/sijuswamyresearch/rit-ai-course/)]**
 
 ---
 
