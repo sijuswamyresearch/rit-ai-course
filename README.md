@@ -1,4 +1,4 @@
-# Foundation of Applied AI & Machine Learning 🚀
+# Foundation of Applied AI & Machine Learning
 
 ![Status](https://img.shields.io/badge/Status-Active-success)
 ![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python&logoColor=white)
