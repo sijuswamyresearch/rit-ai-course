@@ -1,12 +1,4 @@
----
-title: "Course Curriculum & Syllabus"
-subtitle: "APJ Abdul Kalam Technological University (KTU) - OBE Framework"
-format:
-  html:
-    toc: true
-    toc-depth: 3
-    number-sections: false
----
+# Course Curriculum & Syllabus
 
 ## 1. Course Identity
 
