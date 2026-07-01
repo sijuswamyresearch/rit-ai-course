@@ -1,38 +1,212 @@
 project:
   type: website
   output-dir: docs
+  preview:
+    port: 8000
+    watch-inputs: true
+    browser: true
+  render:
+    - "*.qmd"
+    - "modules/*.qmd"
 
 website:
-  title: "Foundation of Applied AI & ML"
-  description: "20-Hour Intensive Curriculum - RIT Kottayam"
-  site-url: "https://<your-github-username>.github.io/rit-ai-course"
+  title: "Foundation of Applied AI & Machine Learning"
+  description: "A comprehensive 20-hour intensive curriculum designed for engineering students from all disciplines. Master the mathematical foundations, classical machine learning, deep learning, NLP, and deployment of AI systems."
+  site-url: "https://sijuswamyresearch.github.io/rit-ai-course"
+  image: "images/course-banner.png"
   
+  # Search functionality
+  search:
+    location: navbar
+    type: overlay
+    copy-button: true
+
+  # Navigation bar configuration
   navbar:
-    background: "#153263" # Institutional Blue
+    background: "#153263"
+    logo: "images/rit-logo.png"
+    logo-alt: "RIT Kottayam Logo"
     left:
       - text: "Home"
         file: index.qmd
       - text: "Syllabus"
         file: syllabus.qmd
-      - text: "Module 1: Math Foundations"
+      - text: "Modules"
         menu:
-          - text: "Lecture Slides"
+          - text: "Module 1: Mathematical Foundations"
             file: modules/module1_math.qmd
-          - text: "Detailed Study Notes"
-            file: modules/module1_notes.qmd
-      - text: "Module 2: Classical ML"
+          - text: "Module 2: Classical Machine Learning"
+            file: modules/module2_ml.qmd
+          - text: "Module 3: Deep Learning"
+            file: modules/module3_dl.qmd
+          - text: "Module 4: NLP & Generative AI"
+            file: modules/module4_nlp.qmd
+          - text: "Module 5: Capstone & Deployment"
+            file: modules/module5_deploy.qmd
+      - text: "Resources"
         menu:
-          - text: "Lecture Slides"
-            file: modules/module2_ml.qmd  
-          - text: "Detailed Study Notes"
-            file: modules/module2_notes.qmd
-      - text: "Micro-Projects"
+          - text: "References"
+            file: modules/references.bib
+          - text: "Additional Reading"
+            file: resources/reading-list.qmd
+          - text: "Tools & Software"
+            file: resources/tools.qmd
+      - text: "Projects"
         file: assessments/project_guide.qmd
+    right:
+      - icon: github
+        href: "https://github.com/sijuswamyresearch/rit-ai-course"
+        aria-label: "GitHub Repository"
+      - icon: book
+        href: "syllabus.qmd"
+        text: "Syllabus"
 
+  # Sidebar configuration for better navigation
+  sidebar:
+    - id: module-nav
+      title: "Course Modules"
+      style: "docked"
+      background: "#f8f9fa"
+      contents:
+        - text: "📚 Module 1: Math Foundations"
+          contents:
+            - text: "Lecture Slides"
+              file: modules/module1_math.qmd
+            - text: "Detailed Notes"
+              file: modules/module1_notes.qmd
+        - text: "🤖 Module 2: Classical ML"
+          contents:
+            - text: "Lecture Slides"
+              file: modules/module2_ml.qmd
+            - text: "Detailed Notes"
+              file: modules/module2_notes.qmd
+        - text: "🧠 Module 3: Deep Learning"
+          contents:
+            - text: "Lecture Slides"
+              file: modules/module3_dl.qmd
+            - text: "Detailed Notes"
+              file: modules/module3_notes.qmd
+        - text: "💬 Module 4: NLP & GenAI"
+          contents:
+            - text: "Lecture Slides"
+              file: modules/module4_nlp.qmd
+            - text: "Detailed Notes"
+              file: modules/module4_notes.qmd
+        - text: "🚀 Module 5: Deployment"
+          contents:
+            - text: "Lecture Slides"
+              file: modules/module5_deploy.qmd
+            - text: "Detailed Notes"
+              file: modules/module5_notes.qmd
+        - separator
+        - text: "📋 Syllabus"
+          file: syllabus.qmd
+        - text: "🏆 Projects"
+          file: assessments/project_guide.qmd
+
+  # Page footer
+  page-footer:
+    left: |
+      © 2026 Rajiv Gandhi Institute of Technology, Kottayam
+    center:
+      - text: "GitHub"
+        href: "https://github.com/sijuswamyresearch/rit-ai-course"
+      - text: "Contact"
+        href: "sijuswamy@gmail.com"
+    right:
+      - icon: twitter
+        href: "https://twitter.com/rit_kottayam"
+      - icon: github
+        href: "https://github.com/sijuswamyresearch"
+
+  # Additional website settings
+  open-graph: true
+  twitter-card: true
+  back-to-top-navigation: true
+  repo-url: "https://github.com/sijuswamyresearch/rit-ai-course"
+  repo-branch: main
+  repo-subdir: ""
+  issue-url: "https://github.com/sijuswamyresearch/rit-ai-course/issues"
+
+# Format configuration
 format:
   html:
-    theme: cosmo
+    theme:
+      light: cosmo
+      dark: darkly
     css: styles.css
     toc: true
+    toc-depth: 3
+    toc-location: left
     number-sections: false
     code-fold: true
+    code-summary: "Show Code"
+    code-overflow: scroll
+    fig-width: 8
+    fig-height: 6
+    fig-cap: true
+    fig-pos: "H"
+    email-obfuscation: javascript
+    link-external-icon: true
+    link-external-newwindow: true
+
+  revealjs:
+    theme: simple
+    transition: fade
+    transition-speed: default
+    slide-number: true
+    show-slide-number: print
+    chalkboard: true
+    preview-links: true
+    scrollable: true
+    width: 1280
+    height: 720
+    margin: 0.1
+    min-scale: 0.2
+    max-scale: 2.0
+
+# Bibliography settings
+bibliography: modules/references.bib
+csl: https://www.zotero.org/styles/ieee
+
+# Execute options
+execute:
+  echo: true
+  warning: false
+  message: false
+  cache: true
+  cache-disable: false
+  cache-rebuild: false
+  eval: true
+  include: true
+
+# Knitr options
+knitr:
+  opts_chunk:
+    comment: ">>>"
+    fig.align: "center"
+    fig.width: 8
+    fig.height: 6
+    message: false
+    warning: false
+
+# Custom settings for better SEO and accessibility
+metadata-files:
+  - _metadata.yml
+
+# Freeze configuration for faster rendering
+freeze: auto
+
+# Resource files to include
+resources:
+  - images/
+  - data/
+  - docs/
+
+# Citation settings
+citeproc: true
+nocite: |
+  @vaswani2017attention
+  @goodfellow2016deep
+  @brown2020language
+  @kingma2014adam

@@ -1,0 +1,149 @@
+---
+title: "Module 3: Deep Learning Architectures"
+subtitle: "Neural Topologies, Activations, and Keras Frameworks"
+author: "Siju Swamy"
+format: 
+  revealjs:
+    theme: simple
+    transition: fade
+    slide-number: true
+    chalkboard: true
+    scrollable: true
+    toc: true
+    toc-depth: 1
+    toc-title: "Module Contents"
+execute:
+  echo: true
+  warning: false
+jupyter: python3
+---
+
+# Part 1: Neural Topologies
+
+## From Graphs to Networks
+At its core, a Deep Neural Network is a directed, weighted graph. 
+The evolution of modern AI architectures is fundamentally rooted in graph theory, where we map information flow from one set of nodes to another.
+
+* **Nodes (Vertices):** Represent "Neurons," holding mathematical values.
+* **Edges:** Represent "Weights," determining the strength of the connection between neurons.
+* **Layers:** Collections of isolated nodes. 
+    * *Input Layer:* Receives the raw tensor data.
+    * *Hidden Layers:* The computational engine.
+    * *Output Layer:* Produces the final prediction/probability.
+
+## Forward Propagation
+Information flows forward through the graph. For any single neuron in a hidden layer, its value is the weighted sum of all connected neurons from the previous layer, plus a bias term.
+
+$$z = \sum (w_i \cdot x_i) + b$$
+$$a = f(z)$$
+
+Where $f(z)$ is the **Activation Function**, introducing the non-linearity required to learn complex patterns.
+
+---
+
+# Part 2: Activation Functions
+
+## Why we need Non-Linearity
+Without activation functions, a neural network with 100 hidden layers is mathematically identical to a standard Linear Regression model. Non-linear activations allow the network to warp and fold the high-dimensional space.
+
+## Evaluating Activations: ReLU, ELU, and SiLU
+Choosing the right activation unit is critical for optimal gradient flow during backpropagation and maximizing metrics like FID scores in generative tasks.
+
+1. **ReLU (Rectified Linear Unit):** $f(x) = \max(0, x)$. 
+   * *Pros:* Computationally cheap.
+   * *Cons:* The "Dying ReLU" problem (gradients become zero for negative inputs).
+2. **ELU (Exponential Linear Unit):** Smooths the negative values using an exponential curve rather than a hard zero. 
+   * *Pros:* Pushes mean activation closer to zero, speeding up learning and preventing dead neurons.
+3. **SiLU (Sigmoid Linear Unit / Swish):** $f(x) = x \cdot \sigma(x)$. 
+   * *Pros:* Self-gated and smooth everywhere. Highly effective in deep architectures, consistently outperforming standard ReLU in advanced implementations.
+
+---
+
+# Part 3: Loss & Training Dynamics
+
+## Loss Functions
+The Loss Function calculates the difference between our network's output and the ground truth.
+
+* **Mean Squared Error (MSE):** Used for Regression tasks. Penalizes large errors heavily.
+* **Categorical Cross-Entropy:** Used for Multi-class Classification. Measures the difference between two probability distributions.
+$$L = -\sum y_i \log(\hat{y}_i)$$
+
+## Mitigating Overfitting
+Deep networks have millions of parameters; they will easily memorize the training data if left unchecked.
+
+1. **Dropout:** During training, we randomly "drop" (set to zero) a percentage of neurons in a layer. This forces the network to distribute learning and prevents it from relying on any single node.
+2. **Early Stopping:** We monitor a validation dataset. If the validation loss stops improving (or starts increasing) while training loss goes down, we halt training immediately.
+
+---
+
+# Part 4: Hands-on Frameworks
+
+## The TensorFlow & Keras Ecosystem
+We do not write backpropagation calculus by hand in production. We use **TensorFlow**, with **Keras** acting as a highly intuitive, high-level API for defining our graph topologies.
+
+**The standard Keras workflow:**
+1. Define the architecture (`Sequential` or `Functional API`).
+2. `compile()` the model (Define Optimizer, Loss, Metrics).
+3. `fit()` the model to the training data.
+4. `evaluate()` on unseen test data.
+
+## Building a Deep Network
+Let's build a Multi-Layer Perceptron (MLP) for a complex classification task, utilizing the advanced activation units we discussed.
+
+```{python}
+# Note: Ensure TensorFlow is installed in your environment
+# pip install tensorflow
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.datasets import make_circles
+from sklearn.model_selection import train_test_split
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Dropout
+from tensorflow.keras.optimizers import Adam
+
+# 1. Generate Non-Linear Data (Concentric Circles)
+X, y = make_circles(n_samples=1000, noise=0.1, factor=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# 2. Define the Neural Network Architecture
+model = Sequential([
+    # Input layer + Hidden Layer 1 (Using ELU)
+    Dense(32, input_shape=(2,), activation='elu'),
+    Dropout(0.2),
+    
+    # Hidden Layer 2 (Using SiLU)
+    Dense(32, activation='silu'),
+    Dropout(0.2),
+    
+    # Output Layer (Sigmoid for binary classification)
+    Dense(1, activation='sigmoid')
+])
+
+# 3. Compile the Engine
+model.compile(optimizer=Adam(learning_rate=0.01),
+              loss='binary_crossentropy',
+              metrics=['accuracy'])
+
+# 4. Train the Model (Silenced output for presentation)
+history = model.fit(X_train, y_train, epochs=30, batch_size=32, 
+                    validation_split=0.2, verbose=0)
+
+# 5. Evaluate
+test_loss, test_acc = model.evaluate(X_test, y_test, verbose=0)
+print(f"Deep Neural Network Accuracy: {test_acc * 100:.2f}%")
+```
+
+## Visualizing the Training Curve
+Did the model overfit? Let's check the loss curves.
+
+```{python}
+plt.figure(figsize=(8, 4))
+plt.plot(history.history['loss'], label='Training Loss', color='#153263')
+plt.plot(history.history['val_loss'], label='Validation Loss', color='#e63946')
+plt.title('Model Loss Over Epochs')
+plt.ylabel('Binary Cross-Entropy Loss')
+plt.xlabel('Epoch')
+plt.legend()
+plt.grid(True, linestyle='--', alpha=0.6)
+plt.show()
+```

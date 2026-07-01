@@ -7,8 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="AI Mathematics Course">
+<meta name="keywords" content="machine learning, artificial intelligence, deep learning, natural language processing, transformers, neural networks, python, data science, AI course, RIT Kottayam, engineering education, OBE curriculum">
+<meta name="description" content="A comprehensive 20-hour intensive course on Applied AI and Machine Learning designed for engineering students from all disciplines. Covers mathematical foundations, classical ML, deep learning, NLP with transformers, and deployment with Streamlit. Includes hands-on projects and capstone implementation.">
 
-<title>Module 1: Deep Dive Notes – Foundation of Applied AI &amp; ML</title>
+<title>Module 1: Deep Dive Notes – Foundation of Applied AI &amp; Machine Learning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -95,10 +97,10 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f8e840f94dfca9d6b5a9540ce614d846.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-1cf875210b1cc0385a316f3732c8c7cf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
-  "copy-button": false,
+  "copy-button": true,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
@@ -108,7 +110,6 @@ div.csl-indent {
     "/",
     "s"
   ],
-  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -155,17 +156,30 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="Foundation of Applied AI &amp; Machine Learning">
+<meta property="og:description" content="Comprehensive AI/ML course for engineering students">
+<meta property="og:image" content="https://sijuswamyresearch.github.io/rit-ai-course/modules/images/course-banner.png">
+<meta property="og:site_name" content="Foundation of Applied AI &amp; Machine Learning">
+<meta name="twitter:title" content="Module 1: Deep Dive Notes – Foundation of Applied AI &amp; Machine Learning">
+<meta name="twitter:description" content="A comprehensive 20-hour intensive course on Applied AI and Machine Learning designed for engineering students from all disciplines. Covers mathematical foundations, classical ML, deep learning, NLP with transformers, and deployment with Streamlit. Includes hands-on projects and capstone implementation.">
+<meta name="twitter:image" content="https://sijuswamyresearch.github.io/rit-ai-course/modules/module1_notes_files/figure-html/cell-2-output-1.png">
+<meta name="twitter:image-height" content="937">
+<meta name="twitter:image-width" content="2053">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/rit-logo.png" alt="RIT Kottayam Logo" class="navbar-logo">
+    </a>
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Foundation of Applied AI &amp; ML</span>
+    <span class="navbar-title">Foundation of Applied AI &amp; Machine Learning</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -179,56 +193,228 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html"> 
+    <a class="nav-link active" href="../syllabus.html" aria-current="page"> 
 <span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-module-1-math-foundations" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Module 1: Math Foundations</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-modules" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Modules</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-module-1-math-foundations">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-modules">    
         <li>
     <a class="dropdown-item" href="../modules/module1_math.html">
- <span class="dropdown-text">Lecture Slides</span></a>
+ <span class="dropdown-text">Module 1: Mathematical Foundations</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../modules/module1_notes.html">
- <span class="dropdown-text">Detailed Study Notes</span></a>
+    <a class="dropdown-item" href="../modules/module2_ml.html">
+ <span class="dropdown-text">Module 2: Classical Machine Learning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../modules/module3_dl.html">
+ <span class="dropdown-text">Module 3: Deep Learning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../modules/module4_nlp.html">
+ <span class="dropdown-text">Module 4: NLP &amp; Generative AI</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../modules/module5_deploy.html">
+ <span class="dropdown-text">Module 5: Capstone &amp; Deployment</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-module-2-classical-ml" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Module 2: Classical ML</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Resources</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-module-2-classical-ml">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-resources">    
         <li>
-    <a class="dropdown-item" href="../modules/module2_ml.html">
- <span class="dropdown-text">Lecture Slides</span></a>
+    <a class="dropdown-item" href="../modules/references.bib">
+ <span class="dropdown-text">References</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../modules/module2_notes.html">
- <span class="dropdown-text">Detailed Study Notes</span></a>
+    <a class="dropdown-item" href="../resources/reading-list.html">
+ <span class="dropdown-text">Additional Reading</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../resources/tools.html">
+ <span class="dropdown-text">Tools &amp; Software</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../assessments/project_guide.qmd"> 
-<span class="menu-text">Micro-Projects</span></a>
+    <a class="nav-link" href="../assessments/project_guide.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/sijuswamyresearch/rit-ai-course"> <i class="bi bi-github" role="img" aria-label="GitHub Repository">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html"> <i class="bi bi-book" role="img">
+</i> 
+<span class="menu-text">Syllabus</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/module1_math.html">📚 Module 1: Math Foundations</a></li><li class="breadcrumb-item"><a href="../modules/module1_notes.html">Detailed Notes</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true">
+ <span class="menu-text">📚 Module 1: Math Foundations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module1_math.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture Slides</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module1_notes.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Detailed Notes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true">
+ <span class="menu-text">🤖 Module 2: Classical ML</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module2_ml.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture Slides</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module2_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Detailed Notes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true">
+ <span class="menu-text">🧠 Module 3: Deep Learning</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module3_dl.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture Slides</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module3_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Detailed Notes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true">
+ <span class="menu-text">💬 Module 4: NLP &amp; GenAI</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module4_nlp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture Slides</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module4_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Detailed Notes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true">
+ <span class="menu-text">🚀 Module 5: Deployment</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module5_deploy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture Slides</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module5_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Detailed Notes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+ <span class="menu-text">separator</span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📋 Syllabus</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assessments/project_guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🏆 Projects</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+    <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
@@ -357,17 +543,26 @@ window.Quarto = {
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/sijuswamyresearch/rit-ai-course/issues" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
 </nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/module1_math.html">📚 Module 1: Math Foundations</a></li><li class="breadcrumb-item"><a href="../modules/module1_notes.html">Detailed Notes</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Module 1: Deep Dive Notes</h1>
 <p class="subtitle lead">The Geometry of Linear Algebra and the Mechanics of Optimization</p>
 </div>
 
+<div>
+  <div class="description">
+    <p>A comprehensive 20-hour intensive course on Applied AI and Machine Learning designed for engineering students from all disciplines. Covers mathematical foundations, classical ML, deep learning, NLP with transformers, and deployment with Streamlit. Includes hands-on projects and capstone implementation.</p>
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -384,6 +579,12 @@ window.Quarto = {
   </div>
   
 
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>machine learning, artificial intelligence, deep learning, natural language processing, transformers, neural networks, python, data science, AI course, RIT Kottayam, engineering education, OBE curriculum</p>
+  </div>
+</div>
 
 </header>
 
@@ -449,9 +650,9 @@ Why the Column Picture Matters
 <section id="visualizing-the-transformation" class="level2">
 <h2 class="anchored" data-anchor-id="visualizing-the-transformation">1.2 Visualizing the Transformation</h2>
 <p>Let’s use Python to see what the matrix <span class="math inline">\(A\)</span> actually <em>does</em> to a set of points in 2D space.</p>
-<div id="762917f0" class="cell" data-execution_count="1">
+<div id="11c810f6" class="cell" data-execution_count="1">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -515,7 +716,7 @@ Key Insight
 </div>
 <div class="callout-body-container callout-body">
 <p>The matrix <span class="math inline">\(A\)</span> is not just a set of numbers; it is a <strong>function</strong> that takes every point in the original space and moves it to a new location. This is the essence of how data flows through neural networks—each layer applies a transformation that reshapes the data into a form that makes it easier for the model to learn patterns.</p>
-<p>Notice how the grid is <strong>sheared</strong> and <strong>rotated</strong>. The matrix has <strong>stretched</strong> the space. In Deep Learning, we use these transformations (followed by non-linear activations) to warp our data until complex patterns become linearly separable <span class="citation" data-cites="goodfellow2016deep">Goodfellow, Bengio, and Courville (<a href="#ref-goodfellow2016deep" role="doc-biblioref">2016</a>)</span>.</p>
+<p>Notice how the grid is <strong>sheared</strong> and <strong>rotated</strong>. The matrix has <strong>stretched</strong> the space. In Deep Learning, we use these transformations (followed by non-linear activations) to warp our data until complex patterns become linearly separable <span class="citation" data-cites="goodfellow2016deep"><a href="#ref-goodfellow2016deep" role="doc-biblioref">[1]</a></span>.</p>
 </div>
 </div>
 </section>
@@ -523,9 +724,9 @@ Key Insight
 <h2 class="anchored" data-anchor-id="additional-matrix-examples">1.3 Additional Matrix Examples</h2>
 <section id="example-1-identity-matrix-no-transformation" class="level3">
 <h3 class="anchored" data-anchor-id="example-1-identity-matrix-no-transformation">Example 1: Identity Matrix (No Transformation)</h3>
-<div id="4ff4f1e3" class="cell" data-execution_count="2">
+<div id="64e4536b" class="cell" data-execution_count="2">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -568,9 +769,9 @@ Key Insight
 </section>
 <section id="example-2-rotation-matrix" class="level3">
 <h3 class="anchored" data-anchor-id="example-2-rotation-matrix">Example 2: Rotation Matrix</h3>
-<div id="d9d93052" class="cell" data-execution_count="3">
+<div id="8751dc40" class="cell" data-execution_count="3">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -634,9 +835,9 @@ R·v = [0.         1.41421356]</code></pre>
 </section>
 <section id="example-3-scaling-matrix" class="level3">
 <h3 class="anchored" data-anchor-id="example-3-scaling-matrix">Example 3: Scaling Matrix</h3>
-<div id="b5190201" class="cell" data-execution_count="4">
+<div id="cf6be6d0" class="cell" data-execution_count="4">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Scaling matrix (stretch x by 2, compress y by 0.5)</span></span>
@@ -681,9 +882,9 @@ Interpretation: x-component doubled, y-component halved</code></pre>
 </section>
 <section id="visual-demonstration" class="level3">
 <h3 class="anchored" data-anchor-id="visual-demonstration">Visual Demonstration</h3>
-<div id="2efc0de9" class="cell" data-execution_count="5">
+<div id="59137890" class="cell" data-execution_count="5">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -785,9 +986,9 @@ Eigenvector 2:
 </section>
 <section id="computing-eigenvalues-and-eigenvectors-in-python" class="level2">
 <h2 class="anchored" data-anchor-id="computing-eigenvalues-and-eigenvectors-in-python">2.2 Computing Eigenvalues and Eigenvectors in Python</h2>
-<div id="925ff3af" class="cell" data-execution_count="6">
+<div id="a57f19d2" class="cell" data-execution_count="6">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a symmetric matrix (common in ML - e.g., covariance matrices)</span></span>
@@ -850,9 +1051,9 @@ Reconstruction error: 6.66e-16</code></pre>
 <section id="principal-component-analysis-pca" class="level3">
 <h3 class="anchored" data-anchor-id="principal-component-analysis-pca">Principal Component Analysis (PCA)</h3>
 <p>In machine learning, especially in dimensionality reduction techniques like <strong>PCA</strong>, we are looking for the directions in which our data varies the most. These directions are precisely the <strong>eigenvectors of the covariance matrix</strong> of the data. The <strong>eigenvalues</strong> tell us how much variance is captured along each eigenvector.</p>
-<div id="570c12c7" class="cell" data-execution_count="7">
+<div id="db65d98c" class="cell" data-execution_count="7">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
@@ -930,7 +1131,7 @@ Explained variance: [1.82459962 0.18545063]</code></pre>
 </section>
 <section id="application-face-recognition-with-eigenfaces" class="level3">
 <h3 class="anchored" data-anchor-id="application-face-recognition-with-eigenfaces">Application: Face Recognition with Eigenfaces</h3>
-<p>Eigenvectors are used in <strong>Eigenfaces</strong> for face recognition, where the eigenvectors of a set of face images form a basis for “face space” <span class="citation" data-cites="turk1991eigenfaces">Turk and Pentland (<a href="#ref-turk1991eigenfaces" role="doc-biblioref">1991</a>)</span>.</p>
+<p>Eigenvectors are used in <strong>Eigenfaces</strong> for face recognition, where the eigenvectors of a set of face images form a basis for “face space” <span class="citation" data-cites="turk1991eigenfaces"><a href="#ref-turk1991eigenfaces" role="doc-biblioref">[2]</a></span>.</p>
 </section>
 </section>
 </section>
@@ -955,9 +1156,9 @@ Explained variance: [1.82459962 0.18545063]</code></pre>
 <p>Let’s build the engine of optimization. We won’t use libraries for this; we will write the raw math in Python.</p>
 <section id="example-1-simple-1d-gradient-descent" class="level3">
 <h3 class="anchored" data-anchor-id="example-1-simple-1d-gradient-descent">Example 1: Simple 1D Gradient Descent</h3>
-<div id="c174422d" class="cell" data-execution_count="8">
+<div id="1bc07ba9" class="cell" data-execution_count="8">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1043,9 +1244,9 @@ Final Cost: 5.1238</code></pre>
 </section>
 <section id="example-2-gradient-descent-with-different-learning-rates" class="level3">
 <h3 class="anchored" data-anchor-id="example-2-gradient-descent-with-different-learning-rates">Example 2: Gradient Descent with Different Learning Rates</h3>
-<div id="934b4a23" class="cell" data-execution_count="9">
+<div id="42df6038" class="cell" data-execution_count="9">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1108,9 +1309,9 @@ Final Cost: 5.1238</code></pre>
 </section>
 <section id="example-3-2d-gradient-descent" class="level3">
 <h3 class="anchored" data-anchor-id="example-3-2d-gradient-descent">Example 3: 2D Gradient Descent</h3>
-<div id="224ffbd5" class="cell" data-execution_count="10">
+<div id="9625e5c4" class="cell" data-execution_count="10">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mpl_toolkits.mplot3d <span class="im">import</span> Axes3D</span>
@@ -1203,9 +1404,9 @@ Minimum is at (0, 0)</code></pre>
 <h2 class="anchored" data-anchor-id="gradient-descent-variants">3.3 Gradient Descent Variants</h2>
 <section id="batch-vs.-stochastic-gradient-descent" class="level3">
 <h3 class="anchored" data-anchor-id="batch-vs.-stochastic-gradient-descent">Batch vs.&nbsp;Stochastic Gradient Descent</h3>
-<div id="e1527843" class="cell" data-execution_count="11">
+<div id="daba3f29" class="cell" data-execution_count="11">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1337,7 +1538,7 @@ True parameters: [4, 3]</code></pre>
 <li><p><strong>The Frequentist View (The Casino):</strong> Probability is the long-run frequency of repeatable events. If you flip a coin 10,000 times, it will land on heads 50% of the time. In this view, parameters are fixed realities, and the data we collect is just a random sample.</p></li>
 <li><p><strong>The Bayesian View (The Detective):</strong> Probability is a <strong>degree of belief</strong>. It quantifies our uncertainty about a proposition. In this view, our parameters are uncertain (random variables), and the data we observe is fixed.</p></li>
 </ol>
-<p>Modern AI, especially Generative AI, leans heavily on the Bayesian view. We start with a prior belief, observe some data, and update our belief <span class="citation" data-cites="bishop2006pattern">Bishop (<a href="#ref-bishop2006pattern" role="doc-biblioref">2006</a>)</span>.</p>
+<p>Modern AI, especially Generative AI, leans heavily on the Bayesian view. We start with a prior belief, observe some data, and update our belief <span class="citation" data-cites="bishop2006pattern"><a href="#ref-bishop2006pattern" role="doc-biblioref">[3]</a></span>.</p>
 </section>
 </section>
 <section id="bayes-theorem-the-engine-of-updating" class="level2">
@@ -1378,9 +1579,9 @@ True parameters: [4, 3]</code></pre>
 <p>When you train a neural network, you are essentially trying to find the parameters (Hypothesis) that maximize this Posterior probability given the training images (Data).</p>
 <section id="example-medical-testing" class="level3">
 <h3 class="anchored" data-anchor-id="example-medical-testing">Example: Medical Testing</h3>
-<div id="ca9e7fa2" class="cell" data-execution_count="12">
+<div id="63e79a6d" class="cell" data-execution_count="12">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Medical testing example</span></span>
@@ -1439,9 +1640,9 @@ This is because the disease is rare (base rate fallacy).</code></pre>
 </section>
 <section id="visualizing-bayes-theorem" class="level3">
 <h3 class="anchored" data-anchor-id="visualizing-bayes-theorem">Visualizing Bayes’ Theorem</h3>
-<div id="edb39b0e" class="cell" data-execution_count="13">
+<div id="8800e58b" class="cell" data-execution_count="13">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> beta</span>
@@ -1517,9 +1718,9 @@ This is because the disease is rare (base rate fallacy).</code></pre>
 <p><span class="math display">\[f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}\]</span></p>
 <section id="visualizing-gaussian-distributions" class="level3">
 <h3 class="anchored" data-anchor-id="visualizing-gaussian-distributions">Visualizing Gaussian Distributions</h3>
-<div id="20635cee" class="cell" data-execution_count="14">
+<div id="d1cc7cde" class="cell" data-execution_count="14">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
@@ -1564,9 +1765,9 @@ This is because the disease is rare (base rate fallacy).</code></pre>
 </section>
 <section id="the-68-95-99.7-rule" class="level3">
 <h3 class="anchored" data-anchor-id="the-68-95-99.7-rule">The 68-95-99.7 Rule</h3>
-<div id="3fa8072f" class="cell" data-execution_count="15">
+<div id="7477ae06" class="cell" data-execution_count="15">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
@@ -1630,9 +1831,9 @@ This is because the disease is rare (base rate fallacy).</code></pre>
 </section>
 <section id="comparing-model-performances" class="level3">
 <h3 class="anchored" data-anchor-id="comparing-model-performances">Comparing Model Performances</h3>
-<div id="931a17c4" class="cell" data-execution_count="16">
+<div id="c2c9f06f" class="cell" data-execution_count="16">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm, ttest_ind</span>
@@ -1834,9 +2035,9 @@ Model B is significantly better than Model A.</code></pre>
 <h3 class="anchored" data-anchor-id="solution-1.1-matrix-multiplication">Solution 1.1: Matrix Multiplication</h3>
 <p><strong>a) Row picture:</strong> <span class="math display">\[ AB = \begin{bmatrix} 1(5)+2(7) &amp; 1(6)+2(8) \\ 3(5)+4(7) &amp; 3(6)+4(8) \end{bmatrix} = \begin{bmatrix} 19 &amp; 22 \\ 43 &amp; 50 \end{bmatrix} \]</span></p>
 <p><strong>b) Column picture:</strong> <span class="math display">\[ AB = \begin{bmatrix} 1\begin{bmatrix}1\\3\end{bmatrix} + 7\begin{bmatrix}2\\4\end{bmatrix} &amp; 6\begin{bmatrix}1\\3\end{bmatrix} + 8\begin{bmatrix}2\\4\end{bmatrix} \end{bmatrix} = \begin{bmatrix} 19 &amp; 22 \\ 43 &amp; 50 \end{bmatrix} \]</span></p>
-<div id="8c1bbbb4" class="cell" data-execution_count="17">
+<div id="1acc7fee" class="cell" data-execution_count="17">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.array([[<span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>]])</span>
@@ -1853,9 +2054,9 @@ Model B is significantly better than Model A.</code></pre>
 <p><strong>a)</strong> <span class="math inline">\(T\)</span> represents a <strong>90° counterclockwise rotation</strong>.</p>
 <p><strong>b)</strong> <span class="math inline">\(T\mathbf{v} = \begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix}\begin{bmatrix} 3 \\ 4 \end{bmatrix} = \begin{bmatrix} -4 \\ 3 \end{bmatrix}\)</span></p>
 <p><strong>c)</strong> <span class="math inline">\(T^2 = \begin{bmatrix} -1 &amp; 0 \\ 0 &amp; -1 \end{bmatrix}\)</span> (180° rotation), <span class="math inline">\(T^4 = I\)</span> (360° = identity)</p>
-<div id="dff28d7c" class="cell" data-execution_count="18">
+<div id="d2c6e937" class="cell" data-execution_count="18">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>], [<span class="dv">1</span>, <span class="dv">0</span>]])</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> np.array([<span class="dv">3</span>, <span class="dv">4</span>])</span>
@@ -1887,9 +2088,9 @@ T⁴ = [[1 0]
 <p><strong>a)</strong> <span class="math inline">\(\det(A - \lambda I) = (3-\lambda)(2-\lambda) - 0 = 0\)</span> <span class="math inline">\(\Rightarrow \lambda_1 = 3, \lambda_2 = 2\)</span></p>
 <p><strong>b)</strong> For <span class="math inline">\(\lambda_1 = 3\)</span>: <span class="math inline">\((A - 3I)\mathbf{v} = 0 \Rightarrow \mathbf{v}_1 = \begin{bmatrix} 1 \\ 0 \end{bmatrix}\)</span></p>
 <p>For <span class="math inline">\(\lambda_2 = 2\)</span>: <span class="math inline">\((A - 2I)\mathbf{v} = 0 \Rightarrow \mathbf{v}_2 = \begin{bmatrix} -1 \\ 1 \end{bmatrix}\)</span></p>
-<div id="3d4b44bd" class="cell" data-execution_count="19">
+<div id="668decad" class="cell" data-execution_count="19">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">3</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">2</span>]])</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>eigenvalues, eigenvectors <span class="op">=</span> np.linalg.eig(A)</span>
@@ -1912,9 +2113,9 @@ Eigenvectors:
 </section>
 <section id="solution-2.4-gaussian-probabilities" class="level3">
 <h3 class="anchored" data-anchor-id="solution-2.4-gaussian-probabilities">Solution 2.4: Gaussian Probabilities</h3>
-<div id="7d5befc7" class="cell" data-execution_count="20">
+<div id="309b62e0" class="cell" data-execution_count="20">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>mu, sigma <span class="op">=</span> <span class="dv">175</span>, <span class="dv">7</span></span>
@@ -1943,9 +2144,9 @@ c) 95th percentile height = 186.51 cm</code></pre>
 <h2 class="anchored" data-anchor-id="advanced-level-solutions">Advanced Level Solutions</h2>
 <section id="solution-3.1-pca-from-scratch" class="level3">
 <h3 class="anchored" data-anchor-id="solution-3.1-pca-from-scratch">Solution 3.1: PCA from Scratch</h3>
-<div id="cca838ba" class="cell" data-execution_count="21">
+<div id="bb231660" class="cell" data-execution_count="21">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Data matrix</span></span>
@@ -1997,9 +2198,9 @@ Variance explained: 80.00%</code></pre>
 </section>
 <section id="solution-3.2-gradient-descent-with-momentum" class="level3">
 <h3 class="anchored" data-anchor-id="solution-3.2-gradient-descent-with-momentum">Solution 3.2: Gradient Descent with Momentum</h3>
-<div id="8356dd8f" class="cell" data-execution_count="22">
+<div id="dc843c2e" class="cell" data-execution_count="22">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2062,9 +2263,9 @@ Variance explained: 80.00%</code></pre>
 </section>
 <section id="solution-3.3-maximum-likelihood-estimation" class="level3">
 <h3 class="anchored" data-anchor-id="solution-3.3-maximum-likelihood-estimation">Solution 3.3: Maximum Likelihood Estimation</h3>
-<div id="64e75bac" class="cell" data-execution_count="23">
+<div id="254d7053" class="cell" data-execution_count="23">
 <details class="code-fold">
-<summary>Code</summary>
+<summary>Show Code</summary>
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2149,10 +2350,10 @@ Click to reveal answers
 <section id="textbooks" class="level2">
 <h2 class="anchored" data-anchor-id="textbooks">Textbooks</h2>
 <ul>
-<li><span class="citation" data-cites="goodfellow2016deep">Goodfellow, Bengio, and Courville (<a href="#ref-goodfellow2016deep" role="doc-biblioref">2016</a>)</span> - <em>Deep Learning</em> by Goodfellow, Bengio, and Courville. Free online at <a href="https://www.deeplearningbook.org">deeplearningbook.org</a></li>
-<li><span class="citation" data-cites="bishop2006pattern">Bishop (<a href="#ref-bishop2006pattern" role="doc-biblioref">2006</a>)</span> - <em>Pattern Recognition and Machine Learning</em> by Christopher Bishop</li>
-<li><span class="citation" data-cites="strang2016introduction">Strang (<a href="#ref-strang2016introduction" role="doc-biblioref">2016</a>)</span> - <em>Introduction to Linear Algebra</em> by Gilbert Strang</li>
-<li><span class="citation" data-cites="murphy2012machine">Murphy (<a href="#ref-murphy2012machine" role="doc-biblioref">2012</a>)</span> - <em>Machine Learning: A Probabilistic Perspective</em> by Kevin Murphy</li>
+<li><span class="citation" data-cites="goodfellow2016deep"><a href="#ref-goodfellow2016deep" role="doc-biblioref">[1]</a></span> - <em>Deep Learning</em> by Goodfellow, Bengio, and Courville. Free online at <a href="https://www.deeplearningbook.org">deeplearningbook.org</a></li>
+<li><span class="citation" data-cites="bishop2006pattern"><a href="#ref-bishop2006pattern" role="doc-biblioref">[3]</a></span> - <em>Pattern Recognition and Machine Learning</em> by Christopher Bishop</li>
+<li><span class="citation" data-cites="strang2016introduction"><a href="#ref-strang2016introduction" role="doc-biblioref">[4]</a></span> - <em>Introduction to Linear Algebra</em> by Gilbert Strang</li>
+<li><span class="citation" data-cites="murphy2012machine"><a href="#ref-murphy2012machine" role="doc-biblioref">[5]</a></span> - <em>Machine Learning: A Probabilistic Perspective</em> by Kevin Murphy</li>
 </ul>
 </section>
 <section id="online-resources" class="level2">
@@ -2181,23 +2382,32 @@ Click to reveal answers
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-bishop2006pattern" class="csl-entry" role="listitem">
-Bishop, Christopher M. 2006. <em>Pattern Recognition and Machine Learning</em>. Information Science and Statistics. Springer.
-</div>
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
 <div id="ref-goodfellow2016deep" class="csl-entry" role="listitem">
-Goodfellow, Ian, Yoshua Bengio, and Aaron Courville. 2016. <em>Deep Learning</em>. MIT Press. <a href="https://www.deeplearningbook.org">https://www.deeplearningbook.org</a>.
-</div>
-<div id="ref-murphy2012machine" class="csl-entry" role="listitem">
-Murphy, Kevin P. 2012. <em>Machine Learning: A Probabilistic Perspective</em>. Adaptive Computation and Machine Learning. MIT Press.
-</div>
-<div id="ref-strang2016introduction" class="csl-entry" role="listitem">
-Strang, Gilbert. 2016. <em>Introduction to Linear Algebra</em>. 5th ed. Wellesley-Cambridge Press.
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">I. Goodfellow, Y. Bengio, and A. Courville, <em>Deep learning</em>. MIT Press, 2016. Available: <a href="https://www.deeplearningbook.org">https://www.deeplearningbook.org</a></div>
 </div>
 <div id="ref-turk1991eigenfaces" class="csl-entry" role="listitem">
-Turk, Matthew, and Alex Pentland. 1991. <span>“Eigenfaces for Recognition.”</span> <em>Journal of Cognitive Neuroscience</em> 3 (1): 71–86.
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">M. Turk and A. Pentland, <span>“Eigenfaces for recognition,”</span> <em>Journal of Cognitive Neuroscience</em>, vol. 3, no. 1, pp. 71–86, 1991.</div>
 </div>
-</div></section></div></main> <!-- /main -->
+<div id="ref-bishop2006pattern" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">C. M. Bishop, <em>Pattern recognition and machine learning</em>. in Information science and statistics. Springer, 2006.</div>
+</div>
+<div id="ref-strang2016introduction" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">G. Strang, <em>Introduction to linear algebra</em>, 5th ed. Wellesley-Cambridge Press, 2016.</div>
+</div>
+<div id="ref-murphy2012machine" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">K. P. Murphy, <em>Machine learning: A probabilistic perspective</em>. in Adaptive computation and machine learning. MIT Press, 2012.</div>
+</div>
+<div id="ref-kingma2014adam" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">D. P. Kingma and J. Ba, <span>“Adam: A method for stochastic optimization,”</span> <em>arXiv preprint arXiv:1412.6980</em>, 2014.</div>
+</div>
+<div id="ref-vaswani2017attention" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">A. Vaswani <em>et al.</em>, <span>“Attention is all you need,”</span> <em>Advances in Neural Information Processing Systems</em>, vol. 30, 2017.</div>
+</div>
+<div id="ref-brown2020language" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">T. Brown <em>et al.</em>, <span>“Language models are few-shot learners,”</span> <em>Advances in Neural Information Processing Systems</em>, vol. 33, pp. 1877–1901, 2020.</div>
+</div>
+</div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div>CC-BY-NC-SA 4.0</div></div></section><section class="quarto-appendix-contents" id="quarto-copyright"><h2 class="anchored quarto-appendix-heading">Copyright</h2><div class="quarto-appendix-contents"><div>© 2026 Rajiv Gandhi Institute of Technology, Kottayam</div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -2270,7 +2480,7 @@ Turk, Matthew, and Alex Pentland. 1991. <span>“Eigenfaces for Recognition.”<
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/<your-github-username>\.github\.io\/rit-ai-course");
+        var filterRegex = new RegExp("https:\/\/sijuswamyresearch\.github\.io\/rit-ai-course");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -2284,6 +2494,13 @@ Turk, Matthew, and Alex Pentland. 1991. <span>“Eigenfaces for Recognition.”<
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -2598,6 +2815,43 @@ Turk, Matthew, and Alex Pentland. 1991. <span>“Eigenfaces for Recognition.”<
   });
   </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Rajiv Gandhi Institute of Technology, Kottayam</p>
+</div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="https://github.com/sijuswamyresearch/rit-ai-course">
+<p>GitHub</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../sijuswamy@gmail.com">
+<p>Contact</p>
+</a>
+  </li>  
+</ul>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sijuswamyresearch/rit-ai-course/issues" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/rit_kottayam">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/sijuswamyresearch">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
 
 
 

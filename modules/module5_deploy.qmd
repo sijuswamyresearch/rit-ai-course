@@ -1,0 +1,114 @@
+---
+title: "Module 5: Capstone Integration & Deployment"
+subtitle: "ModelOps, Streamlit, and Portfolio Building"
+author: "Siju Swamy"
+format: 
+  revealjs:
+    theme: simple
+    transition: fade
+    slide-number: true
+    chalkboard: true
+    scrollable: true
+    toc: true
+    toc-depth: 1
+    toc-title: "Module Contents"
+---
+
+# Part 1: The Last Mile
+
+## The Jupyter Notebook Trap
+Training a model with 99% accuracy is only 50% of the job. 
+A machine learning model trapped inside a Jupyter Notebook is useless to the end-user. 
+
+**ModelOps (Model Operations):** The lifecycle of taking a trained model, wrapping it in an accessible interface (API or Web UI), and deploying it to the internet.
+
+## The Deployment Pipeline
+1. **Serialize (Save):** Export your trained model from memory to a file (e.g., using `joblib` for Scikit-Learn or `.h5` for Keras).
+2. **Interface:** Build a web application that takes user input and feeds it to the loaded model.
+3. **Host:** Push the code to a cloud server (GitHub Pages, Streamlit Cloud, AWS).
+
+---
+
+# Part 2: Introduction to Streamlit
+
+## What is Streamlit?
+Streamlit is an open-source Python framework designed specifically for Machine Learning engineers. 
+It allows you to build highly interactive web applications in pure Python, without needing to know any HTML, CSS, or JavaScript.
+
+**How it works:**
+Every time a user interacts with a widget (like clicking a button or moving a slider), Streamlit entirely reruns your Python script from top to bottom.
+
+## Basic Streamlit Syntax
+Streamlit commands are incredibly intuitive.
+
+```python
+import streamlit as st
+
+# Text Elements
+st.title("My First AI App")
+st.write("Welcome to my Capstone Project!")
+
+# Input Widgets
+age = st.slider("Select your age:", 18, 100)
+name = st.text_input("Enter your name:")
+
+# Actions
+if st.button("Submit"):
+    st.success(f"Hello {name}, you are {age} years old.")
+```
+
+# Part 3: Deploying a Model
+## The `app.py` Architecture
+
+To deploy our model, we create a single `app.py` file.
+
+```python
+import streamlit as st
+import joblib
+import numpy as np
+
+# 1. Load the pre-trained model
+model = joblib.load('random_forest_model.pkl')
+
+st.title("House Price Predictor 🏠")
+
+# 2. Get user input
+sqft = st.number_input("Square Footage", min_value=500, max_value=10000)
+bedrooms = st.selectbox("Bedrooms", [1, 2, 3, 4, 5])
+
+# 3. Make Prediction
+if st.button("Predict Price"):
+    features = np.array([[sqft, bedrooms]])
+    prediction = model.predict(features)[0]
+    
+    st.balloons()
+    st.success(f"Estimated Price: ${prediction:,.2f}")
+```
+## Running the App
+Unlike Jupyter Notebooks, you run Streamlit from the command line (or Colab terminal).
+
+```bash
+# Install the library
+pip install streamlit
+
+# Run the server
+streamlit run app.py
+```
+This will launch a local web server and open the app in your browser!
+
+# Part 4: The Capstone Deliverable
+## Final Project Requirements
+
+Your Capstone Project must integrate everything learned in the last 20 hours.
+
+1. **The Model:** Train a machine learning model (or build a GenAI RAG script) using a dataset of your choice.
+
+2. **The App:** Wrap the model in a Streamlit interface.
+
+3. **The Portfolio:** Push the entire project to a public GitHub repository.
+
+4. **The Documentation:** The repository must contain a professional README.md explaining what the app does, how to run it, and the metrics of your model.
+
+## Deployment (Optional but Recommended):
+Connect your GitHub repository to Streamlit Community Cloud to host your app live on the internet for free.
+

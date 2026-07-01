@@ -1,0 +1,2101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.31">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Siju Swamy">
+<meta name="keywords" content="machine learning, artificial intelligence, deep learning, natural language processing, transformers, neural networks, python, data science, AI course, RIT Kottayam, engineering education, OBE curriculum">
+<meta name="description" content="A comprehensive 20-hour intensive course on Applied AI and Machine Learning designed for engineering students from all disciplines. Covers mathematical foundations, classical ML, deep learning, NLP with transformers, and deployment with Streamlit. Includes hands-on projects and capstone implementation.">
+
+<title>Module 4: Natural Language Processing &amp; Generative AI – Foundation of Applied AI &amp; Machine Learning</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-1cf875210b1cc0385a316f3732c8c7cf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": true,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="Foundation of Applied AI &amp; Machine Learning">
+<meta property="og:description" content="Comprehensive AI/ML course for engineering students">
+<meta property="og:image" content="https://sijuswamyresearch.github.io/rit-ai-course/modules/images/course-banner.png">
+<meta property="og:site_name" content="Foundation of Applied AI &amp; Machine Learning">
+<meta name="twitter:title" content="Module 4: Natural Language Processing &amp; Generative AI – Foundation of Applied AI &amp; Machine Learning">
+<meta name="twitter:description" content="A comprehensive 20-hour intensive course on Applied AI and Machine Learning designed for engineering students from all disciplines. Covers mathematical foundations, classical ML, deep learning, NLP with transformers, and deployment with Streamlit. Includes hands-on projects and capstone implementation.">
+<meta name="twitter:image" content="https://sijuswamyresearch.github.io/rit-ai-course/modules/images/course-banner.png">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/rit-logo.png" alt="RIT Kottayam Logo" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Foundation of Applied AI &amp; Machine Learning</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../syllabus.html" aria-current="page"> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-modules" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Modules</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-modules">    
+        <li>
+    <a class="dropdown-item" href="../modules/module1_math.html">
+ <span class="dropdown-text">Module 1: Mathematical Foundations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../modules/module2_ml.html">
+ <span class="dropdown-text">Module 2: Classical Machine Learning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../modules/module3_dl.html">
+ <span class="dropdown-text">Module 3: Deep Learning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../modules/module4_nlp.html">
+ <span class="dropdown-text">Module 4: NLP &amp; Generative AI</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../modules/module5_deploy.html">
+ <span class="dropdown-text">Module 5: Capstone &amp; Deployment</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Resources</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-resources">    
+        <li>
+    <a class="dropdown-item" href="../modules/references.bib">
+ <span class="dropdown-text">References</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../resources/reading-list.html">
+ <span class="dropdown-text">Additional Reading</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../resources/tools.html">
+ <span class="dropdown-text">Tools &amp; Software</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../assessments/project_guide.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/sijuswamyresearch/rit-ai-course"> <i class="bi bi-github" role="img" aria-label="GitHub Repository">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html"> <i class="bi bi-book" role="img">
+</i> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/module4_nlp.html">💬 Module 4: NLP &amp; GenAI</a></li><li class="breadcrumb-item"><a href="../modules/module4_notes.html">Detailed Notes</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true">
+ <span class="menu-text">📚 Module 1: Math Foundations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module1_math.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture Slides</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module1_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Detailed Notes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true">
+ <span class="menu-text">🤖 Module 2: Classical ML</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module2_ml.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture Slides</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module2_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Detailed Notes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true">
+ <span class="menu-text">🧠 Module 3: Deep Learning</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module3_dl.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture Slides</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module3_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Detailed Notes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true">
+ <span class="menu-text">💬 Module 4: NLP &amp; GenAI</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module4_nlp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture Slides</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module4_notes.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Detailed Notes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true">
+ <span class="menu-text">🚀 Module 5: Deployment</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module5_deploy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture Slides</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module5_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Detailed Notes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+ <span class="menu-text">separator</span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📋 Syllabus</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assessments/project_guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🏆 Projects</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction-the-language-understanding-challenge" id="toc-introduction-the-language-understanding-challenge" class="nav-link active" data-scroll-target="#introduction-the-language-understanding-challenge">Introduction: The Language Understanding Challenge</a>
+  <ul class="collapse">
+  <li><a href="#what-is-natural-language-processing" id="toc-what-is-natural-language-processing" class="nav-link" data-scroll-target="#what-is-natural-language-processing">What is Natural Language Processing?</a></li>
+  <li><a href="#why-is-nlp-particularly-challenging" id="toc-why-is-nlp-particularly-challenging" class="nav-link" data-scroll-target="#why-is-nlp-particularly-challenging">Why is NLP Particularly Challenging?</a></li>
+  <li><a href="#the-nlp-pipeline" id="toc-the-nlp-pipeline" class="nav-link" data-scroll-target="#the-nlp-pipeline">The NLP Pipeline</a></li>
+  </ul></li>
+  <li><a href="#historical-background-the-evolution-of-nlp" id="toc-historical-background-the-evolution-of-nlp" class="nav-link" data-scroll-target="#historical-background-the-evolution-of-nlp">Historical Background: The Evolution of NLP</a>
+  <ul class="collapse">
+  <li><a href="#the-rule-based-era-1950s-1980s" id="toc-the-rule-based-era-1950s-1980s" class="nav-link" data-scroll-target="#the-rule-based-era-1950s-1980s">The Rule-Based Era (1950s-1980s)</a>
+  <ul class="collapse">
+  <li><a href="#early-beginnings" id="toc-early-beginnings" class="nav-link" data-scroll-target="#early-beginnings">Early Beginnings</a></li>
+  <li><a href="#chomskys-formal-grammars-1957" id="toc-chomskys-formal-grammars-1957" class="nav-link" data-scroll-target="#chomskys-formal-grammars-1957">Chomsky’s Formal Grammars (1957)</a></li>
+  </ul></li>
+  <li><a href="#the-statistical-revolution-1980s-2000s" id="toc-the-statistical-revolution-1980s-2000s" class="nav-link" data-scroll-target="#the-statistical-revolution-1980s-2000s">The Statistical Revolution (1980s-2000s)</a>
+  <ul class="collapse">
+  <li><a href="#n-gram-models" id="toc-n-gram-models" class="nav-link" data-scroll-target="#n-gram-models">N-gram Models</a></li>
+  <li><a href="#hidden-markov-models-hmms" id="toc-hidden-markov-models-hmms" class="nav-link" data-scroll-target="#hidden-markov-models-hmms">Hidden Markov Models (HMMs)</a></li>
+  </ul></li>
+  <li><a href="#the-neural-network-era-2010s-present" id="toc-the-neural-network-era-2010s-present" class="nav-link" data-scroll-target="#the-neural-network-era-2010s-present">The Neural Network Era (2010s-Present)</a>
+  <ul class="collapse">
+  <li><a href="#word-embeddings-2013" id="toc-word-embeddings-2013" class="nav-link" data-scroll-target="#word-embeddings-2013">Word Embeddings (2013)</a></li>
+  <li><a href="#recurrent-neural-networks-rnns" id="toc-recurrent-neural-networks-rnns" class="nav-link" data-scroll-target="#recurrent-neural-networks-rnns">Recurrent Neural Networks (RNNs)</a></li>
+  <li><a href="#long-short-term-memory-lstm-hochreiter1997long" id="toc-long-short-term-memory-lstm-hochreiter1997long" class="nav-link" data-scroll-target="#long-short-term-memory-lstm-hochreiter1997long">Long Short-Term Memory (LSTM) <span class="citation" data-cites="hochreiter1997long">[3]</span></a></li>
+  <li><a href="#the-transformer-revolution-2017" id="toc-the-transformer-revolution-2017" class="nav-link" data-scroll-target="#the-transformer-revolution-2017">The Transformer Revolution (2017)</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#from-classical-nlp-to-deep-learning-nlp" id="toc-from-classical-nlp-to-deep-learning-nlp" class="nav-link" data-scroll-target="#from-classical-nlp-to-deep-learning-nlp">From Classical NLP to Deep Learning NLP</a>
+  <ul class="collapse">
+  <li><a href="#classical-nlp-approach" id="toc-classical-nlp-approach" class="nav-link" data-scroll-target="#classical-nlp-approach">Classical NLP Approach</a></li>
+  <li><a href="#deep-learning-nlp-approach" id="toc-deep-learning-nlp-approach" class="nav-link" data-scroll-target="#deep-learning-nlp-approach">Deep Learning NLP Approach</a></li>
+  <li><a href="#key-differences" id="toc-key-differences" class="nav-link" data-scroll-target="#key-differences">Key Differences</a></li>
+  <li><a href="#when-to-use-each-approach" id="toc-when-to-use-each-approach" class="nav-link" data-scroll-target="#when-to-use-each-approach">When to Use Each Approach</a></li>
+  </ul></li>
+  <li><a href="#mathematical-foundations-of-modern-nlp" id="toc-mathematical-foundations-of-modern-nlp" class="nav-link" data-scroll-target="#mathematical-foundations-of-modern-nlp">Mathematical Foundations of Modern NLP</a>
+  <ul class="collapse">
+  <li><a href="#word-representations-from-one-hot-to-embeddings" id="toc-word-representations-from-one-hot-to-embeddings" class="nav-link" data-scroll-target="#word-representations-from-one-hot-to-embeddings">Word Representations: From One-Hot to Embeddings</a>
+  <ul class="collapse">
+  <li><a href="#one-hot-encoding-classical" id="toc-one-hot-encoding-classical" class="nav-link" data-scroll-target="#one-hot-encoding-classical">One-Hot Encoding (Classical)</a></li>
+  <li><a href="#word-embeddings-modern" id="toc-word-embeddings-modern" class="nav-link" data-scroll-target="#word-embeddings-modern">Word Embeddings (Modern)</a></li>
+  <li><a href="#contextual-embeddings-bert-gpt" id="toc-contextual-embeddings-bert-gpt" class="nav-link" data-scroll-target="#contextual-embeddings-bert-gpt">Contextual Embeddings (BERT, GPT)</a></li>
+  </ul></li>
+  <li><a href="#the-attention-mechanism" id="toc-the-attention-mechanism" class="nav-link" data-scroll-target="#the-attention-mechanism">The Attention Mechanism</a>
+  <ul class="collapse">
+  <li><a href="#scaled-dot-product-attention" id="toc-scaled-dot-product-attention" class="nav-link" data-scroll-target="#scaled-dot-product-attention">Scaled Dot-Product Attention</a></li>
+  <li><a href="#multi-head-attention" id="toc-multi-head-attention" class="nav-link" data-scroll-target="#multi-head-attention">Multi-Head Attention</a></li>
+  </ul></li>
+  <li><a href="#transformer-architecture" id="toc-transformer-architecture" class="nav-link" data-scroll-target="#transformer-architecture">Transformer Architecture</a>
+  <ul class="collapse">
+  <li><a href="#positional-encoding" id="toc-positional-encoding" class="nav-link" data-scroll-target="#positional-encoding">Positional Encoding</a></li>
+  <li><a href="#full-transformer-block" id="toc-full-transformer-block" class="nav-link" data-scroll-target="#full-transformer-block">Full Transformer Block</a></li>
+  </ul></li>
+  <li><a href="#language-modeling-objective" id="toc-language-modeling-objective" class="nav-link" data-scroll-target="#language-modeling-objective">Language Modeling Objective</a>
+  <ul class="collapse">
+  <li><a href="#autoregressive-gpt-style" id="toc-autoregressive-gpt-style" class="nav-link" data-scroll-target="#autoregressive-gpt-style">Autoregressive (GPT-style)</a></li>
+  <li><a href="#masked-language-modeling-bert-style" id="toc-masked-language-modeling-bert-style" class="nav-link" data-scroll-target="#masked-language-modeling-bert-style">Masked Language Modeling (BERT-style)</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#large-language-models-llms" id="toc-large-language-models-llms" class="nav-link" data-scroll-target="#large-language-models-llms">Large Language Models (LLMs)</a>
+  <ul class="collapse">
+  <li><a href="#what-makes-a-model-large" id="toc-what-makes-a-model-large" class="nav-link" data-scroll-target="#what-makes-a-model-large">What Makes a Model “Large”?</a></li>
+  <li><a href="#scaling-laws" id="toc-scaling-laws" class="nav-link" data-scroll-target="#scaling-laws">Scaling Laws</a></li>
+  <li><a href="#emergent-abilities" id="toc-emergent-abilities" class="nav-link" data-scroll-target="#emergent-abilities">Emergent Abilities</a></li>
+  <li><a href="#fine-tuning-approaches" id="toc-fine-tuning-approaches" class="nav-link" data-scroll-target="#fine-tuning-approaches">Fine-Tuning Approaches</a>
+  <ul class="collapse">
+  <li><a href="#full-fine-tuning" id="toc-full-fine-tuning" class="nav-link" data-scroll-target="#full-fine-tuning">Full Fine-Tuning</a></li>
+  <li><a href="#parameter-efficient-fine-tuning-lora" id="toc-parameter-efficient-fine-tuning-lora" class="nav-link" data-scroll-target="#parameter-efficient-fine-tuning-lora">Parameter-Efficient Fine-Tuning (LoRA)</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#retrieval-augmented-generation-rag" id="toc-retrieval-augmented-generation-rag" class="nav-link" data-scroll-target="#retrieval-augmented-generation-rag">Retrieval-Augmented Generation (RAG)</a>
+  <ul class="collapse">
+  <li><a href="#the-knowledge-problem" id="toc-the-knowledge-problem" class="nav-link" data-scroll-target="#the-knowledge-problem">The Knowledge Problem</a></li>
+  <li><a href="#rag-architecture" id="toc-rag-architecture" class="nav-link" data-scroll-target="#rag-architecture">RAG Architecture</a></li>
+  <li><a href="#vector-search-fundamentals" id="toc-vector-search-fundamentals" class="nav-link" data-scroll-target="#vector-search-fundamentals">Vector Search Fundamentals</a>
+  <ul class="collapse">
+  <li><a href="#embedding-documents" id="toc-embedding-documents" class="nav-link" data-scroll-target="#embedding-documents">Embedding Documents</a></li>
+  <li><a href="#similarity-search" id="toc-similarity-search" class="nav-link" data-scroll-target="#similarity-search">Similarity Search</a></li>
+  <li><a href="#approximate-nearest-neighbors" id="toc-approximate-nearest-neighbors" class="nav-link" data-scroll-target="#approximate-nearest-neighbors">Approximate Nearest Neighbors</a></li>
+  </ul></li>
+  <li><a href="#rag-implementation-pipeline" id="toc-rag-implementation-pipeline" class="nav-link" data-scroll-target="#rag-implementation-pipeline">RAG Implementation Pipeline</a></li>
+  </ul></li>
+  <li><a href="#connections-with-classical-ml-and-deep-learning" id="toc-connections-with-classical-ml-and-deep-learning" class="nav-link" data-scroll-target="#connections-with-classical-ml-and-deep-learning">Connections with Classical ML and Deep Learning</a>
+  <ul class="collapse">
+  <li><a href="#nlp-as-a-special-case-of-ml" id="toc-nlp-as-a-special-case-of-ml" class="nav-link" data-scroll-target="#nlp-as-a-special-case-of-ml">NLP as a Special Case of ML</a></li>
+  <li><a href="#from-cnns-to-transformers" id="toc-from-cnns-to-transformers" class="nav-link" data-scroll-target="#from-cnns-to-transformers">From CNNs to Transformers</a></li>
+  <li><a href="#transfer-learning-paradigm" id="toc-transfer-learning-paradigm" class="nav-link" data-scroll-target="#transfer-learning-paradigm">Transfer Learning Paradigm</a></li>
+  </ul></li>
+  <li><a href="#basic-implementations" id="toc-basic-implementations" class="nav-link" data-scroll-target="#basic-implementations">Basic Implementations</a>
+  <ul class="collapse">
+  <li><a href="#text-classification-with-traditional-ml" id="toc-text-classification-with-traditional-ml" class="nav-link" data-scroll-target="#text-classification-with-traditional-ml">Text Classification with Traditional ML</a></li>
+  <li><a href="#sentiment-analysis-with-transformers" id="toc-sentiment-analysis-with-transformers" class="nav-link" data-scroll-target="#sentiment-analysis-with-transformers">Sentiment Analysis with Transformers</a></li>
+  <li><a href="#building-a-simple-transformer-from-scratch" id="toc-building-a-simple-transformer-from-scratch" class="nav-link" data-scroll-target="#building-a-simple-transformer-from-scratch">Building a Simple Transformer from Scratch</a></li>
+  <li><a href="#fine-tuning-bert-for-text-classification" id="toc-fine-tuning-bert-for-text-classification" class="nav-link" data-scroll-target="#fine-tuning-bert-for-text-classification">Fine-tuning BERT for Text Classification</a></li>
+  </ul></li>
+  <li><a href="#advanced-topics-glimpses-into-modern-nlp" id="toc-advanced-topics-glimpses-into-modern-nlp" class="nav-link" data-scroll-target="#advanced-topics-glimpses-into-modern-nlp">Advanced Topics: Glimpses into Modern NLP</a>
+  <ul class="collapse">
+  <li><a href="#multimodal-models" id="toc-multimodal-models" class="nav-link" data-scroll-target="#multimodal-models">1. Multimodal Models</a>
+  <ul class="collapse">
+  <li><a href="#clip-contrastive-language-image-pre-training" id="toc-clip-contrastive-language-image-pre-training" class="nav-link" data-scroll-target="#clip-contrastive-language-image-pre-training">CLIP (Contrastive Language-Image Pre-training)</a></li>
+  <li><a href="#dall-e-and-stable-diffusion" id="toc-dall-e-and-stable-diffusion" class="nav-link" data-scroll-target="#dall-e-and-stable-diffusion">DALL-E and Stable Diffusion</a></li>
+  </ul></li>
+  <li><a href="#code-generation-models" id="toc-code-generation-models" class="nav-link" data-scroll-target="#code-generation-models">2. Code Generation Models</a></li>
+  <li><a href="#retrieval-methods-beyond-dense-vectors" id="toc-retrieval-methods-beyond-dense-vectors" class="nav-link" data-scroll-target="#retrieval-methods-beyond-dense-vectors">3. Retrieval Methods Beyond Dense Vectors</a>
+  <ul class="collapse">
+  <li><a href="#sparse-retrieval-bm25" id="toc-sparse-retrieval-bm25" class="nav-link" data-scroll-target="#sparse-retrieval-bm25">Sparse Retrieval (BM25)</a></li>
+  <li><a href="#hybrid-retrieval" id="toc-hybrid-retrieval" class="nav-link" data-scroll-target="#hybrid-retrieval">Hybrid Retrieval</a></li>
+  </ul></li>
+  <li><a href="#prompt-engineering-and-in-context-learning" id="toc-prompt-engineering-and-in-context-learning" class="nav-link" data-scroll-target="#prompt-engineering-and-in-context-learning">4. Prompt Engineering and In-Context Learning</a>
+  <ul class="collapse">
+  <li><a href="#chain-of-thought-prompting" id="toc-chain-of-thought-prompting" class="nav-link" data-scroll-target="#chain-of-thought-prompting">Chain-of-Thought Prompting</a></li>
+  <li><a href="#react-reasoning-acting" id="toc-react-reasoning-acting" class="nav-link" data-scroll-target="#react-reasoning-acting">ReAct (Reasoning + Acting)</a></li>
+  </ul></li>
+  <li><a href="#efficient-transformers" id="toc-efficient-transformers" class="nav-link" data-scroll-target="#efficient-transformers">5. Efficient Transformers</a>
+  <ul class="collapse">
+  <li><a href="#linear-attention" id="toc-linear-attention" class="nav-link" data-scroll-target="#linear-attention">Linear Attention</a></li>
+  <li><a href="#mixture-of-experts-moe" id="toc-mixture-of-experts-moe" class="nav-link" data-scroll-target="#mixture-of-experts-moe">Mixture of Experts (MoE)</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#practical-guidelines" id="toc-practical-guidelines" class="nav-link" data-scroll-target="#practical-guidelines">Practical Guidelines</a>
+  <ul class="collapse">
+  <li><a href="#choosing-the-right-nlp-approach" id="toc-choosing-the-right-nlp-approach" class="nav-link" data-scroll-target="#choosing-the-right-nlp-approach">Choosing the Right NLP Approach</a></li>
+  <li><a href="#common-pitfalls-and-solutions" id="toc-common-pitfalls-and-solutions" class="nav-link" data-scroll-target="#common-pitfalls-and-solutions">Common Pitfalls and Solutions</a></li>
+  <li><a href="#evaluation-metrics" id="toc-evaluation-metrics" class="nav-link" data-scroll-target="#evaluation-metrics">Evaluation Metrics</a></li>
+  </ul></li>
+  <li><a href="#summary-and-key-takeaways" id="toc-summary-and-key-takeaways" class="nav-link" data-scroll-target="#summary-and-key-takeaways">Summary and Key Takeaways</a>
+  <ul class="collapse">
+  <li><a href="#the-nlp-evolution" id="toc-the-nlp-evolution" class="nav-link" data-scroll-target="#the-nlp-evolution">The NLP Evolution</a></li>
+  <li><a href="#core-concepts" id="toc-core-concepts" class="nav-link" data-scroll-target="#core-concepts">Core Concepts</a></li>
+  <li><a href="#from-classical-to-modern-nlp" id="toc-from-classical-to-modern-nlp" class="nav-link" data-scroll-target="#from-classical-to-modern-nlp">From Classical to Modern NLP</a></li>
+  <li><a href="#the-future-of-nlp" id="toc-the-future-of-nlp" class="nav-link" data-scroll-target="#the-future-of-nlp">The Future of NLP</a></li>
+  </ul></li>
+  <li><a href="#additional-reading" id="toc-additional-reading" class="nav-link" data-scroll-target="#additional-reading">Additional Reading</a>
+  <ul class="collapse">
+  <li><a href="#essential-books" id="toc-essential-books" class="nav-link" data-scroll-target="#essential-books">Essential Books</a></li>
+  <li><a href="#online-courses" id="toc-online-courses" class="nav-link" data-scroll-target="#online-courses">Online Courses</a></li>
+  <li><a href="#key-papers" id="toc-key-papers" class="nav-link" data-scroll-target="#key-papers">Key Papers</a></li>
+  <li><a href="#software-libraries" id="toc-software-libraries" class="nav-link" data-scroll-target="#software-libraries">Software Libraries</a></li>
+  </ul></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
+  <ul class="collapse">
+  <li><a href="#conceptual-questions" id="toc-conceptual-questions" class="nav-link" data-scroll-target="#conceptual-questions">Conceptual Questions</a></li>
+  <li><a href="#programming-exercises" id="toc-programming-exercises" class="nav-link" data-scroll-target="#programming-exercises">Programming Exercises</a></li>
+  <li><a href="#mini-projects" id="toc-mini-projects" class="nav-link" data-scroll-target="#mini-projects">Mini-Projects</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/sijuswamyresearch/rit-ai-course/issues" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/module4_nlp.html">💬 Module 4: NLP &amp; GenAI</a></li><li class="breadcrumb-item"><a href="../modules/module4_notes.html">Detailed Notes</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Module 4: Natural Language Processing &amp; Generative AI</h1>
+<p class="subtitle lead">From Words to Wisdom: Transformers, LLMs, and the Future of Language AI</p>
+</div>
+
+<div>
+  <div class="description">
+    <p>A comprehensive 20-hour intensive course on Applied AI and Machine Learning designed for engineering students from all disciplines. Covers mathematical foundations, classical ML, deep learning, NLP with transformers, and deployment with Streamlit. Includes hands-on projects and capstone implementation.</p>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Siju Swamy </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>machine learning, artificial intelligence, deep learning, natural language processing, transformers, neural networks, python, data science, AI course, RIT Kottayam, engineering education, OBE curriculum</p>
+  </div>
+</div>
+
+</header>
+
+
+<section id="introduction-the-language-understanding-challenge" class="level1">
+<h1>Introduction: The Language Understanding Challenge</h1>
+<section id="what-is-natural-language-processing" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-natural-language-processing">What is Natural Language Processing?</h2>
+<p>Natural Language Processing (NLP) is the field of artificial intelligence focused on enabling computers to understand, interpret, generate, and manipulate human language. It sits at the intersection of computer science, artificial intelligence, and linguistics.</p>
+<p><span class="math display">\[\text{NLP} = \text{Computational Linguistics} + \text{Machine Learning} + \text{Language Understanding}\]</span></p>
+</section>
+<section id="why-is-nlp-particularly-challenging" class="level2">
+<h2 class="anchored" data-anchor-id="why-is-nlp-particularly-challenging">Why is NLP Particularly Challenging?</h2>
+<p>Human language presents unique computational challenges:</p>
+<ol type="1">
+<li><strong>Ambiguity</strong>: “I saw a man on a hill with a telescope.” (Who has the telescope?)</li>
+<li><strong>Context Dependence</strong>: “It’s cold in here.” (Statement of fact or request to close the window?)</li>
+<li><strong>Compositionality</strong>: Meaning emerges from combining words in specific ways</li>
+<li><strong>Variability</strong>: Same meaning expressed in countless ways</li>
+<li><strong>Evolution</strong>: Language constantly changes with new words, slang, and usage patterns</li>
+</ol>
+</section>
+<section id="the-nlp-pipeline" class="level2">
+<h2 class="anchored" data-anchor-id="the-nlp-pipeline">The NLP Pipeline</h2>
+<p>A typical NLP system processes text through several stages:</p>
+<pre><code>Raw Text → Tokenization → Representation → Processing → Output</code></pre>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 36%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Stage</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tokenization</td>
+<td>Split text into units</td>
+<td>“Hello world” → [“Hello”, “world”]</td>
+</tr>
+<tr class="even">
+<td>Representation</td>
+<td>Convert to numerical form</td>
+<td>Words → Vectors</td>
+</tr>
+<tr class="odd">
+<td>Processing</td>
+<td>Apply ML/AI models</td>
+<td>Classification, generation</td>
+</tr>
+<tr class="even">
+<td>Output</td>
+<td>Produce result</td>
+<td>Label, translation, answer</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="historical-background-the-evolution-of-nlp" class="level1">
+<h1>Historical Background: The Evolution of NLP</h1>
+<section id="the-rule-based-era-1950s-1980s" class="level2">
+<h2 class="anchored" data-anchor-id="the-rule-based-era-1950s-1980s">The Rule-Based Era (1950s-1980s)</h2>
+<section id="early-beginnings" class="level3">
+<h3 class="anchored" data-anchor-id="early-beginnings">Early Beginnings</h3>
+<p>The Georgetown-IBM experiment (1954) automatically translated 60 Russian sentences to English using hand-crafted rules. This sparked optimism but also revealed the complexity of language.</p>
+</section>
+<section id="chomskys-formal-grammars-1957" class="level3">
+<h3 class="anchored" data-anchor-id="chomskys-formal-grammars-1957">Chomsky’s Formal Grammars (1957)</h3>
+<p>Noam Chomsky proposed that language has an underlying mathematical structure <span class="citation" data-cites="goodfellow2016deep"><a href="#ref-goodfellow2016deep" role="doc-biblioref">[1]</a></span>:</p>
+<p><span class="math display">\[\text{Sentence} \rightarrow \text{Noun Phrase} + \text{Verb Phrase}\]</span></p>
+<p>This led to <strong>formal grammar</strong> approaches, but natural language proved too messy for rigid rules.</p>
+</section>
+</section>
+<section id="the-statistical-revolution-1980s-2000s" class="level2">
+<h2 class="anchored" data-anchor-id="the-statistical-revolution-1980s-2000s">The Statistical Revolution (1980s-2000s)</h2>
+<section id="n-gram-models" class="level3">
+<h3 class="anchored" data-anchor-id="n-gram-models">N-gram Models</h3>
+<p>Instead of rules, use probability:</p>
+<p><span class="math display">\[P(w_n | w_1, w_2, \ldots, w_{n-1}) \approx P(w_n | w_{n-1}, w_{n-2}, \ldots, w_{n-k})\]</span></p>
+<p><strong>Limitation</strong>: Cannot capture long-range dependencies due to computational constraints.</p>
+</section>
+<section id="hidden-markov-models-hmms" class="level3">
+<h3 class="anchored" data-anchor-id="hidden-markov-models-hmms">Hidden Markov Models (HMMs)</h3>
+<p>For sequence labeling tasks (like part-of-speech tagging):</p>
+<p><span class="math display">\[P(X|Y) = \prod_{i=1}^{T} P(x_i | y_i) \cdot P(y_i | y_{i-1})\]</span></p>
+<p>Where <span class="math inline">\(X\)</span> is the observed sequence (words) and <span class="math inline">\(Y\)</span> is the hidden sequence (tags).</p>
+</section>
+</section>
+<section id="the-neural-network-era-2010s-present" class="level2">
+<h2 class="anchored" data-anchor-id="the-neural-network-era-2010s-present">The Neural Network Era (2010s-Present)</h2>
+<section id="word-embeddings-2013" class="level3">
+<h3 class="anchored" data-anchor-id="word-embeddings-2013">Word Embeddings (2013)</h3>
+<p>Word2Vec <span class="citation" data-cites="lecun2015deep"><a href="#ref-lecun2015deep" role="doc-biblioref">[2]</a></span> revolutionized NLP by representing words as dense vectors:</p>
+<p><span class="math display">\[\text{king} - \text{man} + \text{woman} \approx \text{queen}\]</span></p>
+<p>This showed that semantic relationships could be captured through vector arithmetic.</p>
+</section>
+<section id="recurrent-neural-networks-rnns" class="level3">
+<h3 class="anchored" data-anchor-id="recurrent-neural-networks-rnns">Recurrent Neural Networks (RNNs)</h3>
+<p>RNNs process sequences by maintaining a hidden state:</p>
+<p><span class="math display">\[h_t = f(W_{xh} x_t + W_{hh} h_{t-1} + b_h)\]</span></p>
+<p><strong>Problem</strong>: Vanishing gradients make it hard to learn long-range dependencies.</p>
+</section>
+<section id="long-short-term-memory-lstm-hochreiter1997long" class="level3">
+<h3 class="anchored" data-anchor-id="long-short-term-memory-lstm-hochreiter1997long">Long Short-Term Memory (LSTM) <span class="citation" data-cites="hochreiter1997long"><a href="#ref-hochreiter1997long" role="doc-biblioref">[3]</a></span></h3>
+<p>LSTMs introduced gates to control information flow:</p>
+<p><span class="math display">\[\text{Forget Gate: } f_t = \sigma(W_f \cdot [h_{t-1}, x_t] + b_f)\]</span> <span class="math display">\[\text{Input Gate: } i_t = \sigma(W_i \cdot [h_{t-1}, x_t] + b_i)\]</span> <span class="math display">\[\text{Output Gate: } o_t = \sigma(W_o \cdot [h_{t-1}, x_t] + b_o)\]</span></p>
+</section>
+<section id="the-transformer-revolution-2017" class="level3">
+<h3 class="anchored" data-anchor-id="the-transformer-revolution-2017">The Transformer Revolution (2017)</h3>
+<p>Vaswani et al. <span class="citation" data-cites="vaswani2017attention"><a href="#ref-vaswani2017attention" role="doc-biblioref">[4]</a></span> introduced the Transformer architecture, which completely abandoned recurrence in favor of <strong>self-attention</strong>:</p>
+<p><span class="math display">\[\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V\]</span></p>
+<p>This enabled: - Parallel processing (much faster training) - Direct modeling of long-range dependencies - The foundation for all modern LLMs</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="from-classical-nlp-to-deep-learning-nlp" class="level1">
+<h1>From Classical NLP to Deep Learning NLP</h1>
+<section id="classical-nlp-approach" class="level2">
+<h2 class="anchored" data-anchor-id="classical-nlp-approach">Classical NLP Approach</h2>
+<p>Classical NLP relied on:</p>
+<ol type="1">
+<li><strong>Hand-crafted features</strong>: Linguistic rules, dictionaries, patterns</li>
+<li><strong>Shallow models</strong>: Naive Bayes, SVM, logistic regression</li>
+<li><strong>Pipeline architecture</strong>: Separate components for each subtask</li>
+</ol>
+<pre><code>Text → POS Tagging → Parsing → NER → Semantic Analysis → Output</code></pre>
+<p><strong>Example: Spam Detection with Naive Bayes</strong></p>
+<p><span class="math display">\[P(\text{spam}|\text{text}) \propto P(\text{spam}) \prod_{i} P(w_i|\text{spam})\]</span></p>
+</section>
+<section id="deep-learning-nlp-approach" class="level2">
+<h2 class="anchored" data-anchor-id="deep-learning-nlp-approach">Deep Learning NLP Approach</h2>
+<p>Deep learning transforms the pipeline:</p>
+<ol type="1">
+<li><strong>Learned representations</strong>: Word embeddings, contextual embeddings</li>
+<li><strong>End-to-end learning</strong>: Single model handles multiple aspects</li>
+<li><strong>Transfer learning</strong>: Pre-train on large corpus, fine-tune for specific task</li>
+</ol>
+<pre><code>Text → Embedding Layer → Neural Network → Output</code></pre>
+</section>
+<section id="key-differences" class="level2">
+<h2 class="anchored" data-anchor-id="key-differences">Key Differences</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Aspect</th>
+<th>Classical NLP</th>
+<th>Deep Learning NLP</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Features</td>
+<td>Hand-engineered</td>
+<td>Learned automatically</td>
+</tr>
+<tr class="even">
+<td>Data Needs</td>
+<td>Small (100s-1000s)</td>
+<td>Large (10000s-millions)</td>
+</tr>
+<tr class="odd">
+<td>Computation</td>
+<td>CPU-friendly</td>
+<td>GPU/TPU required</td>
+</tr>
+<tr class="even">
+<td>Interpretability</td>
+<td>High (rules visible)</td>
+<td>Low (black box)</td>
+</tr>
+<tr class="odd">
+<td>Performance</td>
+<td>Good for simple tasks</td>
+<td>State-of-the-art</td>
+</tr>
+<tr class="even">
+<td>Development Time</td>
+<td>Weeks-months</td>
+<td>Hours-days (with pre-trained)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="when-to-use-each-approach" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-use-each-approach">When to Use Each Approach</h2>
+<p><strong>Classical NLP is still preferred when:</strong> - Data is limited (&lt; 1000 examples) - Interpretability is critical (legal, medical) - Computational resources are constrained - Task is well-defined and simple</p>
+<p><strong>Deep Learning NLP is preferred when:</strong> - Large amounts of data are available - State-of-the-art performance is needed - Task involves complex language understanding - Computational resources are available</p>
+<hr>
+</section>
+</section>
+<section id="mathematical-foundations-of-modern-nlp" class="level1">
+<h1>Mathematical Foundations of Modern NLP</h1>
+<section id="word-representations-from-one-hot-to-embeddings" class="level2">
+<h2 class="anchored" data-anchor-id="word-representations-from-one-hot-to-embeddings">Word Representations: From One-Hot to Embeddings</h2>
+<section id="one-hot-encoding-classical" class="level3">
+<h3 class="anchored" data-anchor-id="one-hot-encoding-classical">One-Hot Encoding (Classical)</h3>
+<p>Each word is a sparse vector with a 1 at its vocabulary index:</p>
+<p><span class="math display">\[\text{cat} = [0, 0, 1, 0, 0, \ldots, 0]\]</span></p>
+<p><strong>Problems</strong>: No semantic meaning, high dimensionality, orthogonal vectors.</p>
+</section>
+<section id="word-embeddings-modern" class="level3">
+<h3 class="anchored" data-anchor-id="word-embeddings-modern">Word Embeddings (Modern)</h3>
+<p>Dense vectors where similar words are close in vector space:</p>
+<p><span class="math display">\[\text{cat} = [0.23, -0.45, 0.67, \ldots, 0.12] \in \mathbb{R}^{300}\]</span></p>
+<p><strong>Word2Vec Objective</strong> (Skip-gram):</p>
+<p><span class="math display">\[\max \sum_{(w,c) \in D} \log P(c|w) = \max \sum_{(w,c) \in D} \log \frac{\exp(v_c^T v_w)}{\sum_{c' \in V} \exp(v_{c'}^T v_w)}\]</span></p>
+</section>
+<section id="contextual-embeddings-bert-gpt" class="level3">
+<h3 class="anchored" data-anchor-id="contextual-embeddings-bert-gpt">Contextual Embeddings (BERT, GPT)</h3>
+<p>Modern embeddings depend on context:</p>
+<p><span class="math display">\[\text{bank}_{\text{river}} \neq \text{bank}_{\text{money}}\]</span></p>
+<p>BERT uses bidirectional context:</p>
+<p><span class="math display">\[\text{Representation} = \text{Transformer}([\text{CLS}], w_1, w_2, \ldots, w_n, [\text{SEP}])\]</span></p>
+</section>
+</section>
+<section id="the-attention-mechanism" class="level2">
+<h2 class="anchored" data-anchor-id="the-attention-mechanism">The Attention Mechanism</h2>
+<section id="scaled-dot-product-attention" class="level3">
+<h3 class="anchored" data-anchor-id="scaled-dot-product-attention">Scaled Dot-Product Attention</h3>
+<p><span class="math display">\[\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V\]</span></p>
+<p>Where: - <span class="math inline">\(Q\)</span> (Query): What we’re looking for - <span class="math inline">\(K\)</span> (Key): What each position contains - <span class="math inline">\(V\)</span> (Value): The actual content at each position - <span class="math inline">\(d_k\)</span>: Dimension of keys (scaling prevents softmax saturation)</p>
+</section>
+<section id="multi-head-attention" class="level3">
+<h3 class="anchored" data-anchor-id="multi-head-attention">Multi-Head Attention</h3>
+<p><span class="math display">\[\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \ldots, \text{head}_h)W^O\]</span></p>
+<p><span class="math display">\[\text{head}_i = \text{Attention}(QW_i^Q, KW_i^K, VW_i^V)\]</span></p>
+<p>This allows the model to attend to different representation subspaces simultaneously.</p>
+</section>
+</section>
+<section id="transformer-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="transformer-architecture">Transformer Architecture</h2>
+<section id="positional-encoding" class="level3">
+<h3 class="anchored" data-anchor-id="positional-encoding">Positional Encoding</h3>
+<p>Since Transformers have no inherent notion of sequence order, positional information is added:</p>
+<p><span class="math display">\[\text{PE}_{(pos, 2i)} = \sin\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right)\]</span> <span class="math display">\[\text{PE}_{(pos, 2i+1)} = \cos\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right)\]</span></p>
+</section>
+<section id="full-transformer-block" class="level3">
+<h3 class="anchored" data-anchor-id="full-transformer-block">Full Transformer Block</h3>
+<ol type="1">
+<li><strong>Multi-Head Self-Attention</strong></li>
+<li><strong>Add &amp; Normalize</strong>: $ (x + (x)) $</li>
+<li><strong>Feed-Forward Network</strong>: $ (x) = (0, xW_1 + b_1)W_2 + b_2 $</li>
+<li><strong>Add &amp; Normalize</strong></li>
+</ol>
+</section>
+</section>
+<section id="language-modeling-objective" class="level2">
+<h2 class="anchored" data-anchor-id="language-modeling-objective">Language Modeling Objective</h2>
+<section id="autoregressive-gpt-style" class="level3">
+<h3 class="anchored" data-anchor-id="autoregressive-gpt-style">Autoregressive (GPT-style)</h3>
+<p><span class="math display">\[P(x_1, \ldots, x_T) = \prod_{t=1}^{T} P(x_t | x_1, \ldots, x_{t-1})\]</span></p>
+</section>
+<section id="masked-language-modeling-bert-style" class="level3">
+<h3 class="anchored" data-anchor-id="masked-language-modeling-bert-style">Masked Language Modeling (BERT-style)</h3>
+<p><span class="math display">\[\max \sum_{i=1}^{T} \log P(x_i | x_{\backslash \text{masked}})\]</span></p>
+<hr>
+</section>
+</section>
+</section>
+<section id="large-language-models-llms" class="level1">
+<h1>Large Language Models (LLMs)</h1>
+<section id="what-makes-a-model-large" class="level2">
+<h2 class="anchored" data-anchor-id="what-makes-a-model-large">What Makes a Model “Large”?</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>Parameters</th>
+<th>Training Tokens</th>
+<th>Context Length</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>GPT-2</td>
+<td>1.5B</td>
+<td>40GB text</td>
+<td>1024</td>
+</tr>
+<tr class="even">
+<td>GPT-3</td>
+<td>175B</td>
+<td>300B tokens</td>
+<td>2048</td>
+</tr>
+<tr class="odd">
+<td>GPT-4</td>
+<td>~1T (est.)</td>
+<td>Unknown</td>
+<td>128K</td>
+</tr>
+<tr class="even">
+<td>LLaMA 2</td>
+<td>70B</td>
+<td>2T tokens</td>
+<td>4096</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="scaling-laws" class="level2">
+<h2 class="anchored" data-anchor-id="scaling-laws">Scaling Laws</h2>
+<p>Performance improves predictably with scale <span class="citation" data-cites="brown2020language"><a href="#ref-brown2020language" role="doc-biblioref">[5]</a></span>:</p>
+<p><span class="math display">\[L = \left(\frac{L_c}{C}\right)^{\alpha_C} + \left(\frac{L_D}{D}\right)^{\alpha_D} + L_0\]</span></p>
+<p>Where: - <span class="math inline">\(C\)</span>: Compute budget - <span class="math inline">\(D\)</span>: Dataset size - <span class="math inline">\(L_c, L_D, \alpha_C, \alpha_D, L_0\)</span>: Constants</p>
+</section>
+<section id="emergent-abilities" class="level2">
+<h2 class="anchored" data-anchor-id="emergent-abilities">Emergent Abilities</h2>
+<p>As models scale, they develop capabilities not present in smaller models:</p>
+<ol type="1">
+<li><strong>In-context Learning</strong>: Learn from examples in the prompt</li>
+<li><strong>Chain-of-Thought</strong>: Multi-step reasoning</li>
+<li><strong>Cross-modal Understanding</strong>: Connect text with other modalities</li>
+<li><strong>Tool Use</strong>: Call APIs, use calculators, write code</li>
+</ol>
+</section>
+<section id="fine-tuning-approaches" class="level2">
+<h2 class="anchored" data-anchor-id="fine-tuning-approaches">Fine-Tuning Approaches</h2>
+<section id="full-fine-tuning" class="level3">
+<h3 class="anchored" data-anchor-id="full-fine-tuning">Full Fine-Tuning</h3>
+<p>Update all parameters on task-specific data:</p>
+<p><span class="math display">\[\theta_{\text{new}} = \theta_{\text{pretrained}} - \eta \nabla_\theta \mathcal{L}_{\text{task}}\]</span></p>
+</section>
+<section id="parameter-efficient-fine-tuning-lora" class="level3">
+<h3 class="anchored" data-anchor-id="parameter-efficient-fine-tuning-lora">Parameter-Efficient Fine-Tuning (LoRA)</h3>
+<p>Only update low-rank decomposition matrices:</p>
+<p><span class="math display">\[W_{\text{new}} = W_{\text{frozen}} + \Delta W = W_{\text{frozen}} + BA\]</span></p>
+<p>Where <span class="math inline">\(B \in \mathbb{R}^{d \times r}\)</span>, <span class="math inline">\(A \in \mathbb{R}^{r \times k}\)</span>, and <span class="math inline">\(r \ll \min(d, k)\)</span>.</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="retrieval-augmented-generation-rag" class="level1">
+<h1>Retrieval-Augmented Generation (RAG)</h1>
+<section id="the-knowledge-problem" class="level2">
+<h2 class="anchored" data-anchor-id="the-knowledge-problem">The Knowledge Problem</h2>
+<p>LLMs have inherent limitations:</p>
+<ol type="1">
+<li><strong>Static Knowledge</strong>: Training data has a cutoff date</li>
+<li><strong>No Private Data</strong>: Cannot access company documents</li>
+<li><strong>Hallucination</strong>: Confidently generates incorrect information</li>
+<li><strong>No Attribution</strong>: Cannot cite sources</li>
+</ol>
+</section>
+<section id="rag-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="rag-architecture">RAG Architecture</h2>
+<p>RAG combines retrieval with generation:</p>
+<p><span class="math display">\[P(y|x) = \sum_{d \in D} P(y|x, d) \cdot P(d|x)\]</span></p>
+<p>Where: - <span class="math inline">\(x\)</span>: Input query - <span class="math inline">\(d\)</span>: Retrieved document - <span class="math inline">\(y\)</span>: Generated output - <span class="math inline">\(D\)</span>: Document corpus</p>
+</section>
+<section id="vector-search-fundamentals" class="level2">
+<h2 class="anchored" data-anchor-id="vector-search-fundamentals">Vector Search Fundamentals</h2>
+<section id="embedding-documents" class="level3">
+<h3 class="anchored" data-anchor-id="embedding-documents">Embedding Documents</h3>
+<p><span class="math display">\[e_d = \text{Encoder}(d) \in \mathbb{R}^{768}\]</span></p>
+</section>
+<section id="similarity-search" class="level3">
+<h3 class="anchored" data-anchor-id="similarity-search">Similarity Search</h3>
+<p><span class="math display">\[\text{similarity}(q, d) = \frac{e_q \cdot e_d}{\|e_q\| \|e_d\|}\]</span></p>
+</section>
+<section id="approximate-nearest-neighbors" class="level3">
+<h3 class="anchored" data-anchor-id="approximate-nearest-neighbors">Approximate Nearest Neighbors</h3>
+<p>For large corpora, use approximate methods: - <strong>FAISS</strong>: Facebook AI Similarity Search - <strong>Annoy</strong>: Approximate Nearest Neighbors Oh Yeah - <strong>HNSW</strong>: Hierarchical Navigable Small World</p>
+</section>
+</section>
+<section id="rag-implementation-pipeline" class="level2">
+<h2 class="anchored" data-anchor-id="rag-implementation-pipeline">RAG Implementation Pipeline</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simplified RAG pipeline</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sentence_transformers <span class="im">import</span> SentenceTransformer</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics.pairwise <span class="im">import</span> cosine_similarity</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> SimpleRAG:</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, documents, model_name<span class="op">=</span><span class="st">'all-MiniLM-L6-v2'</span>):</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.model <span class="op">=</span> SentenceTransformer(model_name)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.documents <span class="op">=</span> documents</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.doc_embeddings <span class="op">=</span> <span class="va">self</span>.model.encode(documents)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> retrieve(<span class="va">self</span>, query, top_k<span class="op">=</span><span class="dv">3</span>):</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        query_embedding <span class="op">=</span> <span class="va">self</span>.model.encode([query])</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        similarities <span class="op">=</span> cosine_similarity(query_embedding, <span class="va">self</span>.doc_embeddings)[<span class="dv">0</span>]</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        top_indices <span class="op">=</span> np.argsort(similarities)[<span class="op">-</span>top_k:][::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [<span class="va">self</span>.documents[i] <span class="cf">for</span> i <span class="kw">in</span> top_indices]</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> generate_answer(<span class="va">self</span>, query, llm):</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        context <span class="op">=</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join(<span class="va">self</span>.retrieve(query))</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        prompt <span class="op">=</span> <span class="ss">f"Context: </span><span class="sc">{</span>context<span class="sc">}</span><span class="ch">\n\n</span><span class="ss">Question: </span><span class="sc">{</span>query<span class="sc">}</span><span class="ch">\n\n</span><span class="ss">Answer:"</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> llm.generate(prompt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+</section>
+<section id="connections-with-classical-ml-and-deep-learning" class="level1">
+<h1>Connections with Classical ML and Deep Learning</h1>
+<section id="nlp-as-a-special-case-of-ml" class="level2">
+<h2 class="anchored" data-anchor-id="nlp-as-a-special-case-of-ml">NLP as a Special Case of ML</h2>
+<p>NLP follows the same fundamental ML pipeline:</p>
+<pre><code>Data → Features → Model → Evaluation</code></pre>
+<p>But with domain-specific considerations:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>ML Component</th>
+<th>Classical ML</th>
+<th>NLP Adaptation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Data</td>
+<td>Tabular, numeric</td>
+<td>Text sequences</td>
+</tr>
+<tr class="even">
+<td>Features</td>
+<td>Hand-crafted</td>
+<td>Embeddings, tokens</td>
+</tr>
+<tr class="odd">
+<td>Model</td>
+<td>Any classifier</td>
+<td>RNN, Transformer</td>
+</tr>
+<tr class="even">
+<td>Evaluation</td>
+<td>Accuracy, F1</td>
+<td>BLEU, ROUGE, perplexity</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="from-cnns-to-transformers" class="level2">
+<h2 class="anchored" data-anchor-id="from-cnns-to-transformers">From CNNs to Transformers</h2>
+<p>The evolution of architectures shows a trend toward more flexible, attention-based models:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Architecture</th>
+<th>Primary Use</th>
+<th>Key Innovation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CNN</td>
+<td>Images</td>
+<td>Local feature detection</td>
+</tr>
+<tr class="even">
+<td>RNN</td>
+<td>Sequences</td>
+<td>Sequential processing</td>
+</tr>
+<tr class="odd">
+<td>LSTM</td>
+<td>Long sequences</td>
+<td>Gated memory</td>
+</tr>
+<tr class="even">
+<td>Transformer</td>
+<td>Any sequence</td>
+<td>Self-attention</td>
+</tr>
+<tr class="odd">
+<td>Vision Transformer</td>
+<td>Images</td>
+<td>Apply Transformer to patches</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="transfer-learning-paradigm" class="level2">
+<h2 class="anchored" data-anchor-id="transfer-learning-paradigm">Transfer Learning Paradigm</h2>
+<p>The same transfer learning principles apply across domains:</p>
+<ol type="1">
+<li><strong>Pre-train</strong> on large, general dataset</li>
+<li><strong>Fine-tune</strong> on task-specific data</li>
+<li><strong>Evaluate</strong> on held-out test set</li>
+</ol>
+<p>This works for: - <strong>Vision</strong>: ImageNet → Medical images - <strong>Language</strong>: Wikipedia → Legal documents - <strong>Speech</strong>: Librispeech → Accented speech</p>
+<hr>
+</section>
+</section>
+<section id="basic-implementations" class="level1">
+<h1>Basic Implementations</h1>
+<section id="text-classification-with-traditional-ml" class="level2">
+<h2 class="anchored" data-anchor-id="text-classification-with-traditional-ml">Text Classification with Traditional ML</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> TfidfVectorizer</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample data</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>texts <span class="op">=</span> [</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"I love this product! It's amazing!"</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Terrible experience, would not recommend."</span>,</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Great quality and fast shipping."</span>,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Waste of money, broke after one day."</span>,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Excellent customer service."</span>,</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Poor quality, very disappointed."</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>]  <span class="co"># 1=positive, 0=negative</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Traditional pipeline</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>vectorizer <span class="op">=</span> TfidfVectorizer(max_features<span class="op">=</span><span class="dv">1000</span>, ngram_range<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> vectorizer.fit_transform(texts)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, labels, test_size<span class="op">=</span><span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Train classifier</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> LogisticRegression(random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>clf.fit(X_train, y_train)</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(y_test, y_pred))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="sentiment-analysis-with-transformers" class="level2">
+<h2 class="anchored" data-anchor-id="sentiment-analysis-with-transformers">Sentiment Analysis with Transformers</h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> pipeline</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load pre-trained model</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>classifier <span class="op">=</span> pipeline(<span class="st">"sentiment-analysis"</span>, model<span class="op">=</span><span class="st">"distilbert-base-uncased-finetuned-sst-2-english"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Analyze text</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>texts <span class="op">=</span> [</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"I absolutely loved this movie! The acting was superb."</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"What a terrible film. I walked out after 30 minutes."</span>,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"The movie was okay. Nothing special but not bad either."</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> text <span class="kw">in</span> texts:</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> classifier(text)[<span class="dv">0</span>]</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Text: </span><span class="sc">{</span>text<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Sentiment: </span><span class="sc">{</span>result[<span class="st">'label'</span>]<span class="sc">}</span><span class="ss"> (confidence: </span><span class="sc">{</span>result[<span class="st">'score'</span>]<span class="sc">:.3f}</span><span class="ss">)</span><span class="ch">\n</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="building-a-simple-transformer-from-scratch" class="level2">
+<h2 class="anchored" data-anchor-id="building-a-simple-transformer-from-scratch">Building a Simple Transformer from Scratch</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn <span class="im">as</span> nn</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn.functional <span class="im">as</span> F</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> SimpleSelfAttention(nn.Module):</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, embed_size, num_heads):</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.num_heads <span class="op">=</span> num_heads</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.head_dim <span class="op">=</span> embed_size <span class="op">//</span> num_heads</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.query <span class="op">=</span> nn.Linear(embed_size, embed_size)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.key <span class="op">=</span> nn.Linear(embed_size, embed_size)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.value <span class="op">=</span> nn.Linear(embed_size, embed_size)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.out <span class="op">=</span> nn.Linear(embed_size, embed_size)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x, mask<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>        batch_size, seq_len, embed_size <span class="op">=</span> x.shape</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Linear projections</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>        Q <span class="op">=</span> <span class="va">self</span>.query(x).view(batch_size, seq_len, <span class="va">self</span>.num_heads, <span class="va">self</span>.head_dim).transpose(<span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>        K <span class="op">=</span> <span class="va">self</span>.key(x).view(batch_size, seq_len, <span class="va">self</span>.num_heads, <span class="va">self</span>.head_dim).transpose(<span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>        V <span class="op">=</span> <span class="va">self</span>.value(x).view(batch_size, seq_len, <span class="va">self</span>.num_heads, <span class="va">self</span>.head_dim).transpose(<span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Attention scores</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>        scores <span class="op">=</span> torch.matmul(Q, K.transpose(<span class="op">-</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>)) <span class="op">/</span> (<span class="va">self</span>.head_dim <span class="op">**</span> <span class="fl">0.5</span>)</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> mask <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>            scores <span class="op">=</span> scores.masked_fill(mask <span class="op">==</span> <span class="dv">0</span>, <span class="op">-</span><span class="fl">1e9</span>)</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Attention weights</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>        attn <span class="op">=</span> F.softmax(scores, dim<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Apply attention to values</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>        out <span class="op">=</span> torch.matmul(attn, V)</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>        out <span class="op">=</span> out.transpose(<span class="dv">1</span>, <span class="dv">2</span>).contiguous().view(batch_size, seq_len, embed_size)</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.out(out)</span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Test the attention mechanism</span></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>attention <span class="op">=</span> SimpleSelfAttention(embed_size<span class="op">=</span><span class="dv">64</span>, num_heads<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.randn(<span class="dv">2</span>, <span class="dv">10</span>, <span class="dv">64</span>)  <span class="co"># batch_size=2, seq_len=10, embed_size=64</span></span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>output <span class="op">=</span> attention(x)</span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Input shape: </span><span class="sc">{</span>x<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Output shape: </span><span class="sc">{</span>output<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="fine-tuning-bert-for-text-classification" class="level2">
+<h2 class="anchored" data-anchor-id="fine-tuning-bert-for-text-classification">Fine-tuning BERT for Text Classification</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> BertTokenizer, BertForSequenceClassification, Trainer, TrainingArguments</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datasets <span class="im">import</span> load_dataset</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load dataset</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>dataset <span class="op">=</span> load_dataset(<span class="st">"imdb"</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Load tokenizer and model</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>tokenizer <span class="op">=</span> BertTokenizer.from_pretrained(<span class="st">"bert-base-uncased"</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> BertForSequenceClassification.from_pretrained(<span class="st">"bert-base-uncased"</span>, num_labels<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Tokenize function</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tokenize_function(examples):</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tokenizer(examples[<span class="st">"text"</span>], padding<span class="op">=</span><span class="st">"max_length"</span>, truncation<span class="op">=</span><span class="va">True</span>, max_length<span class="op">=</span><span class="dv">512</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply tokenization</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>tokenized_datasets <span class="op">=</span> dataset.<span class="bu">map</span>(tokenize_function, batched<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Training arguments</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>training_args <span class="op">=</span> TrainingArguments(</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    output_dir<span class="op">=</span><span class="st">"./results"</span>,</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    num_train_epochs<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    per_device_train_batch_size<span class="op">=</span><span class="dv">16</span>,</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    per_device_eval_batch_size<span class="op">=</span><span class="dv">64</span>,</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    warmup_steps<span class="op">=</span><span class="dv">500</span>,</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>    weight_decay<span class="op">=</span><span class="fl">0.01</span>,</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    logging_dir<span class="op">=</span><span class="st">"./logs"</span>,</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    logging_steps<span class="op">=</span><span class="dv">10</span>,</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    evaluation_strategy<span class="op">=</span><span class="st">"epoch"</span>,</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    save_strategy<span class="op">=</span><span class="st">"epoch"</span>,</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    load_best_model_at_end<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Trainer</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>trainer <span class="op">=</span> Trainer(</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>    model<span class="op">=</span>model,</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>    args<span class="op">=</span>training_args,</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>    train_dataset<span class="op">=</span>tokenized_datasets[<span class="st">"train"</span>].shuffle().select(<span class="bu">range</span>(<span class="dv">1000</span>)),</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>    eval_dataset<span class="op">=</span>tokenized_datasets[<span class="st">"test"</span>].select(<span class="bu">range</span>(<span class="dv">200</span>)),</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Train</span></span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>trainer.train()</span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate</span></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> trainer.evaluate()</span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Evaluation results: </span><span class="sc">{</span>results<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+</section>
+<section id="advanced-topics-glimpses-into-modern-nlp" class="level1">
+<h1>Advanced Topics: Glimpses into Modern NLP</h1>
+<section id="multimodal-models" class="level2">
+<h2 class="anchored" data-anchor-id="multimodal-models">1. Multimodal Models</h2>
+<p>Models that understand both text and other modalities:</p>
+<section id="clip-contrastive-language-image-pre-training" class="level3">
+<h3 class="anchored" data-anchor-id="clip-contrastive-language-image-pre-training">CLIP (Contrastive Language-Image Pre-training)</h3>
+<p>Learns joint image-text representations:</p>
+<p><span class="math display">\[\mathcal{L} = -\frac{1}{N} \sum_{i=1}^{N} \log \frac{\exp(\text{sim}(I_i, T_i)/\tau)}{\sum_{j=1}^{N} \exp(\text{sim}(I_i, T_j)/\tau)}\]</span></p>
+</section>
+<section id="dall-e-and-stable-diffusion" class="level3">
+<h3 class="anchored" data-anchor-id="dall-e-and-stable-diffusion">DALL-E and Stable Diffusion</h3>
+<p>Generate images from text descriptions using diffusion models.</p>
+</section>
+</section>
+<section id="code-generation-models" class="level2">
+<h2 class="anchored" data-anchor-id="code-generation-models">2. Code Generation Models</h2>
+<p>Models specialized for programming:</p>
+<ul>
+<li><strong>Codex</strong>: Fine-tuned GPT for code</li>
+<li><strong>AlphaCode</strong>: Competitive programming</li>
+<li><strong>Copilot</strong>: AI pair programmer</li>
+</ul>
+</section>
+<section id="retrieval-methods-beyond-dense-vectors" class="level2">
+<h2 class="anchored" data-anchor-id="retrieval-methods-beyond-dense-vectors">3. Retrieval Methods Beyond Dense Vectors</h2>
+<section id="sparse-retrieval-bm25" class="level3">
+<h3 class="anchored" data-anchor-id="sparse-retrieval-bm25">Sparse Retrieval (BM25)</h3>
+<p><span class="math display">\[\text{score}(q, d) = \sum_{i=1}^{n} \text{IDF}(q_i) \cdot \frac{f(q_i, d) \cdot (k_1 + 1)}{f(q_i, d) + k_1 \cdot (1 - b + b \cdot \frac{|d|}{\text{avgdl}})}\]</span></p>
+</section>
+<section id="hybrid-retrieval" class="level3">
+<h3 class="anchored" data-anchor-id="hybrid-retrieval">Hybrid Retrieval</h3>
+<p>Combine dense and sparse methods for better coverage.</p>
+</section>
+</section>
+<section id="prompt-engineering-and-in-context-learning" class="level2">
+<h2 class="anchored" data-anchor-id="prompt-engineering-and-in-context-learning">4. Prompt Engineering and In-Context Learning</h2>
+<section id="chain-of-thought-prompting" class="level3">
+<h3 class="anchored" data-anchor-id="chain-of-thought-prompting">Chain-of-Thought Prompting</h3>
+<pre><code>Q: Roger has 5 tennis balls. He buys 2 more cans of tennis balls. Each can has 3 tennis balls. How many tennis balls does he have now?
+
+A: Roger started with 5 balls. 2 cans of 3 balls each is 6 balls. 5 + 6 = 11. The answer is 11.
+
+Q: {new_question}
+A: Let's think step by step.</code></pre>
+</section>
+<section id="react-reasoning-acting" class="level3">
+<h3 class="anchored" data-anchor-id="react-reasoning-acting">ReAct (Reasoning + Acting)</h3>
+<p>Combine reasoning with tool use:</p>
+<pre><code>Thought: I need to find the current weather.
+Action: weather_api[location="New York"]
+Observation: 72°F, sunny
+Thought: Now I can answer.
+Answer: The current weather in New York is 72°F and sunny.</code></pre>
+</section>
+</section>
+<section id="efficient-transformers" class="level2">
+<h2 class="anchored" data-anchor-id="efficient-transformers">5. Efficient Transformers</h2>
+<section id="linear-attention" class="level3">
+<h3 class="anchored" data-anchor-id="linear-attention">Linear Attention</h3>
+<p>Reduce <span class="math inline">\(O(n^2)\)</span> complexity to <span class="math inline">\(O(n)\)</span>:</p>
+<p><span class="math display">\[\text{Attention}(Q, K, V) = \frac{\phi(Q)(\phi(K)^T V)}{\phi(Q)(\phi(K)^T \mathbf{1})}\]</span></p>
+<p>Where <span class="math inline">\(\phi\)</span> is a feature map (e.g., kernel function).</p>
+</section>
+<section id="mixture-of-experts-moe" class="level3">
+<h3 class="anchored" data-anchor-id="mixture-of-experts-moe">Mixture of Experts (MoE)</h3>
+<p><span class="math display">\[\text{MoE}(x) = \sum_{i=1}^{n} G(x)_i \cdot E_i(x)\]</span></p>
+<p>Where <span class="math inline">\(G\)</span> is a gating network and <span class="math inline">\(E_i\)</span> are expert networks.</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="practical-guidelines" class="level1">
+<h1>Practical Guidelines</h1>
+<section id="choosing-the-right-nlp-approach" class="level2">
+<h2 class="anchored" data-anchor-id="choosing-the-right-nlp-approach">Choosing the Right NLP Approach</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 28%">
+<col style="width: 55%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Data Size</th>
+<th>Recommended Approach</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Simple classification</td>
+<td>&lt; 1000</td>
+<td>Traditional ML (TF-IDF + SVM)</td>
+</tr>
+<tr class="even">
+<td>Text classification</td>
+<td>1000-10000</td>
+<td>Fine-tune small transformer (DistilBERT)</td>
+</tr>
+<tr class="odd">
+<td>Complex NLU</td>
+<td>&gt; 10000</td>
+<td>Fine-tune large transformer (BERT, RoBERTa)</td>
+</tr>
+<tr class="even">
+<td>Generation</td>
+<td>&gt; 100000</td>
+<td>Use API (GPT-4) or fine-tune open-source LLM</td>
+</tr>
+<tr class="odd">
+<td>RAG system</td>
+<td>Any</td>
+<td>Embeddings + vector DB + LLM</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="common-pitfalls-and-solutions" class="level2">
+<h2 class="anchored" data-anchor-id="common-pitfalls-and-solutions">Common Pitfalls and Solutions</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 26%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Problem</th>
+<th>Cause</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Poor performance</td>
+<td>Insufficient data</td>
+<td>Data augmentation, transfer learning</td>
+</tr>
+<tr class="even">
+<td>Hallucination</td>
+<td>Model making things up</td>
+<td>RAG, fact-checking, constrained decoding</td>
+</tr>
+<tr class="odd">
+<td>Slow inference</td>
+<td>Large model</td>
+<td>Quantization, distillation, smaller model</td>
+</tr>
+<tr class="even">
+<td>High cost</td>
+<td>API usage</td>
+<td>Open-source models, caching, batching</td>
+</tr>
+<tr class="odd">
+<td>Bias in outputs</td>
+<td>Training data bias</td>
+<td>Careful prompt design, filtering, debiasing</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="evaluation-metrics" class="level2">
+<h2 class="anchored" data-anchor-id="evaluation-metrics">Evaluation Metrics</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Primary Metric</th>
+<th>Secondary Metrics</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Classification</td>
+<td>Accuracy, F1</td>
+<td>Precision, Recall, AUC</td>
+</tr>
+<tr class="even">
+<td>Generation</td>
+<td>BLEU, ROUGE</td>
+<td>METEOR, BERTScore, human eval</td>
+</tr>
+<tr class="odd">
+<td>Summarization</td>
+<td>ROUGE-L</td>
+<td>BERTScore, faithfulness</td>
+</tr>
+<tr class="even">
+<td>Question Answering</td>
+<td>Exact Match, F1</td>
+<td>BLEU, METEOR</td>
+</tr>
+<tr class="odd">
+<td>Retrieval</td>
+<td>MRR, NDCG</td>
+<td>Recall@K, MAP</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="summary-and-key-takeaways" class="level1">
+<h1>Summary and Key Takeaways</h1>
+<section id="the-nlp-evolution" class="level2">
+<h2 class="anchored" data-anchor-id="the-nlp-evolution">The NLP Evolution</h2>
+<ol type="1">
+<li><strong>Rule-based systems</strong> (1950s-1980s): Hand-crafted linguistic rules</li>
+<li><strong>Statistical methods</strong> (1980s-2000s): N-grams, HMMs, probabilistic models</li>
+<li><strong>Neural networks</strong> (2010s): Word embeddings, RNNs, LSTMs</li>
+<li><strong>Transformers</strong> (2017-present): Self-attention, pre-training, LLMs</li>
+</ol>
+</section>
+<section id="core-concepts" class="level2">
+<h2 class="anchored" data-anchor-id="core-concepts">Core Concepts</h2>
+<ol type="1">
+<li><strong>Word Embeddings</strong>: Dense vector representations capturing semantic meaning</li>
+<li><strong>Attention Mechanism</strong>: Weighted combination of inputs based on relevance</li>
+<li><strong>Transformer Architecture</strong>: Self-attention + feed-forward + residual connections</li>
+<li><strong>Pre-training &amp; Fine-tuning</strong>: Transfer learning paradigm for NLP</li>
+<li><strong>Large Language Models</strong>: Massive transformers with emergent abilities</li>
+</ol>
+</section>
+<section id="from-classical-to-modern-nlp" class="level2">
+<h2 class="anchored" data-anchor-id="from-classical-to-modern-nlp">From Classical to Modern NLP</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Aspect</th>
+<th>Classical</th>
+<th>Modern</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Representation</td>
+<td>Sparse (one-hot)</td>
+<td>Dense (embeddings)</td>
+</tr>
+<tr class="even">
+<td>Context</td>
+<td>Limited (n-grams)</td>
+<td>Full sequence (attention)</td>
+</tr>
+<tr class="odd">
+<td>Training</td>
+<td>Task-specific</td>
+<td>Pre-train + fine-tune</td>
+</tr>
+<tr class="even">
+<td>Features</td>
+<td>Hand-crafted</td>
+<td>Learned</td>
+</tr>
+<tr class="odd">
+<td>Performance</td>
+<td>Good</td>
+<td>State-of-the-art</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="the-future-of-nlp" class="level2">
+<h2 class="anchored" data-anchor-id="the-future-of-nlp">The Future of NLP</h2>
+<ol type="1">
+<li><strong>Multimodal AI</strong>: Text + vision + audio understanding</li>
+<li><strong>Reasoning</strong>: Better logical and mathematical capabilities</li>
+<li><strong>Efficiency</strong>: Smaller, faster, cheaper models</li>
+<li><strong>Reliability</strong>: Reduced hallucination, better factuality</li>
+<li><strong>Personalization</strong>: Models adapted to individual users</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="additional-reading" class="level1">
+<h1>Additional Reading</h1>
+<section id="essential-books" class="level2">
+<h2 class="anchored" data-anchor-id="essential-books">Essential Books</h2>
+<ol type="1">
+<li><span class="citation" data-cites="goodfellow2016deep"><a href="#ref-goodfellow2016deep" role="doc-biblioref">[1]</a></span> — Deep Learning textbook (foundational)</li>
+<li><span class="citation" data-cites="murphy2012machine"><a href="#ref-murphy2012machine" role="doc-biblioref">[6]</a></span> — Machine Learning: A Probabilistic Perspective</li>
+<li>Jurafsky &amp; Martin, “Speech and Language Processing” (3rd ed.&nbsp;draft) — NLP textbook</li>
+</ol>
+</section>
+<section id="online-courses" class="level2">
+<h2 class="anchored" data-anchor-id="online-courses">Online Courses</h2>
+<ol type="1">
+<li>CS224n: Natural Language Processing with Deep Learning (Stanford)</li>
+<li>NLP Specialization (DeepLearning.AI on Coursera)</li>
+<li>Hugging Face NLP Course (free, practical)</li>
+</ol>
+</section>
+<section id="key-papers" class="level2">
+<h2 class="anchored" data-anchor-id="key-papers">Key Papers</h2>
+<ol type="1">
+<li><span class="citation" data-cites="vaswani2017attention"><a href="#ref-vaswani2017attention" role="doc-biblioref">[4]</a></span> — Attention is All You Need (Transformer)</li>
+<li><span class="citation" data-cites="brown2020language"><a href="#ref-brown2020language" role="doc-biblioref">[5]</a></span> — Language Models are Few-Shot Learners (GPT-3)</li>
+<li>Devlin et al., “BERT: Pre-training of Deep Bidirectional Transformers” (2018)</li>
+<li>Radford et al., “Improving Language Understanding by Generative Pre-Training” (2018)</li>
+</ol>
+</section>
+<section id="software-libraries" class="level2">
+<h2 class="anchored" data-anchor-id="software-libraries">Software Libraries</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Library</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Hugging Face Transformers</td>
+<td>Pre-trained models</td>
+</tr>
+<tr class="even">
+<td>spaCy</td>
+<td>Production NLP</td>
+</tr>
+<tr class="odd">
+<td>NLTK</td>
+<td>Educational, research</td>
+</tr>
+<tr class="even">
+<td>Gensim</td>
+<td>Topic modeling, word2vec</td>
+</tr>
+<tr class="odd">
+<td>Sentence Transformers</td>
+<td>Text embeddings</td>
+</tr>
+<tr class="even">
+<td>LangChain</td>
+<td>LLM application framework</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="exercises" class="level1">
+<h1>Exercises</h1>
+<section id="conceptual-questions" class="level2">
+<h2 class="anchored" data-anchor-id="conceptual-questions">Conceptual Questions</h2>
+<ol type="1">
+<li>Explain the difference between one-hot encoding and word embeddings. Why are embeddings superior?</li>
+<li>Derive the self-attention formula and explain each component.</li>
+<li>What is the vanishing gradient problem in RNNs? How do LSTMs solve it?</li>
+<li>Compare and contrast autoregressive (GPT) and masked language modeling (BERT) objectives.</li>
+<li>Explain how RAG addresses the hallucination problem in LLMs.</li>
+</ol>
+</section>
+<section id="programming-exercises" class="level2">
+<h2 class="anchored" data-anchor-id="programming-exercises">Programming Exercises</h2>
+<ol type="1">
+<li><strong>Word Similarity</strong>: Use Word2Vec or GloVe to find words most similar to given words.</li>
+<li><strong>Text Classification</strong>: Build a sentiment classifier using both traditional ML and transformers. Compare performance.</li>
+<li><strong>Attention Visualization</strong>: Implement self-attention and visualize attention weights for a sample sentence.</li>
+<li><strong>Fine-tuning</strong>: Fine-tune BERT on a custom text classification dataset.</li>
+<li><strong>Simple RAG</strong>: Build a RAG system that answers questions about a set of documents.</li>
+</ol>
+</section>
+<section id="mini-projects" class="level2">
+<h2 class="anchored" data-anchor-id="mini-projects">Mini-Projects</h2>
+<ol type="1">
+<li><strong>Chatbot</strong>: Create a domain-specific chatbot using RAG.</li>
+<li><strong>Summarization Tool</strong>: Build a document summarization application.</li>
+<li><strong>Named Entity Recognition</strong>: Train an NER model for a specialized domain (medical, legal, etc.).</li>
+<li><strong>Multilingual Application</strong>: Build a cross-lingual text classification system.</li>
+<li><strong>Code Assistant</strong>: Create a tool that generates code from natural language descriptions.</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="references" class="level1">
+
+
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-goodfellow2016deep" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">I. Goodfellow, Y. Bengio, and A. Courville, <em>Deep learning</em>. MIT Press, 2016. Available: <a href="https://www.deeplearningbook.org">https://www.deeplearningbook.org</a></div>
+</div>
+<div id="ref-lecun2015deep" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">Y. LeCun, Y. Bengio, and G. Hinton, <span>“Deep learning,”</span> <em>Nature</em>, vol. 521, no. 7553, pp. 436–444, 2015.</div>
+</div>
+<div id="ref-hochreiter1997long" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">S. Hochreiter and J. Schmidhuber, <span>“Long short-term memory,”</span> <em>Neural Computation</em>, vol. 9, no. 8, pp. 1735–1780, 1997.</div>
+</div>
+<div id="ref-vaswani2017attention" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">A. Vaswani <em>et al.</em>, <span>“Attention is all you need,”</span> <em>Advances in Neural Information Processing Systems</em>, vol. 30, 2017.</div>
+</div>
+<div id="ref-brown2020language" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">T. Brown <em>et al.</em>, <span>“Language models are few-shot learners,”</span> <em>Advances in Neural Information Processing Systems</em>, vol. 33, pp. 1877–1901, 2020.</div>
+</div>
+<div id="ref-murphy2012machine" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">K. P. Murphy, <em>Machine learning: A probabilistic perspective</em>. in Adaptive computation and machine learning. MIT Press, 2012.</div>
+</div>
+<div id="ref-kingma2014adam" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">D. P. Kingma and J. Ba, <span>“Adam: A method for stochastic optimization,”</span> <em>arXiv preprint arXiv:1412.6980</em>, 2014.</div>
+</div>
+</div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div>CC-BY-NC-SA 4.0</div></div></section><section class="quarto-appendix-contents" id="quarto-copyright"><h2 class="anchored quarto-appendix-heading">Copyright</h2><div class="quarto-appendix-contents"><div>© 2026 Rajiv Gandhi Institute of Technology, Kottayam</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/sijuswamyresearch\.github\.io\/rit-ai-course");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Rajiv Gandhi Institute of Technology, Kottayam</p>
+</div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="https://github.com/sijuswamyresearch/rit-ai-course">
+<p>GitHub</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../sijuswamy@gmail.com">
+<p>Contact</p>
+</a>
+  </li>  
+</ul>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sijuswamyresearch/rit-ai-course/issues" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/rit_kottayam">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/sijuswamyresearch">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

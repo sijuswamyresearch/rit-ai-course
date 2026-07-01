@@ -16,5 +16,32 @@
   },
   "modules/module2_notes.qmd": {
     "module2_notes.html": "c2e7e602"
+  },
+  "modules/module3_dl.qmd": {
+    "module3_dl.html": "90b190be"
+  },
+  "modules/module3_notes.qmd": {
+    "module3_notes.html": "48e4c058"
+  },
+  "modules/module4_nlp.qmd": {
+    "module4_nlp.html": "b6c667ee"
+  },
+  "modules/module4_notes.qmd": {
+    "module4_notes.html": "7e4d6e5e"
+  },
+  "modules/module5_deploy.qmd": {
+    "module5_deploy.html": "f503f6c5"
+  },
+  "modules/module5_notes.qmd": {
+    "module5_notes.html": "bcacc997"
+  },
+  "assessments/project_guide.qmd": {
+    "project_guide.html": "4b377441"
+  },
+  "resources/reading-list.qmd": {
+    "reading-list.html": "738583ff"
+  },
+  "resources/tools.qmd": {
+    "tools.html": "09b8a3ec"
   }
 }

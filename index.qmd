@@ -25,7 +25,7 @@ Before our first session, please ensure you have completed the following:
 | **3, 4 & 5** | Classical Machine Learning & Workflows | [Module 2](modules/module2_ml.qmd) | Micro-Project 1 |
 | **6 & 7** | Deep Learning Architectures | [Module 3](modules/module3_dl.qmd) | Quiz 2 |
 | **8 & 9** | NLP & Generative AI | [Module 4](modules/module4_nlp.qmd) | Quiz 3 |
-| **10** | Capstone Integration & Deployment | [Module 5](modules/module5_capstone.qmd) | Capstone Rubric |
+| **10** | Capstone Integration & Deployment | [Module 5](modules/module5_deploy.qmd) | Capstone Rubric |
 
 ***
 *This course is strictly aligned with the NBA Outcome-Based Education (OBE) framework.*

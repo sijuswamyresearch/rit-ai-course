@@ -1,0 +1,1880 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.31">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Siju Swamy">
+<meta name="keywords" content="machine learning, artificial intelligence, deep learning, natural language processing, transformers, neural networks, python, data science, AI course, RIT Kottayam, engineering education, OBE curriculum">
+<meta name="description" content="A comprehensive 20-hour intensive course on Applied AI and Machine Learning designed for engineering students from all disciplines. Covers mathematical foundations, classical ML, deep learning, NLP with transformers, and deployment with Streamlit. Includes hands-on projects and capstone implementation.">
+
+<title>Module 3: Deep Learning Fundamentals – Foundation of Applied AI &amp; Machine Learning</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-1cf875210b1cc0385a316f3732c8c7cf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": true,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="Foundation of Applied AI &amp; Machine Learning">
+<meta property="og:description" content="Comprehensive AI/ML course for engineering students">
+<meta property="og:image" content="https://sijuswamyresearch.github.io/rit-ai-course/modules/images/course-banner.png">
+<meta property="og:site_name" content="Foundation of Applied AI &amp; Machine Learning">
+<meta name="twitter:title" content="Module 3: Deep Learning Fundamentals – Foundation of Applied AI &amp; Machine Learning">
+<meta name="twitter:description" content="A comprehensive 20-hour intensive course on Applied AI and Machine Learning designed for engineering students from all disciplines. Covers mathematical foundations, classical ML, deep learning, NLP with transformers, and deployment with Streamlit. Includes hands-on projects and capstone implementation.">
+<meta name="twitter:image" content="https://sijuswamyresearch.github.io/rit-ai-course/modules/module3_notes_files/figure-html/cell-2-output-1.png">
+<meta name="twitter:image-height" content="1514">
+<meta name="twitter:image-width" content="2860">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/rit-logo.png" alt="RIT Kottayam Logo" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Foundation of Applied AI &amp; Machine Learning</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../syllabus.html" aria-current="page"> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-modules" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Modules</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-modules">    
+        <li>
+    <a class="dropdown-item" href="../modules/module1_math.html">
+ <span class="dropdown-text">Module 1: Mathematical Foundations</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../modules/module2_ml.html">
+ <span class="dropdown-text">Module 2: Classical Machine Learning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../modules/module3_dl.html">
+ <span class="dropdown-text">Module 3: Deep Learning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../modules/module4_nlp.html">
+ <span class="dropdown-text">Module 4: NLP &amp; Generative AI</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../modules/module5_deploy.html">
+ <span class="dropdown-text">Module 5: Capstone &amp; Deployment</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Resources</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-resources">    
+        <li>
+    <a class="dropdown-item" href="../modules/references.bib">
+ <span class="dropdown-text">References</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../resources/reading-list.html">
+ <span class="dropdown-text">Additional Reading</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../resources/tools.html">
+ <span class="dropdown-text">Tools &amp; Software</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../assessments/project_guide.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/sijuswamyresearch/rit-ai-course"> <i class="bi bi-github" role="img" aria-label="GitHub Repository">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html"> <i class="bi bi-book" role="img">
+</i> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/module3_dl.html">🧠 Module 3: Deep Learning</a></li><li class="breadcrumb-item"><a href="../modules/module3_notes.html">Detailed Notes</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true">
+ <span class="menu-text">📚 Module 1: Math Foundations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module1_math.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture Slides</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module1_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Detailed Notes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true">
+ <span class="menu-text">🤖 Module 2: Classical ML</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module2_ml.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture Slides</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module2_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Detailed Notes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true">
+ <span class="menu-text">🧠 Module 3: Deep Learning</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module3_dl.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture Slides</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module3_notes.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Detailed Notes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true">
+ <span class="menu-text">💬 Module 4: NLP &amp; GenAI</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module4_nlp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture Slides</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module4_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Detailed Notes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true">
+ <span class="menu-text">🚀 Module 5: Deployment</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module5_deploy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture Slides</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module5_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Detailed Notes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+ <span class="menu-text">separator</span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📋 Syllabus</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assessments/project_guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🏆 Projects</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction-the-deep-learning-revolution" id="toc-introduction-the-deep-learning-revolution" class="nav-link active" data-scroll-target="#introduction-the-deep-learning-revolution">Introduction: The Deep Learning Revolution</a>
+  <ul class="collapse">
+  <li><a href="#what-is-deep-learning" id="toc-what-is-deep-learning" class="nav-link" data-scroll-target="#what-is-deep-learning">What is Deep Learning?</a></li>
+  <li><a href="#why-deep-learning-now" id="toc-why-deep-learning-now" class="nav-link" data-scroll-target="#why-deep-learning-now">Why Deep Learning Now?</a></li>
+  </ul></li>
+  <li><a href="#historical-background-a-journey-through-time" id="toc-historical-background-a-journey-through-time" class="nav-link" data-scroll-target="#historical-background-a-journey-through-time">Historical Background: A Journey Through Time</a>
+  <ul class="collapse">
+  <li><a href="#the-origins-1940s-1960s-birth-of-neural-networks" id="toc-the-origins-1940s-1960s-birth-of-neural-networks" class="nav-link" data-scroll-target="#the-origins-1940s-1960s-birth-of-neural-networks">The Origins (1940s-1960s): Birth of Neural Networks</a>
+  <ul class="collapse">
+  <li><a href="#mcculloch-pitts-neuron-1943" id="toc-mcculloch-pitts-neuron-1943" class="nav-link" data-scroll-target="#mcculloch-pitts-neuron-1943">McCulloch-Pitts Neuron (1943)</a></li>
+  <li><a href="#hebbian-learning-1949" id="toc-hebbian-learning-1949" class="nav-link" data-scroll-target="#hebbian-learning-1949">Hebbian Learning (1949)</a></li>
+  <li><a href="#the-perceptron-1957-1958" id="toc-the-perceptron-1957-1958" class="nav-link" data-scroll-target="#the-perceptron-1957-1958">The Perceptron (1957-1958)</a></li>
+  <li><a href="#the-first-ai-winter-1969" id="toc-the-first-ai-winter-1969" class="nav-link" data-scroll-target="#the-first-ai-winter-1969">The First AI Winter (1969)</a></li>
+  </ul></li>
+  <li><a href="#the-renaissance-1980s-backpropagation-and-connectionism" id="toc-the-renaissance-1980s-backpropagation-and-connectionism" class="nav-link" data-scroll-target="#the-renaissance-1980s-backpropagation-and-connectionism">The Renaissance (1980s): Backpropagation and Connectionism</a>
+  <ul class="collapse">
+  <li><a href="#hopfield-networks-1982" id="toc-hopfield-networks-1982" class="nav-link" data-scroll-target="#hopfield-networks-1982">Hopfield Networks (1982)</a></li>
+  <li><a href="#backpropagation-1986" id="toc-backpropagation-1986" class="nav-link" data-scroll-target="#backpropagation-1986">Backpropagation (1986)</a></li>
+  </ul></li>
+  <li><a href="#the-deep-learning-revolution-2006-present" id="toc-the-deep-learning-revolution-2006-present" class="nav-link" data-scroll-target="#the-deep-learning-revolution-2006-present">The Deep Learning Revolution (2006-Present)</a>
+  <ul class="collapse">
+  <li><a href="#key-milestones" id="toc-key-milestones" class="nav-link" data-scroll-target="#key-milestones">Key Milestones</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#transition-from-classical-machine-learning-to-deep-learning" id="toc-transition-from-classical-machine-learning-to-deep-learning" class="nav-link" data-scroll-target="#transition-from-classical-machine-learning-to-deep-learning">Transition from Classical Machine Learning to Deep Learning</a>
+  <ul class="collapse">
+  <li><a href="#the-feature-engineering-bottleneck" id="toc-the-feature-engineering-bottleneck" class="nav-link" data-scroll-target="#the-feature-engineering-bottleneck">The Feature Engineering Bottleneck</a></li>
+  <li><a href="#the-deep-learning-paradigm" id="toc-the-deep-learning-paradigm" class="nav-link" data-scroll-target="#the-deep-learning-paradigm">The Deep Learning Paradigm</a></li>
+  <li><a href="#when-to-use-deep-learning-vs-classical-ml" id="toc-when-to-use-deep-learning-vs-classical-ml" class="nav-link" data-scroll-target="#when-to-use-deep-learning-vs-classical-ml">When to Use Deep Learning vs Classical ML</a></li>
+  </ul></li>
+  <li><a href="#mathematical-foundations-of-deep-learning" id="toc-mathematical-foundations-of-deep-learning" class="nav-link" data-scroll-target="#mathematical-foundations-of-deep-learning">Mathematical Foundations of Deep Learning</a>
+  <ul class="collapse">
+  <li><a href="#the-universal-approximation-theorem" id="toc-the-universal-approximation-theorem" class="nav-link" data-scroll-target="#the-universal-approximation-theorem">The Universal Approximation Theorem</a></li>
+  <li><a href="#forward-propagation" id="toc-forward-propagation" class="nav-link" data-scroll-target="#forward-propagation">Forward Propagation</a></li>
+  <li><a href="#backpropagation-the-chain-rule-in-action" id="toc-backpropagation-the-chain-rule-in-action" class="nav-link" data-scroll-target="#backpropagation-the-chain-rule-in-action">Backpropagation: The Chain Rule in Action</a></li>
+  <li><a href="#gradient-descent-variants" id="toc-gradient-descent-variants" class="nav-link" data-scroll-target="#gradient-descent-variants">Gradient Descent Variants</a>
+  <ul class="collapse">
+  <li><a href="#mini-batch-gradient-descent" id="toc-mini-batch-gradient-descent" class="nav-link" data-scroll-target="#mini-batch-gradient-descent">Mini-Batch Gradient Descent</a></li>
+  <li><a href="#adam-adaptive-moment-estimation-kingma2014adam" id="toc-adam-adaptive-moment-estimation-kingma2014adam" class="nav-link" data-scroll-target="#adam-adaptive-moment-estimation-kingma2014adam">Adam (Adaptive Moment Estimation) <span class="citation" data-cites="kingma2014adam">[3]</span></a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#key-concepts-in-deep-learning" id="toc-key-concepts-in-deep-learning" class="nav-link" data-scroll-target="#key-concepts-in-deep-learning">Key Concepts in Deep Learning</a>
+  <ul class="collapse">
+  <li><a href="#weight-initialization" id="toc-weight-initialization" class="nav-link" data-scroll-target="#weight-initialization">1. Weight Initialization</a>
+  <ul class="collapse">
+  <li><a href="#xavierglorot-initialization-for-tanhsigmoid" id="toc-xavierglorot-initialization-for-tanhsigmoid" class="nav-link" data-scroll-target="#xavierglorot-initialization-for-tanhsigmoid">Xavier/Glorot Initialization (for tanh/sigmoid)</a></li>
+  <li><a href="#he-initialization-for-relu" id="toc-he-initialization-for-relu" class="nav-link" data-scroll-target="#he-initialization-for-relu">He Initialization (for ReLU)</a></li>
+  </ul></li>
+  <li><a href="#batch-normalization" id="toc-batch-normalization" class="nav-link" data-scroll-target="#batch-normalization">2. Batch Normalization</a></li>
+  <li><a href="#regularization-techniques" id="toc-regularization-techniques" class="nav-link" data-scroll-target="#regularization-techniques">3. Regularization Techniques</a>
+  <ul class="collapse">
+  <li><a href="#dropout" id="toc-dropout" class="nav-link" data-scroll-target="#dropout">Dropout</a></li>
+  </ul></li>
+  <li><a href="#activation-functions" id="toc-activation-functions" class="nav-link" data-scroll-target="#activation-functions">4. Activation Functions</a>
+  <ul class="collapse">
+  <li><a href="#common-activation-functions" id="toc-common-activation-functions" class="nav-link" data-scroll-target="#common-activation-functions">Common Activation Functions</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#loss-functions" id="toc-loss-functions" class="nav-link" data-scroll-target="#loss-functions">Loss Functions</a>
+  <ul class="collapse">
+  <li><a href="#regression-loss-functions" id="toc-regression-loss-functions" class="nav-link" data-scroll-target="#regression-loss-functions">Regression Loss Functions</a>
+  <ul class="collapse">
+  <li><a href="#mean-squared-error-mse" id="toc-mean-squared-error-mse" class="nav-link" data-scroll-target="#mean-squared-error-mse">Mean Squared Error (MSE)</a></li>
+  <li><a href="#mean-absolute-error-mae" id="toc-mean-absolute-error-mae" class="nav-link" data-scroll-target="#mean-absolute-error-mae">Mean Absolute Error (MAE)</a></li>
+  </ul></li>
+  <li><a href="#classification-loss-functions" id="toc-classification-loss-functions" class="nav-link" data-scroll-target="#classification-loss-functions">Classification Loss Functions</a>
+  <ul class="collapse">
+  <li><a href="#binary-cross-entropy" id="toc-binary-cross-entropy" class="nav-link" data-scroll-target="#binary-cross-entropy">Binary Cross-Entropy</a></li>
+  <li><a href="#categorical-cross-entropy" id="toc-categorical-cross-entropy" class="nav-link" data-scroll-target="#categorical-cross-entropy">Categorical Cross-Entropy</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#building-neural-networks-code-examples" id="toc-building-neural-networks-code-examples" class="nav-link" data-scroll-target="#building-neural-networks-code-examples">Building Neural Networks: Code Examples</a>
+  <ul class="collapse">
+  <li><a href="#implementing-an-mlp-from-scratch" id="toc-implementing-an-mlp-from-scratch" class="nav-link" data-scroll-target="#implementing-an-mlp-from-scratch">Implementing an MLP from Scratch</a></li>
+  <li><a href="#building-a-cnn-with-tensorflowkeras" id="toc-building-a-cnn-with-tensorflowkeras" class="nav-link" data-scroll-target="#building-a-cnn-with-tensorflowkeras">Building a CNN with TensorFlow/Keras</a></li>
+  </ul></li>
+  <li><a href="#advanced-topics-glimpses-into-modern-deep-learning" id="toc-advanced-topics-glimpses-into-modern-deep-learning" class="nav-link" data-scroll-target="#advanced-topics-glimpses-into-modern-deep-learning">Advanced Topics: Glimpses into Modern Deep Learning</a>
+  <ul class="collapse">
+  <li><a href="#boltzmann-machines-and-energy-based-models" id="toc-boltzmann-machines-and-energy-based-models" class="nav-link" data-scroll-target="#boltzmann-machines-and-energy-based-models">1. Boltzmann Machines and Energy-Based Models</a>
+  <ul class="collapse">
+  <li><a href="#restricted-boltzmann-machines-rbms" id="toc-restricted-boltzmann-machines-rbms" class="nav-link" data-scroll-target="#restricted-boltzmann-machines-rbms">Restricted Boltzmann Machines (RBMs)</a></li>
+  </ul></li>
+  <li><a href="#probabilistic-machine-learning" id="toc-probabilistic-machine-learning" class="nav-link" data-scroll-target="#probabilistic-machine-learning">2. Probabilistic Machine Learning</a>
+  <ul class="collapse">
+  <li><a href="#variational-autoencoders-vaes" id="toc-variational-autoencoders-vaes" class="nav-link" data-scroll-target="#variational-autoencoders-vaes">Variational Autoencoders (VAEs)</a></li>
+  </ul></li>
+  <li><a href="#attention-mechanisms-and-transformers" id="toc-attention-mechanisms-and-transformers" class="nav-link" data-scroll-target="#attention-mechanisms-and-transformers">3. Attention Mechanisms and Transformers</a>
+  <ul class="collapse">
+  <li><a href="#self-attention" id="toc-self-attention" class="nav-link" data-scroll-target="#self-attention">Self-Attention</a></li>
+  <li><a href="#multi-head-attention" id="toc-multi-head-attention" class="nav-link" data-scroll-target="#multi-head-attention">Multi-Head Attention</a></li>
+  </ul></li>
+  <li><a href="#generative-models" id="toc-generative-models" class="nav-link" data-scroll-target="#generative-models">4. Generative Models</a>
+  <ul class="collapse">
+  <li><a href="#gans" id="toc-gans" class="nav-link" data-scroll-target="#gans">GANs</a></li>
+  <li><a href="#diffusion-models" id="toc-diffusion-models" class="nav-link" data-scroll-target="#diffusion-models">Diffusion Models</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#practical-guidelines" id="toc-practical-guidelines" class="nav-link" data-scroll-target="#practical-guidelines">Practical Guidelines</a>
+  <ul class="collapse">
+  <li><a href="#hyperparameter-tuning" id="toc-hyperparameter-tuning" class="nav-link" data-scroll-target="#hyperparameter-tuning">Hyperparameter Tuning</a></li>
+  <li><a href="#common-pitfalls" id="toc-common-pitfalls" class="nav-link" data-scroll-target="#common-pitfalls">Common Pitfalls</a></li>
+  </ul></li>
+  <li><a href="#summary-and-key-takeaways" id="toc-summary-and-key-takeaways" class="nav-link" data-scroll-target="#summary-and-key-takeaways">Summary and Key Takeaways</a>
+  <ul class="collapse">
+  <li><a href="#from-classical-ml-to-deep-learning" id="toc-from-classical-ml-to-deep-learning" class="nav-link" data-scroll-target="#from-classical-ml-to-deep-learning">From Classical ML to Deep Learning</a></li>
+  </ul></li>
+  <li><a href="#additional-reading" id="toc-additional-reading" class="nav-link" data-scroll-target="#additional-reading">Additional Reading</a>
+  <ul class="collapse">
+  <li><a href="#essential-books" id="toc-essential-books" class="nav-link" data-scroll-target="#essential-books">Essential Books</a></li>
+  <li><a href="#online-courses" id="toc-online-courses" class="nav-link" data-scroll-target="#online-courses">Online Courses</a></li>
+  <li><a href="#key-papers" id="toc-key-papers" class="nav-link" data-scroll-target="#key-papers">Key Papers</a></li>
+  <li><a href="#software-libraries" id="toc-software-libraries" class="nav-link" data-scroll-target="#software-libraries">Software Libraries</a></li>
+  </ul></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
+  <ul class="collapse">
+  <li><a href="#conceptual-questions" id="toc-conceptual-questions" class="nav-link" data-scroll-target="#conceptual-questions">Conceptual Questions</a></li>
+  <li><a href="#programming-exercises" id="toc-programming-exercises" class="nav-link" data-scroll-target="#programming-exercises">Programming Exercises</a></li>
+  <li><a href="#mini-projects" id="toc-mini-projects" class="nav-link" data-scroll-target="#mini-projects">Mini-Projects</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/sijuswamyresearch/rit-ai-course/issues" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/module3_dl.html">🧠 Module 3: Deep Learning</a></li><li class="breadcrumb-item"><a href="../modules/module3_notes.html">Detailed Notes</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Module 3: Deep Learning Fundamentals</h1>
+<p class="subtitle lead">From Biological Inspiration to Modern Architectures</p>
+</div>
+
+<div>
+  <div class="description">
+    <p>A comprehensive 20-hour intensive course on Applied AI and Machine Learning designed for engineering students from all disciplines. Covers mathematical foundations, classical ML, deep learning, NLP with transformers, and deployment with Streamlit. Includes hands-on projects and capstone implementation.</p>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Siju Swamy </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>machine learning, artificial intelligence, deep learning, natural language processing, transformers, neural networks, python, data science, AI course, RIT Kottayam, engineering education, OBE curriculum</p>
+  </div>
+</div>
+
+</header>
+
+
+<section id="introduction-the-deep-learning-revolution" class="level1">
+<h1>Introduction: The Deep Learning Revolution</h1>
+<section id="what-is-deep-learning" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-deep-learning">What is Deep Learning?</h2>
+<p>Deep Learning is a subset of machine learning that uses multi-layered neural networks to learn hierarchical representations of data. Unlike classical machine learning algorithms that often require manual feature engineering, deep learning models automatically discover the representations needed for detection or classification directly from raw data.</p>
+<p><span class="math display">\[\text{Deep Learning} = \text{Neural Networks} + \text{Hierarchical Feature Learning} + \text{End-to-End Training}\]</span></p>
+</section>
+<section id="why-deep-learning-now" class="level2">
+<h2 class="anchored" data-anchor-id="why-deep-learning-now">Why Deep Learning Now?</h2>
+<p>The rise of deep learning can be attributed to three converging factors:</p>
+<ol type="1">
+<li><strong>Big Data</strong>: The digital age has produced unprecedented amounts of labeled data (images, text, speech)</li>
+<li><strong>Computational Power</strong>: GPUs and specialized hardware (TPUs) enable training of massive networks</li>
+<li><strong>Algorithmic Advances</strong>: New architectures, activation functions, and optimization techniques</li>
+</ol>
+</section>
+</section>
+<section id="historical-background-a-journey-through-time" class="level1">
+<h1>Historical Background: A Journey Through Time</h1>
+<section id="the-origins-1940s-1960s-birth-of-neural-networks" class="level2">
+<h2 class="anchored" data-anchor-id="the-origins-1940s-1960s-birth-of-neural-networks">The Origins (1940s-1960s): Birth of Neural Networks</h2>
+<section id="mcculloch-pitts-neuron-1943" class="level3">
+<h3 class="anchored" data-anchor-id="mcculloch-pitts-neuron-1943">McCulloch-Pitts Neuron (1943)</h3>
+<p>The story begins with Warren McCulloch and Walter Pitts, who proposed the first mathematical model of a biological neuron <span class="citation" data-cites="goodfellow2016deep"><a href="#ref-goodfellow2016deep" role="doc-biblioref">[1]</a></span>:</p>
+<p><span class="math display">\[y = f\left(\sum_{i=1}^{n} w_i x_i - \theta\right)\]</span></p>
+<p>where <span class="math inline">\(f\)</span> is a step function, <span class="math inline">\(w_i\)</span> are weights, <span class="math inline">\(x_i\)</span> are inputs, and <span class="math inline">\(\theta\)</span> is a threshold.</p>
+</section>
+<section id="hebbian-learning-1949" class="level3">
+<h3 class="anchored" data-anchor-id="hebbian-learning-1949">Hebbian Learning (1949)</h3>
+<p>Donald Hebb proposed a biological learning rule: “When an axon of cell A is near enough to excite cell B and repeatedly or persistently takes part in firing it, some growth process or metabolic change takes place in one or both cells such that A’s efficiency, as one of the cells firing B, is increased.”</p>
+<p>This became the foundation of <strong>unsupervised learning</strong>:</p>
+<p><span class="math display">\[\Delta w_{ij} = \eta \cdot x_i \cdot y_j\]</span></p>
+</section>
+<section id="the-perceptron-1957-1958" class="level3">
+<h3 class="anchored" data-anchor-id="the-perceptron-1957-1958">The Perceptron (1957-1958)</h3>
+<p>Frank Rosenblatt invented the <strong>Perceptron</strong>, the first algorithm capable of learning from data:</p>
+<p><span class="math display">\[\hat{y} = \text{sign}\left(\sum_{i=1}^{n} w_i x_i + b\right)\]</span></p>
+<p>The Perceptron Learning Rule: <span class="math display">\[\text{If } \hat{y}^{(i)} \neq y^{(i)}: \quad w \leftarrow w + \eta \cdot y^{(i)} \cdot x^{(i)}\]</span></p>
+</section>
+<section id="the-first-ai-winter-1969" class="level3">
+<h3 class="anchored" data-anchor-id="the-first-ai-winter-1969">The First AI Winter (1969)</h3>
+<p>Minsky and Papert’s book “Perceptrons” mathematically proved that single-layer perceptrons cannot solve the <strong>XOR problem</strong> (not linearly separable). This led to reduced funding and interest—the first <strong>AI Winter</strong>.</p>
+</section>
+</section>
+<section id="the-renaissance-1980s-backpropagation-and-connectionism" class="level2">
+<h2 class="anchored" data-anchor-id="the-renaissance-1980s-backpropagation-and-connectionism">The Renaissance (1980s): Backpropagation and Connectionism</h2>
+<section id="hopfield-networks-1982" class="level3">
+<h3 class="anchored" data-anchor-id="hopfield-networks-1982">Hopfield Networks (1982)</h3>
+<p>John Hopfield introduced <strong>Hopfield Networks</strong>, recurrent neural networks that serve as content-addressable memory systems with energy function:</p>
+<p><span class="math display">\[E = -\frac{1}{2}\sum_{i}\sum_{j} w_{ij} s_i s_j + \sum_{i} \theta_i s_i\]</span></p>
+</section>
+<section id="backpropagation-1986" class="level3">
+<h3 class="anchored" data-anchor-id="backpropagation-1986">Backpropagation (1986)</h3>
+<p>Rumelhart, Hinton, and Williams popularized the <strong>backpropagation algorithm</strong> <span class="citation" data-cites="rumelhart1986learning"><a href="#ref-rumelhart1986learning" role="doc-biblioref">[2]</a></span>, which efficiently computes gradients in multi-layer networks using the chain rule.</p>
+</section>
+</section>
+<section id="the-deep-learning-revolution-2006-present" class="level2">
+<h2 class="anchored" data-anchor-id="the-deep-learning-revolution-2006-present">The Deep Learning Revolution (2006-Present)</h2>
+<section id="key-milestones" class="level3">
+<h3 class="anchored" data-anchor-id="key-milestones">Key Milestones</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 48%">
+<col style="width: 29%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Year</th>
+<th>Achievement</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2006</td>
+<td>Deep Belief Networks</td>
+<td>Greedy layer-wise pre-training</td>
+</tr>
+<tr class="even">
+<td>2009</td>
+<td>ImageNet Dataset</td>
+<td>Large-scale benchmark</td>
+</tr>
+<tr class="odd">
+<td>2012</td>
+<td>AlexNet wins ImageNet</td>
+<td>GPU-accelerated CNNs achieve 15.3% error</td>
+</tr>
+<tr class="even">
+<td>2014</td>
+<td>GANs</td>
+<td>New paradigm for generative modeling</td>
+</tr>
+<tr class="odd">
+<td>2015</td>
+<td>ResNet</td>
+<td>Training networks with 100+ layers</td>
+</tr>
+<tr class="even">
+<td>2017</td>
+<td>Transformer</td>
+<td>Foundation of modern LLMs</td>
+</tr>
+<tr class="odd">
+<td>2020</td>
+<td>GPT-3</td>
+<td>175 billion parameter language model</td>
+</tr>
+<tr class="even">
+<td>2022</td>
+<td>ChatGPT</td>
+<td>Democratized AI access</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+<section id="transition-from-classical-machine-learning-to-deep-learning" class="level1">
+<h1>Transition from Classical Machine Learning to Deep Learning</h1>
+<section id="the-feature-engineering-bottleneck" class="level2">
+<h2 class="anchored" data-anchor-id="the-feature-engineering-bottleneck">The Feature Engineering Bottleneck</h2>
+<p>In classical machine learning (Module 2), the workflow is:</p>
+<pre><code>Raw Data → Feature Engineering → Feature Selection → ML Algorithm → Prediction</code></pre>
+<p><strong>Feature Engineering</strong> is time-consuming, requires domain expertise, and is often the limiting factor.</p>
+</section>
+<section id="the-deep-learning-paradigm" class="level2">
+<h2 class="anchored" data-anchor-id="the-deep-learning-paradigm">The Deep Learning Paradigm</h2>
+<p>Deep learning transforms this pipeline:</p>
+<pre><code>Raw Data → Deep Neural Network → Hierarchical Features → Prediction</code></pre>
+<p>The network <strong>learns the features</strong> automatically through its layers:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Layer Depth</th>
+<th>Learned Features (for images)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Layer 1</td>
+<td>Edges, colors, textures</td>
+</tr>
+<tr class="even">
+<td>Layer 2</td>
+<td>Simple shapes, patterns</td>
+</tr>
+<tr class="odd">
+<td>Layer 3</td>
+<td>Object parts (eyes, wheels)</td>
+</tr>
+<tr class="even">
+<td>Layer 4+</td>
+<td>Complete objects (faces, cars)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="when-to-use-deep-learning-vs-classical-ml" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-use-deep-learning-vs-classical-ml">When to Use Deep Learning vs Classical ML</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Factor</th>
+<th>Classical ML Preferred</th>
+<th>Deep Learning Preferred</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Data Size</td>
+<td>Small (&lt; 10K samples)</td>
+<td>Large (&gt; 100K samples)</td>
+</tr>
+<tr class="even">
+<td>Compute</td>
+<td>Limited resources</td>
+<td>GPU/TPU available</td>
+</tr>
+<tr class="odd">
+<td>Interpretability</td>
+<td>Critical requirement</td>
+<td>Secondary concern</td>
+</tr>
+<tr class="even">
+<td>Problem Type</td>
+<td>Tabular data</td>
+<td>Images, text, speech</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="mathematical-foundations-of-deep-learning" class="level1">
+<h1>Mathematical Foundations of Deep Learning</h1>
+<section id="the-universal-approximation-theorem" class="level2">
+<h2 class="anchored" data-anchor-id="the-universal-approximation-theorem">The Universal Approximation Theorem</h2>
+<p><strong>Theorem (Cybenko, 1989)</strong>: A feed-forward network with a single hidden layer containing a finite number of neurons can approximate continuous functions on compact subsets of <span class="math inline">\(\mathbb{R}^n\)</span>, under mild assumptions on the activation function.</p>
+<p><span class="math display">\[f(x) \approx \sum_{i=1}^{N} w_i \phi(a_i^T x + b_i)\]</span></p>
+</section>
+<section id="forward-propagation" class="level2">
+<h2 class="anchored" data-anchor-id="forward-propagation">Forward Propagation</h2>
+<p>For a network with <span class="math inline">\(L\)</span> layers:</p>
+<p><strong>Layer <span class="math inline">\(l\)</span> computation:</strong> <span class="math display">\[z^{(l)} = W^{(l)} a^{(l-1)} + b^{(l)}\]</span> <span class="math display">\[a^{(l)} = f^{(l)}(z^{(l)})\]</span></p>
+<p>where <span class="math inline">\(W^{(l)} \in \mathbb{R}^{n_l \times n_{l-1}}\)</span> is the weight matrix, <span class="math inline">\(b^{(l)}\)</span> is the bias, <span class="math inline">\(f^{(l)}\)</span> is the activation function, <span class="math inline">\(a^{(0)} = x\)</span> (input), and <span class="math inline">\(a^{(L)} = \hat{y}\)</span> (output).</p>
+</section>
+<section id="backpropagation-the-chain-rule-in-action" class="level2">
+<h2 class="anchored" data-anchor-id="backpropagation-the-chain-rule-in-action">Backpropagation: The Chain Rule in Action</h2>
+<p><strong>Step 1: Forward Pass</strong> — Compute activations layer by layer.</p>
+<p><strong>Step 2: Output Error</strong> <span class="math display">\[\delta^{(L)} = \nabla_a L \odot f'^{(L)}(z^{(L)})\]</span></p>
+<p><strong>Step 3: Backward Pass (for <span class="math inline">\(l = L-1, L-2, \ldots, 1\)</span>)</strong> <span class="math display">\[\delta^{(l)} = \left((W^{(l+1)})^T \delta^{(l+1)}\right) \odot f'^{(l)}(z^{(l)})\]</span></p>
+<p><strong>Step 4: Compute Gradients</strong> <span class="math display">\[\frac{\partial L}{\partial W^{(l)}} = \delta^{(l)} (a^{(l-1)})^T, \quad \frac{\partial L}{\partial b^{(l)}} = \delta^{(l)}\]</span></p>
+</section>
+<section id="gradient-descent-variants" class="level2">
+<h2 class="anchored" data-anchor-id="gradient-descent-variants">Gradient Descent Variants</h2>
+<section id="mini-batch-gradient-descent" class="level3">
+<h3 class="anchored" data-anchor-id="mini-batch-gradient-descent">Mini-Batch Gradient Descent</h3>
+<p><span class="math display">\[\theta := \theta - \eta \frac{1}{|B|}\sum_{i \in B} \nabla_\theta L(f(x^{(i)}), y^{(i)})\]</span></p>
+</section>
+<section id="adam-adaptive-moment-estimation-kingma2014adam" class="level3">
+<h3 class="anchored" data-anchor-id="adam-adaptive-moment-estimation-kingma2014adam">Adam (Adaptive Moment Estimation) <span class="citation" data-cites="kingma2014adam"><a href="#ref-kingma2014adam" role="doc-biblioref">[3]</a></span></h3>
+<p><span class="math display">\[m_t = \beta_1 m_{t-1} + (1 - \beta_1) \nabla_\theta J(\theta)\]</span> <span class="math display">\[v_t = \beta_2 v_{t-1} + (1 - \beta_2) (\nabla_\theta J(\theta))^2\]</span> <span class="math display">\[\theta := \theta - \frac{\eta}{\sqrt{\hat{v}_t} + \epsilon} \hat{m}_t\]</span></p>
+<p><strong>Default parameters</strong>: <span class="math inline">\(\beta_1 = 0.9\)</span>, <span class="math inline">\(\beta_2 = 0.999\)</span>, <span class="math inline">\(\epsilon = 10^{-8}\)</span></p>
+</section>
+</section>
+</section>
+<section id="key-concepts-in-deep-learning" class="level1">
+<h1>Key Concepts in Deep Learning</h1>
+<section id="weight-initialization" class="level2">
+<h2 class="anchored" data-anchor-id="weight-initialization">1. Weight Initialization</h2>
+<section id="xavierglorot-initialization-for-tanhsigmoid" class="level3">
+<h3 class="anchored" data-anchor-id="xavierglorot-initialization-for-tanhsigmoid">Xavier/Glorot Initialization (for tanh/sigmoid)</h3>
+<p><span class="math display">\[W \sim \mathcal{N}\left(0, \sqrt{\frac{2}{n_{in} + n_{out}}}\right)\]</span></p>
+</section>
+<section id="he-initialization-for-relu" class="level3">
+<h3 class="anchored" data-anchor-id="he-initialization-for-relu">He Initialization (for ReLU)</h3>
+<p><span class="math display">\[W \sim \mathcal{N}\left(0, \sqrt{\frac{2}{n_{in}}}\right)\]</span></p>
+</section>
+</section>
+<section id="batch-normalization" class="level2">
+<h2 class="anchored" data-anchor-id="batch-normalization">2. Batch Normalization</h2>
+<p><span class="math display">\[\hat{x}^{(k)} = \frac{x^{(k)} - \mu_B}{\sqrt{\sigma_B^2 + \epsilon}}, \quad y^{(k)} = \gamma \hat{x}^{(k)} + \beta\]</span></p>
+<p><strong>Benefits</strong>: Allows higher learning rates, reduces sensitivity to initialization, acts as regularizer.</p>
+</section>
+<section id="regularization-techniques" class="level2">
+<h2 class="anchored" data-anchor-id="regularization-techniques">3. Regularization Techniques</h2>
+<section id="dropout" class="level3">
+<h3 class="anchored" data-anchor-id="dropout">Dropout</h3>
+<p>During training, randomly set neurons to zero with probability <span class="math inline">\(p\)</span>:</p>
+<p><span class="math display">\[a^{(l)} = f(z^{(l)}) \odot m^{(l)}, \quad m^{(l)} \sim \text{Bernoulli}(1-p)\]</span></p>
+</section>
+</section>
+<section id="activation-functions" class="level2">
+<h2 class="anchored" data-anchor-id="activation-functions">4. Activation Functions</h2>
+<section id="common-activation-functions" class="level3">
+<h3 class="anchored" data-anchor-id="common-activation-functions">Common Activation Functions</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Formula</th>
+<th>Range</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sigmoid</td>
+<td><span class="math inline">\(\frac{1}{1+e^{-x}}\)</span></td>
+<td>(0,1)</td>
+<td>Output layer (binary)</td>
+</tr>
+<tr class="even">
+<td>Tanh</td>
+<td><span class="math inline">\(\frac{e^x-e^{-x}}{e^x+e^{-x}}\)</span></td>
+<td>(-1,1)</td>
+<td>Hidden layers</td>
+</tr>
+<tr class="odd">
+<td>ReLU</td>
+<td><span class="math inline">\(\max(0,x)\)</span></td>
+<td>[0,∞)</td>
+<td>Default hidden layer</td>
+</tr>
+<tr class="even">
+<td>Leaky ReLU</td>
+<td><span class="math inline">\(\max(\alpha x, x)\)</span></td>
+<td>(-∞,∞)</td>
+<td>Avoid dying ReLU</td>
+</tr>
+<tr class="odd">
+<td>SiLU/Swish</td>
+<td><span class="math inline">\(x \cdot \sigma(x)\)</span></td>
+<td>[0,∞)</td>
+<td>State-of-the-art</td>
+</tr>
+<tr class="even">
+<td>GELU</td>
+<td><span class="math inline">\(x \cdot \Phi(x)\)</span></td>
+<td>(-∞,∞)</td>
+<td>Transformers</td>
+</tr>
+</tbody>
+</table>
+<div id="61dd35e3" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Show the Python Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sigmoid(x):</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>x))</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tanh(x):</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.tanh(x)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> relu(x):</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.maximum(<span class="dv">0</span>, x)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> leaky_relu(x, alpha<span class="op">=</span><span class="fl">0.01</span>):</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.where(x <span class="op">&gt;</span> <span class="dv">0</span>, x, alpha <span class="op">*</span> x)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> silu(x):</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>x))</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">500</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">8</span>))</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>axes <span class="op">=</span> axes.ravel()</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>activations <span class="op">=</span> [</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    (sigmoid, <span class="st">'Sigmoid'</span>, <span class="st">'#153263'</span>),</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    (tanh, <span class="st">'Tanh'</span>, <span class="st">'#e63946'</span>),</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    (relu, <span class="st">'ReLU'</span>, <span class="st">'#2a9d8f'</span>),</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    (leaky_relu, <span class="st">'Leaky ReLU'</span>, <span class="st">'#f4a261'</span>),</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    (silu, <span class="st">'SiLU/Swish'</span>, <span class="st">'#3a0ca3'</span>),</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx, (func, name, color) <span class="kw">in</span> <span class="bu">enumerate</span>(activations):</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> axes[idx]</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> func(x)</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    ax.plot(x, y, color<span class="op">=</span>color, linewidth<span class="op">=</span><span class="fl">2.5</span>)</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    ax.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    ax.axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    ax.set_title(name, fontsize<span class="op">=</span><span class="dv">12</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">'x'</span>)</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">'f(x)'</span>)</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    ax.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">5</span>].axis(<span class="st">'off'</span>)</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">'Activation Functions Comparison'</span>, fontsize<span class="op">=</span><span class="dv">16</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="module3_notes_files/figure-html/cell-2-output-1.png" width="1430" height="757" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="loss-functions" class="level1">
+<h1>Loss Functions</h1>
+<section id="regression-loss-functions" class="level2">
+<h2 class="anchored" data-anchor-id="regression-loss-functions">Regression Loss Functions</h2>
+<section id="mean-squared-error-mse" class="level3">
+<h3 class="anchored" data-anchor-id="mean-squared-error-mse">Mean Squared Error (MSE)</h3>
+<p><span class="math display">\[L = \frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{y}_i)^2\]</span></p>
+</section>
+<section id="mean-absolute-error-mae" class="level3">
+<h3 class="anchored" data-anchor-id="mean-absolute-error-mae">Mean Absolute Error (MAE)</h3>
+<p><span class="math display">\[L = \frac{1}{n}\sum_{i=1}^{n}|y_i - \hat{y}_i|\]</span></p>
+</section>
+</section>
+<section id="classification-loss-functions" class="level2">
+<h2 class="anchored" data-anchor-id="classification-loss-functions">Classification Loss Functions</h2>
+<section id="binary-cross-entropy" class="level3">
+<h3 class="anchored" data-anchor-id="binary-cross-entropy">Binary Cross-Entropy</h3>
+<p><span class="math display">\[L = -\frac{1}{n}\sum_{i=1}^{n}\left[y_i \log(\hat{y}_i) + (1-y_i)\log(1-\hat{y}_i)\right]\]</span></p>
+</section>
+<section id="categorical-cross-entropy" class="level3">
+<h3 class="anchored" data-anchor-id="categorical-cross-entropy">Categorical Cross-Entropy</h3>
+<p><span class="math display">\[L = -\frac{1}{n}\sum_{i=1}^{n}\sum_{k=1}^{K} y_{ik} \log(\hat{y}_{ik})\]</span></p>
+</section>
+</section>
+</section>
+<section id="building-neural-networks-code-examples" class="level1">
+<h1>Building Neural Networks: Code Examples</h1>
+<section id="implementing-an-mlp-from-scratch" class="level2">
+<h2 class="anchored" data-anchor-id="implementing-an-mlp-from-scratch">Implementing an MLP from Scratch</h2>
+<div id="e0eb13b9" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Show the Python Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_classification</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> NeuralNetwork:</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Simple multi-layer perceptron from scratch."""</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, layer_sizes, activation<span class="op">=</span><span class="st">'relu'</span>):</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.layer_sizes <span class="op">=</span> layer_sizes</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.num_layers <span class="op">=</span> <span class="bu">len</span>(layer_sizes)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.activation <span class="op">=</span> activation</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># He initialization</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.weights <span class="op">=</span> []</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.biases <span class="op">=</span> []</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.num_layers <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>            w <span class="op">=</span> np.random.randn(layer_sizes[i], layer_sizes[i<span class="op">+</span><span class="dv">1</span>]) <span class="op">*</span> np.sqrt(<span class="fl">2.0</span> <span class="op">/</span> layer_sizes[i])</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>            b <span class="op">=</span> np.zeros((<span class="dv">1</span>, layer_sizes[i<span class="op">+</span><span class="dv">1</span>]))</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.weights.append(w)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.biases.append(b)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.z_values <span class="op">=</span> []</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.a_values <span class="op">=</span> []</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> activation_function(<span class="va">self</span>, x):</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.activation <span class="op">==</span> <span class="st">'relu'</span>:</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> np.maximum(<span class="dv">0</span>, x)</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.activation <span class="op">==</span> <span class="st">'sigmoid'</span>:</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>np.clip(x, <span class="op">-</span><span class="dv">500</span>, <span class="dv">500</span>)))</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> x</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> activation_derivative(<span class="va">self</span>, x):</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.activation <span class="op">==</span> <span class="st">'relu'</span>:</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> (x <span class="op">&gt;</span> <span class="dv">0</span>).astype(<span class="bu">float</span>)</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.activation <span class="op">==</span> <span class="st">'sigmoid'</span>:</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>            s <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>np.clip(x, <span class="op">-</span><span class="dv">500</span>, <span class="dv">500</span>)))</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> s <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> s)</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> np.ones_like(x)</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, X):</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.z_values <span class="op">=</span> []</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.a_values <span class="op">=</span> [X]</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>        current <span class="op">=</span> X</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.num_layers <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>            z <span class="op">=</span> np.dot(current, <span class="va">self</span>.weights[i]) <span class="op">+</span> <span class="va">self</span>.biases[i]</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.z_values.append(z)</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> i <span class="op">==</span> <span class="va">self</span>.num_layers <span class="op">-</span> <span class="dv">2</span>:</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>                current <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> np.exp(<span class="op">-</span>np.clip(z, <span class="op">-</span><span class="dv">500</span>, <span class="dv">500</span>)))  <span class="co"># sigmoid output</span></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>                current <span class="op">=</span> <span class="va">self</span>.activation_function(z)</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.a_values.append(current)</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> current</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> backward(<span class="va">self</span>, X, y, learning_rate<span class="op">=</span><span class="fl">0.01</span>):</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>        m <span class="op">=</span> X.shape[<span class="dv">0</span>]</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>        delta <span class="op">=</span> (<span class="va">self</span>.a_values[<span class="op">-</span><span class="dv">1</span>] <span class="op">-</span> y) <span class="op">*</span> <span class="va">self</span>.a_values[<span class="op">-</span><span class="dv">1</span>] <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> <span class="va">self</span>.a_values[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>        deltas <span class="op">=</span> [delta]</span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> l <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.num_layers <span class="op">-</span> <span class="dv">2</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>            delta <span class="op">=</span> np.dot(deltas[<span class="dv">0</span>], <span class="va">self</span>.weights[l].T) <span class="op">*</span> <span class="va">self</span>.activation_derivative(<span class="va">self</span>.z_values[l<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>            deltas.insert(<span class="dv">0</span>, delta)</span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.num_layers <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>            grad_w <span class="op">=</span> np.dot(<span class="va">self</span>.a_values[i].T, deltas[i]) <span class="op">/</span> m</span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>            grad_b <span class="op">=</span> np.mean(deltas[i], axis<span class="op">=</span><span class="dv">0</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.weights[i] <span class="op">-=</span> learning_rate <span class="op">*</span> grad_w</span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.biases[i] <span class="op">-=</span> learning_rate <span class="op">*</span> grad_b</span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> train(<span class="va">self</span>, X, y, epochs<span class="op">=</span><span class="dv">1000</span>, learning_rate<span class="op">=</span><span class="fl">0.01</span>):</span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>        losses <span class="op">=</span> []</span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(epochs):</span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>            y_pred <span class="op">=</span> <span class="va">self</span>.forward(X)</span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>            loss <span class="op">=</span> <span class="op">-</span>np.mean(y <span class="op">*</span> np.log(y_pred <span class="op">+</span> <span class="fl">1e-15</span>) <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> y) <span class="op">*</span> np.log(<span class="dv">1</span> <span class="op">-</span> y_pred <span class="op">+</span> <span class="fl">1e-15</span>))</span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>            losses.append(loss)</span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.backward(X, y, learning_rate)</span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> epoch <span class="op">%</span> <span class="dv">200</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="ss">f"Epoch </span><span class="sc">{</span>epoch<span class="sc">}</span><span class="ss">: Loss = </span><span class="sc">{</span>loss<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> losses</span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> predict(<span class="va">self</span>, X):</span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (<span class="va">self</span>.forward(X) <span class="op">&gt;=</span> <span class="fl">0.5</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a><span class="co"># Test the network</span></span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> make_classification(n_samples<span class="op">=</span><span class="dv">1000</span>, n_features<span class="op">=</span><span class="dv">20</span>, n_informative<span class="op">=</span><span class="dv">15</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>X_train_scaled <span class="op">=</span> scaler.fit_transform(X_train)</span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>X_test_scaled <span class="op">=</span> scaler.transform(X_test)</span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a>nn <span class="op">=</span> NeuralNetwork(layer_sizes<span class="op">=</span>[<span class="dv">20</span>, <span class="dv">32</span>, <span class="dv">16</span>, <span class="dv">8</span>, <span class="dv">1</span>], activation<span class="op">=</span><span class="st">'relu'</span>)</span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>nn.train(X_train_scaled, y_train.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>), epochs<span class="op">=</span><span class="dv">200</span>, learning_rate<span class="op">=</span><span class="fl">0.01</span>)</span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>train_acc <span class="op">=</span> np.mean(nn.predict(X_train_scaled) <span class="op">==</span> y_train.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>test_acc <span class="op">=</span> np.mean(nn.predict(X_test_scaled) <span class="op">==</span> y_test.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Training Accuracy: </span><span class="sc">{</span>train_acc<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Test Accuracy: </span><span class="sc">{</span>test_acc<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epoch 0: Loss = 1.6718
+Training Accuracy: 0.5587
+Test Accuracy: 0.6050</code></pre>
+</div>
+</div>
+</section>
+<section id="building-a-cnn-with-tensorflowkeras" class="level2">
+<h2 class="anchored" data-anchor-id="building-a-cnn-with-tensorflowkeras">Building a CNN with TensorFlow/Keras</h2>
+<div id="e4ebf643" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Show the Python Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.keras <span class="im">import</span> layers, models</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.keras.datasets <span class="im">import</span> mnist</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.keras.utils <span class="im">import</span> to_categorical</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Load MNIST</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>(x_train, y_train), (x_test, y_test) <span class="op">=</span> mnist.load_data()</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>x_train <span class="op">=</span> x_train.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">28</span>, <span class="dv">28</span>, <span class="dv">1</span>).astype(<span class="st">'float32'</span>) <span class="op">/</span> <span class="fl">255.0</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>x_test <span class="op">=</span> x_test.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">28</span>, <span class="dv">28</span>, <span class="dv">1</span>).astype(<span class="st">'float32'</span>) <span class="op">/</span> <span class="fl">255.0</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>y_train_cat <span class="op">=</span> to_categorical(y_train, <span class="dv">10</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>y_test_cat <span class="op">=</span> to_categorical(y_test, <span class="dv">10</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Build CNN</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> models.Sequential([</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    layers.Conv2D(<span class="dv">32</span>, (<span class="dv">3</span>, <span class="dv">3</span>), activation<span class="op">=</span><span class="st">'relu'</span>, input_shape<span class="op">=</span>(<span class="dv">28</span>, <span class="dv">28</span>, <span class="dv">1</span>)),</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    layers.MaxPooling2D((<span class="dv">2</span>, <span class="dv">2</span>)),</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    layers.Conv2D(<span class="dv">64</span>, (<span class="dv">3</span>, <span class="dv">3</span>), activation<span class="op">=</span><span class="st">'relu'</span>),</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    layers.MaxPooling2D((<span class="dv">2</span>, <span class="dv">2</span>)),</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    layers.Flatten(),</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    layers.Dense(<span class="dv">128</span>, activation<span class="op">=</span><span class="st">'relu'</span>),</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    layers.Dropout(<span class="fl">0.5</span>),</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    layers.Dense(<span class="dv">10</span>, activation<span class="op">=</span><span class="st">'softmax'</span>)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">compile</span>(optimizer<span class="op">=</span><span class="st">'adam'</span>, loss<span class="op">=</span><span class="st">'categorical_crossentropy'</span>, metrics<span class="op">=</span>[<span class="st">'accuracy'</span>])</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>model.summary()</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Train</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> model.fit(x_train, y_train_cat, batch_size<span class="op">=</span><span class="dv">128</span>, epochs<span class="op">=</span><span class="dv">10</span>, validation_split<span class="op">=</span><span class="fl">0.1</span>,verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>test_loss, test_acc <span class="op">=</span> model.evaluate(x_test, y_test_cat, verbose<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Test Accuracy: </span><span class="sc">{</span>test_acc<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "sequential"</span>
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃<span style="font-weight: bold"> Layer (type)                    </span>┃<span style="font-weight: bold"> Output Shape           </span>┃<span style="font-weight: bold">       Param # </span>┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ conv2d (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)                 │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">26</span>, <span style="color: #00af00; text-decoration-color: #00af00">26</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>)     │           <span style="color: #00af00; text-decoration-color: #00af00">320</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ max_pooling2d (<span style="color: #0087ff; text-decoration-color: #0087ff">MaxPooling2D</span>)    │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">13</span>, <span style="color: #00af00; text-decoration-color: #00af00">13</span>, <span style="color: #00af00; text-decoration-color: #00af00">32</span>)     │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv2d_1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv2D</span>)               │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">11</span>, <span style="color: #00af00; text-decoration-color: #00af00">11</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>)     │        <span style="color: #00af00; text-decoration-color: #00af00">18,496</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ max_pooling2d_1 (<span style="color: #0087ff; text-decoration-color: #0087ff">MaxPooling2D</span>)  │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">5</span>, <span style="color: #00af00; text-decoration-color: #00af00">5</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>)       │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ flatten (<span style="color: #0087ff; text-decoration-color: #0087ff">Flatten</span>)               │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">1600</span>)           │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                   │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>)            │       <span style="color: #00af00; text-decoration-color: #00af00">204,928</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout (<span style="color: #0087ff; text-decoration-color: #0087ff">Dropout</span>)               │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>)            │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                 │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">10</span>)             │         <span style="color: #00af00; text-decoration-color: #00af00">1,290</span> │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">225,034</span> (879.04 KB)
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">225,034</span> (879.04 KB)
+</pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">0</span> (0.00 B)
+</pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Test Accuracy: 0.9918</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="advanced-topics-glimpses-into-modern-deep-learning" class="level1">
+<h1>Advanced Topics: Glimpses into Modern Deep Learning</h1>
+<section id="boltzmann-machines-and-energy-based-models" class="level2">
+<h2 class="anchored" data-anchor-id="boltzmann-machines-and-energy-based-models">1. Boltzmann Machines and Energy-Based Models</h2>
+<section id="restricted-boltzmann-machines-rbms" class="level3">
+<h3 class="anchored" data-anchor-id="restricted-boltzmann-machines-rbms">Restricted Boltzmann Machines (RBMs)</h3>
+<p>RBMs are stochastic neural networks with visible and hidden layers:</p>
+<p><strong>Energy Function:</strong> <span class="math display">\[E(v, h) = -\sum_i a_i v_i - \sum_j b_j h_j - \sum_{i,j} v_i h_j w_{ij}\]</span></p>
+<p><strong>Probability:</strong> <span class="math display">\[P(v, h) = \frac{1}{Z} e^{-E(v,h)}\]</span></p>
+</section>
+</section>
+<section id="probabilistic-machine-learning" class="level2">
+<h2 class="anchored" data-anchor-id="probabilistic-machine-learning">2. Probabilistic Machine Learning</h2>
+<section id="variational-autoencoders-vaes" class="level3">
+<h3 class="anchored" data-anchor-id="variational-autoencoders-vaes">Variational Autoencoders (VAEs)</h3>
+<p><strong>Encoder:</strong> <span class="math inline">\(q_\phi(z|x)\)</span> — approximate posterior <strong>Decoder:</strong> <span class="math inline">\(p_\theta(x|z)\)</span> — likelihood</p>
+<p><strong>ELBO:</strong> <span class="math display">\[\mathcal{L} = \mathbb{E}_{q_\phi(z|x)}[\log p_\theta(x|z)] - D_{KL}(q_\phi(z|x) \| p(z))\]</span></p>
+</section>
+</section>
+<section id="attention-mechanisms-and-transformers" class="level2">
+<h2 class="anchored" data-anchor-id="attention-mechanisms-and-transformers">3. Attention Mechanisms and Transformers</h2>
+<section id="self-attention" class="level3">
+<h3 class="anchored" data-anchor-id="self-attention">Self-Attention</h3>
+<p><span class="math display">\[\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V\]</span></p>
+</section>
+<section id="multi-head-attention" class="level3">
+<h3 class="anchored" data-anchor-id="multi-head-attention">Multi-Head Attention</h3>
+<p><span class="math display">\[\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \ldots, \text{head}_h)W^O\]</span></p>
+<p>The Transformer architecture consists of multi-head self-attention, feed-forward networks, layer normalization, and positional encodings.</p>
+</section>
+</section>
+<section id="generative-models" class="level2">
+<h2 class="anchored" data-anchor-id="generative-models">4. Generative Models</h2>
+<section id="gans" class="level3">
+<h3 class="anchored" data-anchor-id="gans">GANs</h3>
+<p><span class="math display">\[\min_G \max_D V(D, G) = \mathbb{E}_{x \sim p_{data}}[\log D(x)] + \mathbb{E}_{z \sim p_z}[\log(1 - D(G(z)))]\]</span></p>
+</section>
+<section id="diffusion-models" class="level3">
+<h3 class="anchored" data-anchor-id="diffusion-models">Diffusion Models</h3>
+<p>Forward process adds noise; reverse process learns to denoise. Powers DALL-E 2, Stable Diffusion, Midjourney.</p>
+</section>
+</section>
+</section>
+<section id="practical-guidelines" class="level1">
+<h1>Practical Guidelines</h1>
+<section id="hyperparameter-tuning" class="level2">
+<h2 class="anchored" data-anchor-id="hyperparameter-tuning">Hyperparameter Tuning</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Hyperparameter</th>
+<th>Typical Range</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Learning Rate</td>
+<td>1e-5 to 1e-1</td>
+</tr>
+<tr class="even">
+<td>Batch Size</td>
+<td>16 to 512</td>
+</tr>
+<tr class="odd">
+<td>Hidden Units</td>
+<td>32 to 4096</td>
+</tr>
+<tr class="even">
+<td>Dropout Rate</td>
+<td>0.1 to 0.5</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="common-pitfalls" class="level2">
+<h2 class="anchored" data-anchor-id="common-pitfalls">Common Pitfalls</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Problem</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Loss not decreasing</td>
+<td>Adjust LR, check gradients</td>
+</tr>
+<tr class="even">
+<td>Overfitting</td>
+<td>Add regularization, more data</td>
+</tr>
+<tr class="odd">
+<td>Vanishing gradients</td>
+<td>Use ReLU, batch norm, residual connections</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="summary-and-key-takeaways" class="level1">
+<h1>Summary and Key Takeaways</h1>
+<ol type="1">
+<li><strong>Neural Networks</strong> are universal function approximators learning hierarchical representations</li>
+<li><strong>Backpropagation</strong> efficiently computes gradients using the chain rule</li>
+<li><strong>Activation Functions</strong> introduce non-linearity for complex pattern learning</li>
+<li><strong>Optimization</strong> uses gradient-based methods (Adam is the default choice)</li>
+<li><strong>Regularization</strong> (dropout, batch norm) prevents overfitting</li>
+</ol>
+<section id="from-classical-ml-to-deep-learning" class="level2">
+<h2 class="anchored" data-anchor-id="from-classical-ml-to-deep-learning">From Classical ML to Deep Learning</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Aspect</th>
+<th>Classical ML</th>
+<th>Deep Learning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Features</td>
+<td>Hand-engineered</td>
+<td>Learned automatically</td>
+</tr>
+<tr class="even">
+<td>Data Needs</td>
+<td>Small to medium</td>
+<td>Large</td>
+</tr>
+<tr class="odd">
+<td>Best For</td>
+<td>Tabular data</td>
+<td>Images, text, speech</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="additional-reading" class="level1">
+<h1>Additional Reading</h1>
+<section id="essential-books" class="level2">
+<h2 class="anchored" data-anchor-id="essential-books">Essential Books</h2>
+<ol type="1">
+<li><span class="citation" data-cites="goodfellow2016deep"><a href="#ref-goodfellow2016deep" role="doc-biblioref">[1]</a></span> — The definitive deep learning textbook</li>
+<li><span class="citation" data-cites="bishop2006pattern"><a href="#ref-bishop2006pattern" role="doc-biblioref">[4]</a></span> — Pattern recognition foundations</li>
+<li><span class="citation" data-cites="murphy2012machine"><a href="#ref-murphy2012machine" role="doc-biblioref">[5]</a></span> — Probabilistic perspective</li>
+</ol>
+</section>
+<section id="online-courses" class="level2">
+<h2 class="anchored" data-anchor-id="online-courses">Online Courses</h2>
+<ol type="1">
+<li>Deep Learning Specialization (Andrew Ng, Coursera)</li>
+<li>Fast.ai — Practical deep learning</li>
+<li>CS231n — CNNs for Vision (Stanford)</li>
+</ol>
+</section>
+<section id="key-papers" class="level2">
+<h2 class="anchored" data-anchor-id="key-papers">Key Papers</h2>
+<ol type="1">
+<li><span class="citation" data-cites="rumelhart1986learning"><a href="#ref-rumelhart1986learning" role="doc-biblioref">[2]</a></span> — Backpropagation</li>
+<li><span class="citation" data-cites="kingma2014adam"><a href="#ref-kingma2014adam" role="doc-biblioref">[3]</a></span> — Adam optimizer</li>
+<li>He et al., “Deep Residual Learning” (2015)</li>
+<li>Vaswani et al., “Attention is All You Need” (2017)</li>
+</ol>
+</section>
+<section id="software-libraries" class="level2">
+<h2 class="anchored" data-anchor-id="software-libraries">Software Libraries</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Library</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>TensorFlow/Keras</td>
+<td>General deep learning</td>
+</tr>
+<tr class="even">
+<td>PyTorch</td>
+<td>Research and production</td>
+</tr>
+<tr class="odd">
+<td>Hugging Face</td>
+<td>NLP models</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="exercises" class="level1">
+<h1>Exercises</h1>
+<section id="conceptual-questions" class="level2">
+<h2 class="anchored" data-anchor-id="conceptual-questions">Conceptual Questions</h2>
+<ol type="1">
+<li>Why is non-linearity essential in neural networks?</li>
+<li>Derive backpropagation for a network with one hidden layer.</li>
+<li>Compare batch, stochastic, and mini-batch gradient descent.</li>
+<li>Explain the vanishing gradient problem and solutions.</li>
+</ol>
+</section>
+<section id="programming-exercises" class="level2">
+<h2 class="anchored" data-anchor-id="programming-exercises">Programming Exercises</h2>
+<ol type="1">
+<li>Implement a neural network from scratch to solve XOR.</li>
+<li>Compare activation functions on the same task.</li>
+<li>Build a CNN for CIFAR-10 achieving &gt;70% accuracy.</li>
+<li>Implement batch normalization from scratch.</li>
+</ol>
+</section>
+<section id="mini-projects" class="level2">
+<h2 class="anchored" data-anchor-id="mini-projects">Mini-Projects</h2>
+<ol type="1">
+<li>Image classifier for a custom dataset</li>
+<li>Text sentiment analyzer</li>
+<li>Neural style transfer implementation</li>
+<li>Anomaly detection with autoencoders</li>
+</ol>
+</section>
+</section>
+<section id="references" class="level1">
+
+
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-goodfellow2016deep" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">I. Goodfellow, Y. Bengio, and A. Courville, <em>Deep learning</em>. MIT Press, 2016. Available: <a href="https://www.deeplearningbook.org">https://www.deeplearningbook.org</a></div>
+</div>
+<div id="ref-rumelhart1986learning" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">D. E. Rumelhart, G. E. Hinton, and R. J. Williams, <span>“Learning representations by back-propagating errors,”</span> <em>Nature</em>, vol. 323, no. 6088, pp. 533–536, 1986.</div>
+</div>
+<div id="ref-kingma2014adam" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">D. P. Kingma and J. Ba, <span>“Adam: A method for stochastic optimization,”</span> <em>arXiv preprint arXiv:1412.6980</em>, 2014.</div>
+</div>
+<div id="ref-bishop2006pattern" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">C. M. Bishop, <em>Pattern recognition and machine learning</em>. in Information science and statistics. Springer, 2006.</div>
+</div>
+<div id="ref-murphy2012machine" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">K. P. Murphy, <em>Machine learning: A probabilistic perspective</em>. in Adaptive computation and machine learning. MIT Press, 2012.</div>
+</div>
+<div id="ref-vaswani2017attention" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">A. Vaswani <em>et al.</em>, <span>“Attention is all you need,”</span> <em>Advances in Neural Information Processing Systems</em>, vol. 30, 2017.</div>
+</div>
+<div id="ref-brown2020language" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">T. Brown <em>et al.</em>, <span>“Language models are few-shot learners,”</span> <em>Advances in Neural Information Processing Systems</em>, vol. 33, pp. 1877–1901, 2020.</div>
+</div>
+</div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div>CC-BY-NC-SA 4.0</div></div></section><section class="quarto-appendix-contents" id="quarto-copyright"><h2 class="anchored quarto-appendix-heading">Copyright</h2><div class="quarto-appendix-contents"><div>© 2026 Rajiv Gandhi Institute of Technology, Kottayam</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/sijuswamyresearch\.github\.io\/rit-ai-course");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Rajiv Gandhi Institute of Technology, Kottayam</p>
+</div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="https://github.com/sijuswamyresearch/rit-ai-course">
+<p>GitHub</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../sijuswamy@gmail.com">
+<p>Contact</p>
+</a>
+  </li>  
+</ul>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sijuswamyresearch/rit-ai-course/issues" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/rit_kottayam">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/sijuswamyresearch">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

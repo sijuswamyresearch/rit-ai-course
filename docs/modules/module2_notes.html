@@ -7,8 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Siju Swamy">
+<meta name="keywords" content="machine learning, artificial intelligence, deep learning, natural language processing, transformers, neural networks, python, data science, AI course, RIT Kottayam, engineering education, OBE curriculum">
+<meta name="description" content="A comprehensive 20-hour intensive course on Applied AI and Machine Learning designed for engineering students from all disciplines. Covers mathematical foundations, classical ML, deep learning, NLP with transformers, and deployment with Streamlit. Includes hands-on projects and capstone implementation.">
 
-<title>Module 2: Deep Dive into Classical Machine Learning – Foundation of Applied AI &amp; ML</title>
+<title>Module 2: Deep Dive into Classical Machine Learning – Foundation of Applied AI &amp; Machine Learning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -56,7 +58,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -75,10 +97,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f8e840f94dfca9d6b5a9540ce614d846.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-1cf875210b1cc0385a316f3732c8c7cf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
-  "copy-button": false,
+  "copy-button": true,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
@@ -88,7 +110,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "/",
     "s"
   ],
-  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -134,18 +155,31 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="Foundation of Applied AI &amp; Machine Learning">
+<meta property="og:description" content="Comprehensive AI/ML course for engineering students">
+<meta property="og:image" content="https://sijuswamyresearch.github.io/rit-ai-course/modules/images/course-banner.png">
+<meta property="og:site_name" content="Foundation of Applied AI &amp; Machine Learning">
+<meta name="twitter:title" content="Module 2: Deep Dive into Classical Machine Learning – Foundation of Applied AI &amp; Machine Learning">
+<meta name="twitter:description" content="A comprehensive 20-hour intensive course on Applied AI and Machine Learning designed for engineering students from all disciplines. Covers mathematical foundations, classical ML, deep learning, NLP with transformers, and deployment with Streamlit. Includes hands-on projects and capstone implementation.">
+<meta name="twitter:image" content="https://sijuswamyresearch.github.io/rit-ai-course/modules/module2_notes_files/figure-html/cell-2-output-1.png">
+<meta name="twitter:image-height" content="1046">
+<meta name="twitter:image-width" content="1615">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/rit-logo.png" alt="RIT Kottayam Logo" class="navbar-logo">
+    </a>
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Foundation of Applied AI &amp; ML</span>
+    <span class="navbar-title">Foundation of Applied AI &amp; Machine Learning</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -159,42 +193,70 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../syllabus.html"> 
+    <a class="nav-link active" href="../syllabus.html" aria-current="page"> 
 <span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-module-1-math-foundations" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Module 1: Math Foundations</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-modules" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Modules</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-module-1-math-foundations">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-modules">    
         <li>
     <a class="dropdown-item" href="../modules/module1_math.html">
- <span class="dropdown-text">Lecture Slides</span></a>
+ <span class="dropdown-text">Module 1: Mathematical Foundations</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../modules/module1_notes.html">
- <span class="dropdown-text">Detailed Study Notes</span></a>
+    <a class="dropdown-item" href="../modules/module2_ml.html">
+ <span class="dropdown-text">Module 2: Classical Machine Learning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../modules/module3_dl.html">
+ <span class="dropdown-text">Module 3: Deep Learning</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../modules/module4_nlp.html">
+ <span class="dropdown-text">Module 4: NLP &amp; Generative AI</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../modules/module5_deploy.html">
+ <span class="dropdown-text">Module 5: Capstone &amp; Deployment</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-module-2-classical-ml" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Module 2: Classical ML</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Resources</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-module-2-classical-ml">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-resources">    
         <li>
-    <a class="dropdown-item" href="../modules/module2_ml.html">
- <span class="dropdown-text">Lecture Slides</span></a>
+    <a class="dropdown-item" href="../modules/references.bib">
+ <span class="dropdown-text">References</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../modules/module2_notes.html">
- <span class="dropdown-text">Detailed Study Notes</span></a>
+    <a class="dropdown-item" href="../resources/reading-list.html">
+ <span class="dropdown-text">Additional Reading</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../resources/tools.html">
+ <span class="dropdown-text">Tools &amp; Software</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../assessments/project_guide.qmd"> 
-<span class="menu-text">Micro-Projects</span></a>
+    <a class="nav-link" href="../assessments/project_guide.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/sijuswamyresearch/rit-ai-course"> <i class="bi bi-github" role="img" aria-label="GitHub Repository">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html"> <i class="bi bi-book" role="img">
+</i> 
+<span class="menu-text">Syllabus</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -202,13 +264,156 @@ window.Quarto = {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/module2_ml.html">🤖 Module 2: Classical ML</a></li><li class="breadcrumb-item"><a href="../modules/module2_notes.html">Detailed Notes</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true">
+ <span class="menu-text">📚 Module 1: Math Foundations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module1_math.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture Slides</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module1_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Detailed Notes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true">
+ <span class="menu-text">🤖 Module 2: Classical ML</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module2_ml.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture Slides</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module2_notes.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Detailed Notes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true">
+ <span class="menu-text">🧠 Module 3: Deep Learning</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module3_dl.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture Slides</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module3_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Detailed Notes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true">
+ <span class="menu-text">💬 Module 4: NLP &amp; GenAI</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module4_nlp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture Slides</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module4_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Detailed Notes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true">
+ <span class="menu-text">🚀 Module 5: Deployment</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module5_deploy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture Slides</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../modules/module5_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Detailed Notes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+ <span class="menu-text">separator</span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../syllabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">📋 Syllabus</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assessments/project_guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">🏆 Projects</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+    <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
@@ -303,17 +508,26 @@ window.Quarto = {
   <li><a href="#best-practices" id="toc-best-practices" class="nav-link" data-scroll-target="#best-practices">Best Practices</a></li>
   </ul></li>
   </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/sijuswamyresearch/rit-ai-course/issues" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
 </nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../modules/module2_ml.html">🤖 Module 2: Classical ML</a></li><li class="breadcrumb-item"><a href="../modules/module2_notes.html">Detailed Notes</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Module 2: Deep Dive into Classical Machine Learning</h1>
 <p class="subtitle lead">The Mechanics, Mathematics, and Implementation of ML Algorithms</p>
 </div>
 
+<div>
+  <div class="description">
+    <p>A comprehensive 20-hour intensive course on Applied AI and Machine Learning designed for engineering students from all disciplines. Covers mathematical foundations, classical ML, deep learning, NLP with transformers, and deployment with Streamlit. Includes hands-on projects and capstone implementation.</p>
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -330,6 +544,12 @@ window.Quarto = {
   </div>
   
 
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>machine learning, artificial intelligence, deep learning, natural language processing, transformers, neural networks, python, data science, AI course, RIT Kottayam, engineering education, OBE curriculum</p>
+  </div>
+</div>
 
 </header>
 
@@ -399,7 +619,7 @@ window.Quarto = {
 <p>Solution: <span class="math inline">\(\beta^* = (X^TX + \lambda I)^{-1}X^Ty\)</span></p>
 <p><strong>Lasso Regression (L1 Regularization):</strong> <span class="math display">\[\beta^* = \arg\min_{\beta} \left\{ \|y - X\beta\|^2_2 + \lambda \|\beta\|_1 \right\}\]</span></p>
 <p>Lasso has the desirable property of inducing <strong>sparsity</strong> — it can shrink coefficients exactly to zero, performing automatic feature selection.</p>
-<div id="ad6e2cd6" class="cell" data-execution_count="1">
+<div id="83fd0577" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show the Python Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -470,7 +690,7 @@ Intercept: 9.38</code></pre>
 <p>When relationships are non-linear, we can transform features using polynomial basis functions:</p>
 <p><span class="math display">\[\hat{y} = \beta_0 + \beta_1 x + \beta_2 x^2 + \beta_3 x^3 + \cdots + \beta_p x^p\]</span></p>
 <p>This remains a <strong>linear model</strong> because it’s linear in the parameters <span class="math inline">\(\beta\)</span>.</p>
-<div id="a23b8726" class="cell" data-execution_count="2">
+<div id="b532bab3" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the Python Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -559,7 +779,7 @@ Intercept: 9.38</code></pre>
 <p>The gradient of the cross-entropy loss:</p>
 <p><span class="math display">\[\frac{\partial \mathcal{L}}{\partial \beta} = \frac{1}{n} X^T (\hat{y} - y)\]</span></p>
 <p>Update rule: <span class="math display">\[\beta := \beta - \alpha \frac{1}{n} X^T (\hat{y} - y)\]</span></p>
-<div id="38bc0ff6" class="cell" data-execution_count="3">
+<div id="0230e213" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the Python Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -658,7 +878,7 @@ Accuracy: 0.8400</code></pre>
 <li><strong>Pre-pruning:</strong> Limit tree depth, minimum samples per leaf, or maximum leaf nodes.</li>
 <li><strong>Post-pruning:</strong> Grow full tree, then remove branches that don’t improve validation performance.</li>
 </ol>
-<div id="ef2f53ad" class="cell" data-execution_count="4">
+<div id="680ef6b2" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Show the Python Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -750,7 +970,7 @@ Accuracy: 0.8400</code></pre>
 <li><p><strong>Handling missing values</strong> automatically</p></li>
 <li><p><strong>Parallel processing</strong> for tree construction</p></li>
 </ol>
-<div id="e5153d61" class="cell" data-execution_count="5">
+<div id="ca9ca695" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the Python Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -846,7 +1066,7 @@ Accuracy: 0.8400</code></pre>
 <section id="choosing-k-the-elbow-method" class="level3">
 <h3 class="anchored" data-anchor-id="choosing-k-the-elbow-method">Choosing K: The Elbow Method</h3>
 <p>Plot WCSS vs.&nbsp;K and look for the “elbow” point where marginal gain decreases.</p>
-<div id="f6999e13" class="cell" data-execution_count="6">
+<div id="9ac98707" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Show the Python Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -939,7 +1159,7 @@ Accuracy: 0.8400</code></pre>
 <section id="explained-variance-ratio" class="level3">
 <h3 class="anchored" data-anchor-id="explained-variance-ratio">Explained Variance Ratio</h3>
 <p><span class="math display">\[\text{Explained Variance Ratio}_k = \frac{\lambda_k}{\sum_{j=1}^{p} \lambda_j}\]</span></p>
-<div id="a726c671" class="cell" data-execution_count="7">
+<div id="ee2c4cef" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Show the Python Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1039,7 +1259,7 @@ Cumulative explained variance: [0.72962445 0.95813207 0.99482129 1.        ]</co
 <li><strong>Learning rate:</strong> Step size for gradient descent</li>
 <li><strong>Early exaggeration:</strong> Scales probabilities in early iterations to form tighter clusters</li>
 </ul>
-<div id="bbe716c3" class="cell" data-execution_count="8">
+<div id="72027892" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Show the Python Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1197,7 +1417,7 @@ Cumulative explained variance: [0.72962445 0.95813207 0.99482129 1.        ]</co
 </tr>
 </tbody>
 </table>
-<div id="1a41b010" class="cell" data-execution_count="9">
+<div id="ee360806" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Show the Python Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1441,10 +1661,24 @@ weighted avg       1.00      1.00      1.00      1000
 </ol>
 
 
+
 </section>
 </section>
 
-</main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-goodfellow2016deep" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">I. Goodfellow, Y. Bengio, and A. Courville, <em>Deep learning</em>. MIT Press, 2016. Available: <a href="https://www.deeplearningbook.org">https://www.deeplearningbook.org</a></div>
+</div>
+<div id="ref-kingma2014adam" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">D. P. Kingma and J. Ba, <span>“Adam: A method for stochastic optimization,”</span> <em>arXiv preprint arXiv:1412.6980</em>, 2014.</div>
+</div>
+<div id="ref-vaswani2017attention" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">A. Vaswani <em>et al.</em>, <span>“Attention is all you need,”</span> <em>Advances in Neural Information Processing Systems</em>, vol. 30, 2017.</div>
+</div>
+<div id="ref-brown2020language" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">T. Brown <em>et al.</em>, <span>“Language models are few-shot learners,”</span> <em>Advances in Neural Information Processing Systems</em>, vol. 33, pp. 1877–1901, 2020.</div>
+</div>
+</div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div>CC-BY-NC-SA 4.0</div></div></section><section class="quarto-appendix-contents" id="quarto-copyright"><h2 class="anchored quarto-appendix-heading">Copyright</h2><div class="quarto-appendix-contents"><div>© 2026 Rajiv Gandhi Institute of Technology, Kottayam</div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1517,7 +1751,7 @@ weighted avg       1.00      1.00      1.00      1000
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/<your-github-username>\.github\.io\/rit-ai-course");
+        var filterRegex = new RegExp("https:\/\/sijuswamyresearch\.github\.io\/rit-ai-course");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -1531,6 +1765,13 @@ weighted avg       1.00      1.00      1.00      1000
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -1845,6 +2086,43 @@ weighted avg       1.00      1.00      1.00      1000
   });
   </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Rajiv Gandhi Institute of Technology, Kottayam</p>
+</div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="https://github.com/sijuswamyresearch/rit-ai-course">
+<p>GitHub</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../sijuswamy@gmail.com">
+<p>Contact</p>
+</a>
+  </li>  
+</ul>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sijuswamyresearch/rit-ai-course/issues" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/rit_kottayam">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/sijuswamyresearch">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
 
 
 

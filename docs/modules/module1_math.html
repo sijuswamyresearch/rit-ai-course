@@ -10,7 +10,8 @@
   <meta name="generator" content="quarto-1.7.31">
 
   <meta name="author" content="Course Instructor">
-  <title>Foundation of Applied AI &amp; ML – Module 1: Mathematical Foundations for AI</title>
+  <meta name="keywords" content="machine learning, artificial intelligence, deep learning, natural language processing, transformers, neural networks, python, data science, AI course, RIT Kottayam, engineering education, OBE curriculum">
+  <title>Foundation of Applied AI &amp; Machine Learning – Module 1: Mathematical Foundations for AI</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -94,7 +95,27 @@
     code span.va { color: #111111; } /* Variable */
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-2c1b5f745a11cfad616ebade4a4a7d24.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -190,6 +211,14 @@
       margin-right: 0; 
     }
   </style>
+<meta property="og:title" content="Foundation of Applied AI &amp; Machine Learning">
+<meta property="og:description" content="Comprehensive AI/ML course for engineering students">
+<meta property="og:image" content="https://sijuswamyresearch.github.io/rit-ai-course/modules/images/course-banner.png">
+<meta property="og:site_name" content="Foundation of Applied AI &amp; Machine Learning">
+<meta name="twitter:title" content="Module 1: Mathematical Foundations for AI – Foundation of Applied AI &amp; Machine Learning">
+<meta name="twitter:description" content="A comprehensive 20-hour intensive course on Applied AI and Machine Learning designed for engineering students from all disciplines. Covers mathematical foundations, classical ML, deep learning, NLP with transformers, and deployment with Streamlit. Includes hands-on projects and capstone implementation.">
+<meta name="twitter:image" content="https://sijuswamyresearch.github.io/rit-ai-course/modules/images/course-banner.png">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -313,7 +342,7 @@ Course Instructor
 <h1>Part 4: Hands-On Component</h1>
 
 </section>
-<section id="coding-gradient-descent-from-scratch" class="slide level2">
+<section id="coding-gradient-descent-from-scratch" class="slide level2 smaller scrollable">
 <h2>Coding Gradient Descent from Scratch</h2>
 <p>Let’s minimize a simple cost function <span class="math inline">\(J(\theta) = \theta^2 + 5\)</span> using Python.</p>
 <div id="cell-fig-gd-implementation" class="cell" data-execution_count="1">
@@ -368,6 +397,20 @@ Figure&nbsp;1: Visualizing the optimization path of Gradient Descent
 </div>
 
 
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-goodfellow2016deep" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">I. Goodfellow, Y. Bengio, and A. Courville, <em>Deep learning</em>. MIT Press, 2016. Available: <a href="https://www.deeplearningbook.org">https://www.deeplearningbook.org</a></div>
+</div>
+<div id="ref-kingma2014adam" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">D. P. Kingma and J. Ba, <span>“Adam: A method for stochastic optimization,”</span> <em>arXiv preprint arXiv:1412.6980</em>, 2014.</div>
+</div>
+<div id="ref-vaswani2017attention" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">A. Vaswani <em>et al.</em>, <span>“Attention is all you need,”</span> <em>Advances in Neural Information Processing Systems</em>, vol. 30, 2017.</div>
+</div>
+<div id="ref-brown2020language" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">T. Brown <em>et al.</em>, <span>“Language models are few-shot learners,”</span> <em>Advances in Neural Information Processing Systems</em>, vol. 33, pp. 1877–1901, 2020.</div>
+</div>
+</div>
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
@@ -430,7 +473,7 @@ Figure&nbsp;1: Visualizing the optimization path of Gradient Descent
         slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
-        showSlideNumber: 'all',
+        showSlideNumber: 'print',
 
         // Add the current slide number to the URL hash so that reloading the
         // page/copying the URL will return you to the same slide
@@ -529,7 +572,7 @@ Figure&nbsp;1: Visualizing the optimization path of Gradient Descent
         hideCursorTime: 5000,
 
         // Opens links in an iframe preview overlay
-        previewLinks: false,
+        previewLinks: true,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
         transition: 'fade',
@@ -552,12 +595,17 @@ Figure&nbsp;1: Visualizing the optimization path of Gradient Descent
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1050,
+        width: 1280,
 
-        height: 700,
+        height: 720,
 
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
+
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.2,
+
+        maxScale: 2,
 
         math: {
           mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
@@ -655,7 +703,7 @@ Figure&nbsp;1: Visualizing the optimization path of Gradient Descent
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp("https:\/\/<your-github-username>\.github\.io\/rit-ai-course");
+            var filterRegex = new RegExp("https:\/\/sijuswamyresearch\.github\.io\/rit-ai-course");
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }

@@ -1,0 +1,146 @@
+---
+# Course Metadata for SEO and Social Media
+
+# Basic Information
+title: "Foundation of Applied AI & Machine Learning"
+subtitle: "20-Hour Intensive Curriculum - RIT Kottayam"
+author: "Siju Swamy"
+instructor: "Siju Swamy"
+institution: "Rajiv Gandhi Institute of Technology, Kottayam"
+department: "Computer Science and Engineering"
+
+# Course Details
+course-code: "AIT4XX"
+credits: "3"
+duration: "20 contact hours"
+level: "Undergraduate (Final Semester)"
+prerequisites: "Basic programming proficiency, introductory engineering mathematics"
+
+# Description for SEO
+description: |
+  A comprehensive 20-hour intensive course on Applied AI and Machine Learning 
+  designed for engineering students from all disciplines. Covers mathematical 
+  foundations, classical ML, deep learning, NLP with transformers, and deployment 
+  with Streamlit. Includes hands-on projects and capstone implementation.
+
+# Keywords for SEO
+keywords:
+  - machine learning
+  - artificial intelligence
+  - deep learning
+  - natural language processing
+  - transformers
+  - neural networks
+  - python
+  - data science
+  - AI course
+  - RIT Kottayam
+  - engineering education
+  - OBE curriculum
+
+# Social Media
+twitter:
+  card: summary_large_image
+  site: "@rit_kottayam"
+  creator: "@sijuswamy"
+
+open-graph:
+  title: "Foundation of Applied AI & Machine Learning"
+  type: website
+  url: "https://sijuswamyresearch.github.io/rit-ai-course"
+  image: "images/course-banner.png"
+  description: "Comprehensive AI/ML course for engineering students"
+  site_name: "RIT AI Course"
+
+# License
+license: "CC-BY-NC-SA 4.0"
+copyright: "© 2026 Rajiv Gandhi Institute of Technology, Kottayam"
+
+# Repository Information
+repo:
+  url: "https://github.com/sijuswamyresearch/rit-ai-course"
+  branch: "main"
+  issues: "https://github.com/sijuswamyresearch/rit-ai-course/issues"
+
+# Contact Information
+contact:
+  email: "sijuswamy@gmail.com"
+  website: "https://sijuswamyresearch.github.io"
+
+# Course Learning Outcomes
+course_outcomes:
+  - CO1: "Apply foundational principles of linear algebra, calculus, and probability to formulate machine learning models and optimization strategies."
+  - CO2: "Implement and evaluate supervised and unsupervised classical machine learning algorithms using standard Python frameworks and structured datasets."
+  - CO3: "Develop deep learning architectures, analyzing the performance impact of activation functions and loss configurations."
+  - CO4: "Design and deploy end-to-end generative AI pipelines, including Retrieval-Augmented Generation (RAG) systems, utilizing modern deployment frameworks."
+
+# Module Information
+modules:
+  - number: 1
+    title: "Mathematical Foundations for AI"
+    hours: 4
+    topics:
+      - Linear Algebra
+      - Calculus
+      - Optimization
+      - Probability
+
+  - number: 2
+    title: "Classical Machine Learning & Data Workflows"
+    hours: 6
+    topics:
+      - Data Lifecycle
+      - Supervised Learning
+      - Unsupervised Learning
+      - Dimensionality Reduction
+
+  - number: 3
+    title: "Deep Learning Architectures"
+    hours: 4
+    topics:
+      - Neural Networks
+      - Activation Functions
+      - Loss Functions
+      - Training Dynamics
+
+  - number: 4
+    title: "Natural Language Processing & Generative AI"
+    hours: 4
+    topics:
+      - Transformers
+      - Large Language Models
+      - Prompt Engineering
+      - RAG Systems
+
+  - number: 5
+    title: "Capstone Integration & Deployment"
+    hours: 2
+    topics:
+      - ModelOps
+      - Streamlit
+      - Deployment
+      - Portfolio Building
+
+# Assessment Information
+assessment:
+  continuous: 30
+  practical: 30
+  capstone: 40
+
+# Technical Requirements
+requirements:
+  - "Python 3.8+"
+  - "Jupyter Notebook / Google Colab"
+  - "Git and GitHub"
+  - "Basic understanding of programming"
+
+# Recommended Resources
+resources:
+  - "Deep Learning by Goodfellow, Bengio, and Courville"
+  - "Hands-On Machine Learning by Aurélien Géron"
+  - "Pattern Recognition and Machine Learning by Christopher Bishop"
+
+# Version Information
+version: "1.0.0"
+last-updated: "2026-05-26"
+...

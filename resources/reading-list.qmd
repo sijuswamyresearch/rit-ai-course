@@ -1,0 +1,305 @@
+---
+title: "Additional Reading & Learning Resources"
+subtitle: "Curated resources for deepening your AI & ML knowledge"
+format: html
+---
+
+# Essential Books
+
+## Foundational Textbooks
+
+1. **"Deep Learning"** by Ian Goodfellow, Yoshua Bengio, and Aaron Courville
+   - The definitive textbook on deep learning
+   - Available free online at [deeplearningbook.org](https://www.deeplearningbook.org)
+   - Covers mathematical foundations, modern practices, and research perspectives
+
+2. **"Pattern Recognition and Machine Learning"** by Christopher M. Bishop
+   - Classic text on probabilistic approaches to ML
+   - Excellent for understanding Bayesian methods
+   - Published by Springer, 2006
+
+3. **"Machine Learning: A Probabilistic Perspective"** by Kevin P. Murphy
+   - Comprehensive coverage of ML from probabilistic viewpoint
+   - Includes MATLAB code examples
+   - MIT Press, 2012
+
+## Practical Guides
+
+4. **"Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow"** by Aurélien Géron
+   - Best practical guide for implementing ML in Python
+   - Covers both classical ML and deep learning
+   - O'Reilly, 3rd Edition (2022)
+
+5. **"Introduction to Machine Learning with Python"** by Andreas Müller and Sarah Guido
+   - Beginner-friendly introduction
+   - Focus on scikit-learn
+   - O'Reilly, 2016
+
+## Mathematics for AI
+
+6. **"Introduction to Linear Algebra"** by Gilbert Strang
+   - Excellent for understanding the linear algebra behind ML
+   - MIT OpenCourseWare available
+   - Wellesley-Cambridge Press, 5th Edition (2016)
+
+7. **"Mathematics for Machine Learning"** by Marc Peter Deisenroth, A. Aldo Faisal, and Cheng Soon Ong
+   - Specifically designed for ML practitioners
+   - Available free online at [mml-book.com](https://mml-book.com)
+   - Cambridge University Press, 2020
+
+---
+
+# Online Courses
+
+## University Courses
+
+1. **CS229: Machine Learning** (Stanford)
+   - Andrew Ng's legendary course
+   - Available on [YouTube](https://www.youtube.com/playlist?list=PLAHHBoXZs4mU4s5GmU8U7mJ2a0Gq3X9xj)
+   - Mathematical and theoretical focus
+
+2. **CS231n: Convolutional Neural Networks for Visual Recognition** (Stanford)
+   - Best course for computer vision
+   - Available at [cs231n.stanford.edu](http://cs231n.stanford.edu)
+   - Includes programming assignments
+
+3. **CS224n: Natural Language Processing with Deep Learning** (Stanford)
+   - Comprehensive NLP course
+   - Available at [web.stanford.edu/class/cs224n](http://web.stanford.edu/class/cs224n)
+   - Covers transformers, BERT, GPT
+
+## MOOC Platforms
+
+4. **Deep Learning Specialization** (Coursera - DeepLearning.AI)
+   - 5-course specialization by Andrew Ng
+   - Covers neural networks, CNNs, RNNs, transformers
+   - [Link](https://www.coursera.org/specializations/deep-learning)
+
+5. **Machine Learning Specialization** (Coursera - Stanford/DeepLearning.AI)
+   - Updated version of Andrew Ng's original ML course
+   - Uses Python instead of MATLAB
+   - [Link](https://www.coursera.org/specializations/machine-learning-introduction)
+
+6. **Fast.ai Practical Deep Learning for Coders**
+   - Top-down, code-first approach
+   - Free course with excellent community
+   - [Link](https://course.fast.ai)
+
+---
+
+# Research Papers
+
+## Foundational Papers
+
+1. **"Attention Is All You Need"** (Vaswani et al., 2017)
+   - The Transformer paper that revolutionized NLP
+   - [arXiv:1706.03762](https://arxiv.org/abs/1706.03762)
+
+2. **"ImageNet Classification with Deep Convolutional Neural Networks"** (Krizhevsky et al., 2012)
+   - AlexNet - the paper that started the deep learning revolution
+   - [arXiv:1203.5726](https://arxiv.org/abs/1203.5726)
+
+3. **"Deep Residual Learning for Image Recognition"** (He et al., 2015)
+   - ResNet - enabled training of very deep networks
+   - [arXiv:1512.03385](https://arxiv.org/abs/1512.03385)
+
+4. **"Generative Adversarial Nets"** (Goodfellow et al., 2014)
+   - Introduced GANs for generative modeling
+   - [arXiv:1406.2661](https://arxiv.org/abs/1406.2661)
+
+5. **"Adam: A Method for Stochastic Optimization"** (Kingma & Ba, 2014)
+   - The most popular optimizer for deep learning
+   - [arXiv:1412.6980](https://arxiv.org/abs/1412.6980)
+
+## Recent Advances
+
+6. **"Language Models are Few-Shot Learners"** (Brown et al., 2020)
+   - GPT-3 paper demonstrating emergent abilities
+   - [arXiv:2005.14165](https://arxiv.org/abs/2005.14165)
+
+7. **"BERT: Pre-training of Deep Bidirectional Transformers"** (Devlin et al., 2018)
+   - Bidirectional pre-training for NLP
+   - [arXiv:1810.04805](https://arxiv.org/abs/1810.04805)
+
+---
+
+# Blogs and Websites
+
+## Technical Blogs
+
+1. **Distill.pub**
+   - Beautifully designed ML explanations
+   - [distill.pub](https://distill.pub)
+
+2. **Jay Alammar's Blog**
+   - Excellent visual explanations of ML concepts
+   - [jalammar.github.io](https://jalammar.github.io)
+
+3. **Lil'Log**
+   - In-depth technical posts by Lilian Weng (OpenAI)
+   - [lilianweng.github.io](https://lilianweng.github.io)
+
+4. **Towards Data Science (Medium)**
+   - Community-driven ML/AI articles
+   - [towardsdatascience.com](https://towardsdatascience.com)
+
+## News and Updates
+
+5. **The Batch (DeepLearning.AI)**
+   - Weekly AI newsletter by Andrew Ng
+   - [deeplearning.ai/the-batch](https://www.deeplearning.ai/the-batch)
+
+6. **Import AI (Jack Clark)**
+   - Weekly newsletter on AI developments
+   - [importai.substack.com](https://importai.substack.com)
+
+7. **AI Alignment Forum**
+   - Discussions on AI safety and alignment
+   - [alignmentforum.org](https://www.alignmentforum.org)
+
+---
+
+# YouTube Channels
+
+1. **3Blue1Brown**
+   - Beautiful mathematical visualizations
+   - Essential for understanding linear algebra and calculus
+   - [YouTube](https://www.youtube.com/c/3blue1brown)
+
+2. **StatQuest with Josh Starmer**
+   - Clear explanations of statistics and ML algorithms
+   - [YouTube](https://www.youtube.com/c/joshstarmer)
+
+3. **Yannic Kilcher**
+   - Paper explanations and AI research discussions
+   - [YouTube](https://www.youtube.com/c/YannicKilcher)
+
+4. **Two Minute Papers**
+   - Quick summaries of recent AI research
+   - [YouTube](https://www.youtube.com/c/KárolyZsolnai)
+
+5. **Sentdex**
+   - Python programming and ML tutorials
+   - [YouTube](https://www.youtube.com/c/sentdex)
+
+---
+
+# Podcasts
+
+1. **The TWIML AI Podcast**
+   - Interviews with AI researchers and practitioners
+   - [twimlai.com](https://twimlai.com)
+
+2. **Lex Fridman Podcast**
+   - Long-form conversations about AI and beyond
+   - [lexfridman.com/podcast](https://lexfridman.com/podcast)
+
+3. **Practical AI**
+   - Making AI practical and accessible
+   - [practicalai.fm](https://practicalai.fm)
+
+---
+
+# Communities and Forums
+
+1. **r/MachineLearning** (Reddit)
+   - Largest ML community on Reddit
+   - [reddit.com/r/MachineLearning](https://www.reddit.com/r/MachineLearning)
+
+2. **Kaggle Forums**
+   - Active community for data science and ML
+   - [kaggle.com/discuss](https://www.kaggle.com/discuss)
+
+3. **Hugging Face Discord**
+   - NLP and transformers community
+   - [huggingface.co/join/discord](https://huggingface.co/join/discord)
+
+4. **Stack Overflow**
+   - For specific programming questions
+   - [stackoverflow.com](https://stackoverflow.com)
+
+---
+
+# Practice Platforms
+
+1. **Kaggle**
+   - Data science competitions and datasets
+   - [kaggle.com](https://www.kaggle.com)
+
+2. **LeetCode**
+   - Coding interview preparation
+   - [leetcode.com](https://leetcode.com)
+
+3. **Papers with Code**
+   - ML papers with implementations
+   - [paperswithcode.com](https://paperswithcode.com)
+
+4. **Google Colab**
+   - Free GPU for ML experimentation
+   - [colab.research.google.com](https://colab.research.google.com)
+
+---
+
+# Keeping Up with Research
+
+## Preprint Servers
+
+1. **arXiv**
+   - Primary source for AI research preprints
+   - [arxiv.org](https://arxiv.org)
+   - Relevant categories: cs.LG, cs.AI, cs.CL, cs.CV, stat.ML
+
+2. **OpenReview**
+   - Open peer review platform
+   - [openreview.net](https://openreview.net)
+
+## Conference Proceedings
+
+1. **NeurIPS** (Neural Information Processing Systems)
+   - [proceedings.neurips.cc](https://proceedings.neurips.cc)
+
+2. **ICML** (International Conference on Machine Learning)
+   - [proceedings.mlr.press](https://proceedings.mlr.press)
+
+3. **ICLR** (International Conference on Learning Representations)
+   - [openreview.net/group?id=ICLR.cc](https://openreview.net/group?id=ICLR.cc)
+
+---
+
+# Recommended Learning Path
+
+## For Complete Beginners
+
+1. Start with **3Blue1Brown** videos for mathematical intuition
+2. Take **Andrew Ng's ML Specialization** on Coursera
+3. Read **Géron's Hands-On ML** book
+4. Practice on **Kaggle** with beginner competitions
+
+## For Those with Programming Background
+
+1. **Fast.ai** course for practical deep learning
+2. **CS231n** or **CS224n** for specialized topics
+3. Read **Goodfellow's Deep Learning** textbook
+4. Contribute to open-source projects on GitHub
+
+## For Advanced Practitioners
+
+1. Follow **arXiv** daily for new papers
+2. Implement papers from **Papers with Code**
+3. Participate in **Kaggle** competitions
+4. Contribute to research or open-source projects
+
+---
+
+# Final Advice
+
+> "The best way to learn AI is by doing. Read a paper, implement it, break it, fix it, and then build something new."
+
+Remember:
+- **Start simple** and gradually increase complexity
+- **Build projects** that interest you personally
+- **Join communities** to learn from others
+- **Stay curious** and keep experimenting
+- **Share your work** - teaching others reinforces your learning
+
+Happy Learning! 🚀

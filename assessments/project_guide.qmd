@@ -1,0 +1,525 @@
+---
+title: "Capstone Projects & Assessments"
+subtitle: "Apply Your Knowledge: From Concept to Deployment"
+format: html
+---
+
+# Course Assessment Structure
+
+This course follows an **Outcome-Based Education (OBE)** framework with continuous assessment throughout the 20-hour duration.
+
+## Assessment Breakdown
+
+| Component | Weight | Description |
+|-----------|--------|-------------|
+| **Continuous Assessment** | 30% | Quizzes, conceptual checks, module exercises |
+| **Practical Execution** | 30% | Hands-on coding assignments, skeleton notebooks |
+| **Capstone Project** | 40% | End-to-end AI project with deployment |
+
+---
+
+# Module-wise Micro-Projects
+
+## Module 1: Mathematical Foundations
+
+### Exercise 1.1: Gradient Descent Visualization
+**Objective**: Implement gradient descent from scratch and visualize optimization paths.
+
+**Requirements**:
+- Implement gradient descent for a simple quadratic function
+- Plot the optimization path on a contour map
+- Experiment with different learning rates
+
+**Deliverables**:
+- Jupyter notebook with implementation
+- Visualization plots
+- Brief report on observations
+
+### Exercise 1.2: Linear Algebra for ML
+**Objective**: Apply linear algebra concepts to real ML problems.
+
+**Tasks**:
+1. Implement matrix operations without using NumPy
+2. Compute eigenvalues and eigenvectors
+3. Apply SVD for dimensionality reduction
+
+---
+
+## Module 2: Classical Machine Learning
+
+### Exercise 2.1: End-to-End ML Pipeline
+**Objective**: Build a complete ML pipeline from data cleaning to evaluation.
+
+**Dataset**: Choose from:
+- Titanic Survival Prediction (Kaggle)
+- Housing Price Prediction
+- Customer Churn Prediction
+
+**Requirements**:
+- Exploratory Data Analysis (EDA)
+- Feature engineering and selection
+- Train multiple models (Linear Regression, Random Forest, XGBoost)
+- Compare performance metrics
+- Submit predictions to Kaggle (optional)
+
+### Exercise 2.2: Clustering Analysis
+**Objective**: Apply unsupervised learning techniques.
+
+**Tasks**:
+1. Implement K-Means clustering from scratch
+2. Apply hierarchical clustering
+3. Use PCA for visualization
+4. Analyze cluster characteristics
+
+---
+
+## Module 3: Deep Learning
+
+### Exercise 3.1: Neural Network from Scratch
+**Objective**: Build a neural network without high-level frameworks.
+
+**Requirements**:
+- Implement forward and backward propagation
+- Support multiple activation functions (ReLU, Sigmoid, Tanh)
+- Train on a simple dataset (e.g., XOR, circles)
+- Visualize decision boundaries
+
+### Exercise 3.2: CNN for Image Classification
+**Objective**: Build and train a Convolutional Neural Network.
+
+**Dataset**: CIFAR-10 or Fashion MNIST
+
+**Requirements**:
+- Design CNN architecture with multiple layers
+- Implement data augmentation
+- Train and evaluate the model
+- Analyze misclassifications
+
+---
+
+## Module 4: NLP & Generative AI
+
+### Exercise 4.1: Sentiment Analysis
+**Objective**: Build a text classification system.
+
+**Dataset**: IMDB Movie Reviews or Twitter Sentiment
+
+**Requirements**:
+- Text preprocessing (tokenization, stemming, stop words)
+- Feature extraction (TF-IDF, word embeddings)
+- Train classification model
+- Evaluate with multiple metrics
+
+### Exercise 4.2: Build a Simple RAG System
+**Objective**: Create a Retrieval-Augmented Generation system.
+
+**Requirements**:
+- Index a set of documents
+- Implement semantic search
+- Generate answers using retrieved context
+- Evaluate answer quality
+
+---
+
+## Module 5: Deployment
+
+### Exercise 5.1: Streamlit Application
+**Objective**: Deploy a machine learning model as a web app.
+
+**Requirements**:
+- Train a model on any dataset
+- Build Streamlit interface
+- Deploy to Streamlit Cloud
+- Share the live URL
+
+---
+
+# Capstone Project: Major Deliverable
+
+## Overview
+
+The capstone project is the culminating experience of this course, requiring you to integrate all learned concepts into a single, comprehensive AI application.
+
+## Project Timeline
+
+| Week | Milestone | Deliverable |
+|------|-----------|-------------|
+| Week 1 | Project Proposal | One-page proposal document |
+| Week 2 | Dataset & Baseline | Dataset documentation, baseline model |
+| Week 3 | Model Development | Trained model with metrics |
+| Week 4 | Application Development | Streamlit app (local) |
+| Week 5 | Deployment & Presentation | Live demo, final report |
+
+## Project Categories
+
+### Category A: Classical ML Project
+
+**Example Topics**:
+1. **Predictive Maintenance System**
+   - Predict equipment failures from sensor data
+   - Dataset: NASA Turbofan Engine Degradation
+
+2. **Credit Risk Assessment**
+   - Predict loan default probability
+   - Dataset: Lending Club Loan Data
+
+3. **Medical Diagnosis Assistant**
+   - Predict disease from patient symptoms
+   - Dataset: UCI Medical Datasets
+
+### Category B: Deep Learning Project
+
+**Example Topics**:
+1. **Image Classification System**
+   - Classify images into multiple categories
+   - Dataset: Custom or public image dataset
+
+2. **Object Detection Application**
+   - Detect and localize objects in images
+   - Dataset: COCO or custom annotated data
+
+3. **Style Transfer Application**
+   - Apply artistic styles to photographs
+   - Dataset: Any images + artwork
+
+### Category C: NLP & GenAI Project
+
+**Example Topics**:
+1. **Document Q&A System**
+   - Answer questions about uploaded documents
+   - Use RAG architecture
+
+2. **Text Summarization Tool**
+   - Generate concise summaries of long texts
+   - Dataset: News articles, research papers
+
+3. **Chatbot with Memory**
+   - Conversational AI with context retention
+   - Dataset: Cornell Movie Dialogs or custom
+
+### Category D: End-to-End AI Product
+
+**Example Topics**:
+1. **AI-Powered Web Application**
+   - Full-stack application with ML backend
+   - User authentication, database, ML predictions
+
+2. **Real-time Prediction System**
+   - Streaming data processing and prediction
+   - Dashboard for monitoring
+
+## Project Requirements
+
+### Minimum Requirements (Pass - 50-59%)
+
+1. **Working Model**: Trained ML model with basic performance
+2. **Simple Interface**: Basic Streamlit app with prediction capability
+3. **GitHub Repository**: Code uploaded with minimal documentation
+4. **Live Demo**: Deployed application accessible via URL
+
+### Good Project (60-74%)
+
+1. **Well-Trained Model**: Good performance metrics with proper validation
+2. **User-Friendly Interface**: Clean Streamlit app with multiple features
+3. **Professional Repository**: Well-structured code with good README
+4. **Reliable Deployment**: Stable application with reasonable performance
+5. **Documentation**: Clear explanation of approach and results
+
+### Excellent Project (75-89%)
+
+1. **Optimized Model**: State-of-the-art approach with thorough evaluation
+2. **Polished Application**: Professional UI/UX with error handling
+3. **Production-Ready Code**: Modular, tested, well-documented codebase
+4. **Scalable Deployment**: Fast, reliable deployment with monitoring
+5. **Comprehensive Report**: Detailed technical documentation
+
+### Outstanding Project (90-100%)
+
+1. **Novel Contribution**: Innovative approach or unique application
+2. **Exceptional Quality**: Production-grade application
+3. **Open Source Contribution**: Code that could benefit the community
+4. **Presentation**: Professional demo and documentation
+5. **Real-World Impact**: Solves an actual problem effectively
+
+---
+
+## Project Proposal Template
+
+Your project proposal should include:
+
+```markdown
+# Project Title
+
+## Problem Statement
+What problem are you solving? Why is it important?
+
+## Proposed Solution
+What ML/AI approach will you use? Why is it appropriate?
+
+## Dataset
+- Source: Where will you get the data?
+- Size: How many samples?
+- Features: What are the input variables?
+- Target: What are you predicting?
+
+## Methodology
+1. Data preprocessing steps
+2. Model architecture/algorithm
+3. Evaluation metrics
+
+## Expected Outcomes
+What do you expect to achieve?
+
+## Timeline
+Week-by-week breakdown of tasks.
+
+## Resources Needed
+- Computational resources
+- External libraries/APIs
+- Any costs involved
+```
+
+---
+
+## Final Report Structure
+
+Your final report should follow this structure:
+
+### 1. Introduction
+- Problem description
+- Motivation and significance
+- Related work (brief literature review)
+
+### 2. Methodology
+- Dataset description and exploration
+- Data preprocessing steps
+- Model selection and justification
+- Implementation details
+
+### 3. Results
+- Evaluation metrics
+- Comparison with baselines
+- Analysis of results
+- Limitations
+
+### 4. Application
+- User interface description
+- Deployment details
+- Screenshots/demos
+
+### 5. Conclusion
+- Summary of work
+- Key learnings
+- Future improvements
+
+### 6. References
+- Cite all sources properly
+
+---
+
+## Submission Guidelines
+
+### GitHub Repository Structure
+
+```
+your-project/
+├── app.py                    # Main Streamlit application
+├── requirements.txt          # Python dependencies
+├── README.md                 # Project documentation
+├── report.pdf                # Final report
+├── presentation.pdf          # Presentation slides
+├── src/                      # Source code
+│   ├── __init__.py
+│   ├── data.py              # Data loading and preprocessing
+│   ├── model.py             # Model definition and training
+│   └── utils.py             # Utility functions
+├── models/                   # Trained model files
+│   └── model.pkl
+├── notebooks/                # Jupyter notebooks
+│   ├── 01_eda.ipynb
+│   ├── 02_model_training.ipynb
+│   └── 03_evaluation.ipynb
+└── data/                     # Dataset (or link to download)
+    └── raw/
+```
+
+### README.md Requirements
+
+Your README must include:
+
+1. **Project Title and Description**
+2. **Features** - What your application does
+3. **Tech Stack** - Libraries and tools used
+4. **Installation Instructions**
+5. **Usage Guide** - How to run the application
+6. **Model Performance** - Metrics and evaluation
+7. **Live Demo** - Link to deployed application
+8. **Screenshots** - Visual demonstration
+9. **License** - Open source license
+
+### Presentation Guidelines
+
+- **Duration**: 10-15 minutes
+- **Content**:
+  - Problem statement (2 min)
+  - Approach and methodology (3 min)
+  - Results and demo (5 min)
+  - Q&A (5 min)
+
+---
+
+## Evaluation Rubric
+
+### Technical Implementation (40%)
+
+| Criterion | Excellent (90-100%) | Good (70-89%) | Satisfactory (50-69%) |
+|-----------|---------------------|---------------|----------------------|
+| **Model Quality** | SOTA performance, thorough validation | Good metrics, proper validation | Basic metrics, minimal validation |
+| **Code Quality** | Clean, modular, well-tested | Organized, readable | Functional but messy |
+| **Documentation** | Comprehensive, professional | Good documentation | Basic documentation |
+
+### Application Development (30%)
+
+| Criterion | Excellent (90-100%) | Good (70-89%) | Satisfactory (50-69%) |
+|-----------|---------------------|---------------|----------------------|
+| **UI/UX** | Professional, intuitive | Functional, clear | Basic interface |
+| **Functionality** | All features working perfectly | Most features working | Basic functionality |
+| **Error Handling** | Robust, user-friendly | Good error messages | Basic error handling |
+
+### Deployment (20%)
+
+| Criterion | Excellent (90-100%) | Good (70-89%) | Satisfactory (50-69%) |
+|-----------|---------------------|---------------|----------------------|
+| **Performance** | Fast, optimized | Reasonable speed | Works but slow |
+| **Reliability** | 99%+ uptime | Mostly stable | Occasional issues |
+| **Scalability** | Handles concurrent users | Basic scaling | Single user only |
+
+### Communication (10%)
+
+| Criterion | Excellent (90-100%) | Good (70-89%) | Satisfactory (50-69%) |
+|-----------|---------------------|---------------|----------------------|
+| **Report** | Professional, detailed | Clear, complete | Basic report |
+| **Presentation** | Engaging, well-prepared | Clear delivery | Adequate presentation |
+
+---
+
+## Tips for Success
+
+### 1. Start Early
+- Begin thinking about your project in Week 1
+- Don't wait until the last minute
+
+### 2. Choose Wisely
+- Pick a problem you're passionate about
+- Ensure the scope is manageable
+- Consider data availability
+
+### 3. Iterate
+- Build a minimum viable product first
+- Add features incrementally
+- Test frequently
+
+### 4. Seek Feedback
+- Share progress with peers
+- Ask for code reviews
+- Incorporate suggestions
+
+### 5. Document Everything
+- Comment your code
+- Keep a project journal
+- Save interesting findings
+
+### 6. Focus on User Experience
+- Think from the user's perspective
+- Make the interface intuitive
+- Handle errors gracefully
+
+### 7. Prepare for Demo Day
+- Practice your presentation
+- Prepare backup slides
+- Test the live demo thoroughly
+
+---
+
+## Resources
+
+### Datasets
+
+1. **Kaggle Datasets**: [kaggle.com/datasets](https://www.kaggle.com/datasets)
+2. **UCI ML Repository**: [archive.ics.uci.edu](https://archive.ics.uci.edu)
+3. **Google Dataset Search**: [datasetsearch.research.google.com](https://datasetsearch.research.google.com)
+4. **Hugging Face Datasets**: [huggingface.co/datasets](https://huggingface.co/datasets)
+
+### Tools
+
+1. **Google Colab**: Free GPU for training
+2. **GitHub Student Pack**: Free developer tools
+3. **Streamlit Cloud**: Free deployment
+4. **Hugging Face Spaces**: Free ML app hosting
+
+### Help
+
+1. **Office Hours**: Check syllabus for schedule
+2. **Discussion Forum**: Course Discord/Slack
+3. **Stack Overflow**: For specific technical questions
+4. **GitHub Issues**: For course-related bugs
+
+---
+
+## Academic Integrity
+
+- **Individual Work**: Your project must be your own work
+- **Citation**: Properly cite all sources and references
+- **Collaboration**: Discussing ideas is encouraged, but code must be your own
+- **Plagiarism**: Copying code or content will result in failure
+
+## Late Submission Policy
+
+- **1-3 days late**: 10% penalty per day
+- **4-7 days late**: 25% penalty per day
+- **More than 7 days**: Not accepted without documented emergency
+
+---
+
+## Past Project Examples
+
+### 2023 Best Projects
+
+1. **"MedAssist: AI-Powered Symptom Checker"**
+   - Used BERT for medical NER and classification
+   - Deployed with Streamlit + FastAPI
+   - Achieved 92% accuracy on symptom-disease mapping
+
+2. **"CropDoc: Plant Disease Detection"**
+   - CNN-based mobile-friendly application
+   - Detected 15+ plant diseases from leaf images
+   - Deployed on Streamlit Cloud with 10k+ users
+
+3. **"FinPredict: Stock Movement Predictor"**
+   - LSTM-based time series forecasting
+   - Integrated with Yahoo Finance API
+   - Real-time predictions with visualization
+
+---
+
+## Final Checklist
+
+Before submission, ensure:
+
+- [ ] GitHub repository is public and well-organized
+- [ ] README.md is complete and professional
+- [ ] All code runs without errors
+- [ ] Streamlit app is deployed and accessible
+- [ ] Final report is submitted as PDF
+- [ ] Presentation slides are ready
+- [ ] All team members (if group project) have contributed
+- [ ] External dependencies are documented
+- [ ] Demo video is recorded (optional but recommended)
+- [ ] License is specified
+
+---
+
+**Good luck with your projects! 🚀**
+
+*Remember: The best projects solve real problems and demonstrate your ability to apply AI/ML concepts effectively.*
+

@@ -1,1 +1,1 @@
-Sitemap: https://<your-github-username>.github.io/rit-ai-course/sitemap.xml
+Sitemap: https://sijuswamyresearch.github.io/rit-ai-course/sitemap.xml

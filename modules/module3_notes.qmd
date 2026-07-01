@@ -1,0 +1,588 @@
+---
+title: "Module 3: Deep Learning Fundamentals"
+subtitle: "From Biological Inspiration to Modern Architectures"
+author: "Siju Swamy"
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    code-fold: true
+    code-summary: "Show the Python Code"
+    mathjax: true
+execute:
+  echo: true
+  warning: false
+jupyter: python3
+bibliography: references.bib
+---
+
+# Introduction: The Deep Learning Revolution
+
+## What is Deep Learning?
+
+Deep Learning is a subset of machine learning that uses multi-layered neural networks to learn hierarchical representations of data. Unlike classical machine learning algorithms that often require manual feature engineering, deep learning models automatically discover the representations needed for detection or classification directly from raw data.
+
+$$\text{Deep Learning} = \text{Neural Networks} + \text{Hierarchical Feature Learning} + \text{End-to-End Training}$$
+
+## Why Deep Learning Now?
+
+The rise of deep learning can be attributed to three converging factors:
+
+1. **Big Data**: The digital age has produced unprecedented amounts of labeled data (images, text, speech)
+2. **Computational Power**: GPUs and specialized hardware (TPUs) enable training of massive networks
+3. **Algorithmic Advances**: New architectures, activation functions, and optimization techniques
+
+
+
+# Historical Background: A Journey Through Time
+
+## The Origins (1940s-1960s): Birth of Neural Networks
+
+### McCulloch-Pitts Neuron (1943)
+
+The story begins with Warren McCulloch and Walter Pitts, who proposed the first mathematical model of a biological neuron @goodfellow2016deep:
+
+$$y = f\left(\sum_{i=1}^{n} w_i x_i - \theta\right)$$
+
+where $f$ is a step function, $w_i$ are weights, $x_i$ are inputs, and $\theta$ is a threshold.
+
+### Hebbian Learning (1949)
+
+Donald Hebb proposed a biological learning rule: "When an axon of cell A is near enough to excite cell B and repeatedly or persistently takes part in firing it, some growth process or metabolic change takes place in one or both cells such that A's efficiency, as one of the cells firing B, is increased."
+
+This became the foundation of **unsupervised learning**:
+
+$$\Delta w_{ij} = \eta \cdot x_i \cdot y_j$$
+
+### The Perceptron (1957-1958)
+
+Frank Rosenblatt invented the **Perceptron**, the first algorithm capable of learning from data:
+
+$$\hat{y} = \text{sign}\left(\sum_{i=1}^{n} w_i x_i + b\right)$$
+
+The Perceptron Learning Rule:
+$$\text{If } \hat{y}^{(i)} \neq y^{(i)}: \quad w \leftarrow w + \eta \cdot y^{(i)} \cdot x^{(i)}$$
+
+### The First AI Winter (1969)
+
+Minsky and Papert's book "Perceptrons" mathematically proved that single-layer perceptrons cannot solve the **XOR problem** (not linearly separable). This led to reduced funding and interest—the first **AI Winter**.
+
+## The Renaissance (1980s): Backpropagation and Connectionism
+
+### Hopfield Networks (1982)
+
+John Hopfield introduced **Hopfield Networks**, recurrent neural networks that serve as content-addressable memory systems with energy function:
+
+$$E = -\frac{1}{2}\sum_{i}\sum_{j} w_{ij} s_i s_j + \sum_{i} \theta_i s_i$$
+
+### Backpropagation (1986)
+
+Rumelhart, Hinton, and Williams popularized the **backpropagation algorithm** @rumelhart1986learning, which efficiently computes gradients in multi-layer networks using the chain rule.
+
+## The Deep Learning Revolution (2006-Present)
+
+### Key Milestones
+
+| Year | Achievement | Impact |
+|------|-------------|--------|
+| 2006 | Deep Belief Networks | Greedy layer-wise pre-training |
+| 2009 | ImageNet Dataset | Large-scale benchmark |
+| 2012 | AlexNet wins ImageNet | GPU-accelerated CNNs achieve 15.3% error |
+| 2014 | GANs | New paradigm for generative modeling |
+| 2015 | ResNet | Training networks with 100+ layers |
+| 2017 | Transformer | Foundation of modern LLMs |
+| 2020 | GPT-3 | 175 billion parameter language model |
+| 2022 | ChatGPT | Democratized AI access |
+
+
+
+# Transition from Classical Machine Learning to Deep Learning
+
+## The Feature Engineering Bottleneck
+
+In classical machine learning (Module 2), the workflow is:
+
+```
+Raw Data → Feature Engineering → Feature Selection → ML Algorithm → Prediction
+```
+
+**Feature Engineering** is time-consuming, requires domain expertise, and is often the limiting factor.
+
+## The Deep Learning Paradigm
+
+Deep learning transforms this pipeline:
+
+```
+Raw Data → Deep Neural Network → Hierarchical Features → Prediction
+```
+
+The network **learns the features** automatically through its layers:
+
+| Layer Depth | Learned Features (for images) |
+|-------------|-------------------------------|
+| Layer 1 | Edges, colors, textures |
+| Layer 2 | Simple shapes, patterns |
+| Layer 3 | Object parts (eyes, wheels) |
+| Layer 4+ | Complete objects (faces, cars) |
+
+## When to Use Deep Learning vs Classical ML
+
+| Factor | Classical ML Preferred | Deep Learning Preferred |
+|--------|------------------------|------------------------|
+| Data Size | Small (< 10K samples) | Large (> 100K samples) |
+| Compute | Limited resources | GPU/TPU available |
+| Interpretability | Critical requirement | Secondary concern |
+| Problem Type | Tabular data | Images, text, speech |
+
+
+
+# Mathematical Foundations of Deep Learning
+
+## The Universal Approximation Theorem
+
+**Theorem (Cybenko, 1989)**: A feed-forward network with a single hidden layer containing a finite number of neurons can approximate continuous functions on compact subsets of $\mathbb{R}^n$, under mild assumptions on the activation function.
+
+$$f(x) \approx \sum_{i=1}^{N} w_i \phi(a_i^T x + b_i)$$
+
+## Forward Propagation
+
+For a network with $L$ layers:
+
+**Layer $l$ computation:**
+$$z^{(l)} = W^{(l)} a^{(l-1)} + b^{(l)}$$
+$$a^{(l)} = f^{(l)}(z^{(l)})$$
+
+where $W^{(l)} \in \mathbb{R}^{n_l \times n_{l-1}}$ is the weight matrix, $b^{(l)}$ is the bias, $f^{(l)}$ is the activation function, $a^{(0)} = x$ (input), and $a^{(L)} = \hat{y}$ (output).
+
+## Backpropagation: The Chain Rule in Action
+
+**Step 1: Forward Pass** — Compute activations layer by layer.
+
+**Step 2: Output Error**
+$$\delta^{(L)} = \nabla_a L \odot f'^{(L)}(z^{(L)})$$
+
+**Step 3: Backward Pass (for $l = L-1, L-2, \ldots, 1$)**
+$$\delta^{(l)} = \left((W^{(l+1)})^T \delta^{(l+1)}\right) \odot f'^{(l)}(z^{(l)})$$
+
+**Step 4: Compute Gradients**
+$$\frac{\partial L}{\partial W^{(l)}} = \delta^{(l)} (a^{(l-1)})^T, \quad \frac{\partial L}{\partial b^{(l)}} = \delta^{(l)}$$
+
+## Gradient Descent Variants
+
+### Mini-Batch Gradient Descent
+
+$$\theta := \theta - \eta \frac{1}{|B|}\sum_{i \in B} \nabla_\theta L(f(x^{(i)}), y^{(i)})$$
+
+### Adam (Adaptive Moment Estimation) @kingma2014adam
+
+$$m_t = \beta_1 m_{t-1} + (1 - \beta_1) \nabla_\theta J(\theta)$$
+$$v_t = \beta_2 v_{t-1} + (1 - \beta_2) (\nabla_\theta J(\theta))^2$$
+$$\theta := \theta - \frac{\eta}{\sqrt{\hat{v}_t} + \epsilon} \hat{m}_t$$
+
+**Default parameters**: $\beta_1 = 0.9$, $\beta_2 = 0.999$, $\epsilon = 10^{-8}$
+
+
+
+# Key Concepts in Deep Learning
+
+## 1. Weight Initialization
+
+### Xavier/Glorot Initialization (for tanh/sigmoid)
+
+$$W \sim \mathcal{N}\left(0, \sqrt{\frac{2}{n_{in} + n_{out}}}\right)$$
+
+### He Initialization (for ReLU)
+
+$$W \sim \mathcal{N}\left(0, \sqrt{\frac{2}{n_{in}}}\right)$$
+
+## 2. Batch Normalization
+
+$$\hat{x}^{(k)} = \frac{x^{(k)} - \mu_B}{\sqrt{\sigma_B^2 + \epsilon}}, \quad y^{(k)} = \gamma \hat{x}^{(k)} + \beta$$
+
+**Benefits**: Allows higher learning rates, reduces sensitivity to initialization, acts as regularizer.
+
+## 3. Regularization Techniques
+
+### Dropout
+
+During training, randomly set neurons to zero with probability $p$:
+
+$$a^{(l)} = f(z^{(l)}) \odot m^{(l)}, \quad m^{(l)} \sim \text{Bernoulli}(1-p)$$
+
+## 4. Activation Functions
+
+### Common Activation Functions
+
+| Function | Formula | Range | Use Case |
+|----------|---------|-------|----------|
+| Sigmoid | $\frac{1}{1+e^{-x}}$ | (0,1) | Output layer (binary) |
+| Tanh | $\frac{e^x-e^{-x}}{e^x+e^{-x}}$ | (-1,1) | Hidden layers |
+| ReLU | $\max(0,x)$ | [0,∞) | Default hidden layer |
+| Leaky ReLU | $\max(\alpha x, x)$ | (-∞,∞) | Avoid dying ReLU |
+| SiLU/Swish | $x \cdot \sigma(x)$ | [0,∞) | State-of-the-art |
+| GELU | $x \cdot \Phi(x)$ | (-∞,∞) | Transformers |
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+def tanh(x):
+    return np.tanh(x)
+
+def relu(x):
+    return np.maximum(0, x)
+
+def leaky_relu(x, alpha=0.01):
+    return np.where(x > 0, x, alpha * x)
+
+def silu(x):
+    return x / (1 + np.exp(-x))
+
+x = np.linspace(-4, 4, 500)
+
+fig, axes = plt.subplots(2, 3, figsize=(15, 8))
+axes = axes.ravel()
+
+activations = [
+    (sigmoid, 'Sigmoid', '#153263'),
+    (tanh, 'Tanh', '#e63946'),
+    (relu, 'ReLU', '#2a9d8f'),
+    (leaky_relu, 'Leaky ReLU', '#f4a261'),
+    (silu, 'SiLU/Swish', '#3a0ca3'),
+]
+
+for idx, (func, name, color) in enumerate(activations):
+    ax = axes[idx]
+    y = func(x)
+    ax.plot(x, y, color=color, linewidth=2.5)
+    ax.axhline(0, color='black', linewidth=0.5, alpha=0.5)
+    ax.axvline(0, color='black', linewidth=0.5, alpha=0.5)
+    ax.set_title(name, fontsize=12, fontweight='bold')
+    ax.set_xlabel('x')
+    ax.set_ylabel('f(x)')
+    ax.grid(True, alpha=0.3)
+
+axes[5].axis('off')
+plt.suptitle('Activation Functions Comparison', fontsize=16, fontweight='bold')
+plt.tight_layout()
+plt.show()
+```
+
+
+
+# Loss Functions
+
+## Regression Loss Functions
+
+### Mean Squared Error (MSE)
+
+$$L = \frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{y}_i)^2$$
+
+### Mean Absolute Error (MAE)
+
+$$L = \frac{1}{n}\sum_{i=1}^{n}|y_i - \hat{y}_i|$$
+
+## Classification Loss Functions
+
+### Binary Cross-Entropy
+
+$$L = -\frac{1}{n}\sum_{i=1}^{n}\left[y_i \log(\hat{y}_i) + (1-y_i)\log(1-\hat{y}_i)\right]$$
+
+### Categorical Cross-Entropy
+
+$$L = -\frac{1}{n}\sum_{i=1}^{n}\sum_{k=1}^{K} y_{ik} \log(\hat{y}_{ik})$$
+
+
+
+# Building Neural Networks: Code Examples
+
+## Implementing an MLP from Scratch
+
+```{python}
+import numpy as np
+from sklearn.datasets import make_classification
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+class NeuralNetwork:
+    """Simple multi-layer perceptron from scratch."""
+    
+    def __init__(self, layer_sizes, activation='relu'):
+        self.layer_sizes = layer_sizes
+        self.num_layers = len(layer_sizes)
+        self.activation = activation
+        
+        # He initialization
+        self.weights = []
+        self.biases = []
+        for i in range(self.num_layers - 1):
+            w = np.random.randn(layer_sizes[i], layer_sizes[i+1]) * np.sqrt(2.0 / layer_sizes[i])
+            b = np.zeros((1, layer_sizes[i+1]))
+            self.weights.append(w)
+            self.biases.append(b)
+        
+        self.z_values = []
+        self.a_values = []
+        
+    def activation_function(self, x):
+        if self.activation == 'relu':
+            return np.maximum(0, x)
+        elif self.activation == 'sigmoid':
+            return 1 / (1 + np.exp(-np.clip(x, -500, 500)))
+        return x
+    
+    def activation_derivative(self, x):
+        if self.activation == 'relu':
+            return (x > 0).astype(float)
+        elif self.activation == 'sigmoid':
+            s = 1 / (1 + np.exp(-np.clip(x, -500, 500)))
+            return s * (1 - s)
+        return np.ones_like(x)
+    
+    def forward(self, X):
+        self.z_values = []
+        self.a_values = [X]
+        current = X
+        for i in range(self.num_layers - 1):
+            z = np.dot(current, self.weights[i]) + self.biases[i]
+            self.z_values.append(z)
+            if i == self.num_layers - 2:
+                current = 1 / (1 + np.exp(-np.clip(z, -500, 500)))  # sigmoid output
+            else:
+                current = self.activation_function(z)
+            self.a_values.append(current)
+        return current
+    
+    def backward(self, X, y, learning_rate=0.01):
+        m = X.shape[0]
+        delta = (self.a_values[-1] - y) * self.a_values[-1] * (1 - self.a_values[-1])
+        deltas = [delta]
+        for l in range(self.num_layers - 2, 0, -1):
+            delta = np.dot(deltas[0], self.weights[l].T) * self.activation_derivative(self.z_values[l-1])
+            deltas.insert(0, delta)
+        for i in range(self.num_layers - 1):
+            grad_w = np.dot(self.a_values[i].T, deltas[i]) / m
+            grad_b = np.mean(deltas[i], axis=0, keepdims=True)
+            self.weights[i] -= learning_rate * grad_w
+            self.biases[i] -= learning_rate * grad_b
+    
+    def train(self, X, y, epochs=1000, learning_rate=0.01):
+        losses = []
+        for epoch in range(epochs):
+            y_pred = self.forward(X)
+            loss = -np.mean(y * np.log(y_pred + 1e-15) + (1 - y) * np.log(1 - y_pred + 1e-15))
+            losses.append(loss)
+            self.backward(X, y, learning_rate)
+            if epoch % 200 == 0:
+                print(f"Epoch {epoch}: Loss = {loss:.4f}")
+        return losses
+    
+    def predict(self, X):
+        return (self.forward(X) >= 0.5).astype(int)
+
+# Test the network
+np.random.seed(42)
+X, y = make_classification(n_samples=1000, n_features=20, n_informative=15, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+nn = NeuralNetwork(layer_sizes=[20, 32, 16, 8, 1], activation='relu')
+nn.train(X_train_scaled, y_train.reshape(-1, 1), epochs=200, learning_rate=0.01)
+
+train_acc = np.mean(nn.predict(X_train_scaled) == y_train.reshape(-1, 1))
+test_acc = np.mean(nn.predict(X_test_scaled) == y_test.reshape(-1, 1))
+print(f"Training Accuracy: {train_acc:.4f}")
+print(f"Test Accuracy: {test_acc:.4f}")
+```
+
+## Building a CNN with TensorFlow/Keras
+
+```{python}
+import tensorflow as tf
+from tensorflow.keras import layers, models
+from tensorflow.keras.datasets import mnist
+from tensorflow.keras.utils import to_categorical
+
+# Load MNIST
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+x_train = x_train.reshape(-1, 28, 28, 1).astype('float32') / 255.0
+x_test = x_test.reshape(-1, 28, 28, 1).astype('float32') / 255.0
+y_train_cat = to_categorical(y_train, 10)
+y_test_cat = to_categorical(y_test, 10)
+
+# Build CNN
+model = models.Sequential([
+    layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)),
+    layers.MaxPooling2D((2, 2)),
+    layers.Conv2D(64, (3, 3), activation='relu'),
+    layers.MaxPooling2D((2, 2)),
+    layers.Flatten(),
+    layers.Dense(128, activation='relu'),
+    layers.Dropout(0.5),
+    layers.Dense(10, activation='softmax')
+])
+
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+model.summary()
+
+# Train
+history = model.fit(x_train, y_train_cat, batch_size=128, epochs=10, validation_split=0.1,verbose=0)
+
+# Evaluate
+test_loss, test_acc = model.evaluate(x_test, y_test_cat, verbose=0)
+print(f"Test Accuracy: {test_acc:.4f}")
+```
+
+
+
+# Advanced Topics: Glimpses into Modern Deep Learning
+
+## 1. Boltzmann Machines and Energy-Based Models
+
+### Restricted Boltzmann Machines (RBMs)
+
+RBMs are stochastic neural networks with visible and hidden layers:
+
+**Energy Function:**
+$$E(v, h) = -\sum_i a_i v_i - \sum_j b_j h_j - \sum_{i,j} v_i h_j w_{ij}$$
+
+**Probability:**
+$$P(v, h) = \frac{1}{Z} e^{-E(v,h)}$$
+
+## 2. Probabilistic Machine Learning
+
+### Variational Autoencoders (VAEs)
+
+**Encoder:** $q_\phi(z|x)$ — approximate posterior
+**Decoder:** $p_\theta(x|z)$ — likelihood
+
+**ELBO:**
+$$\mathcal{L} = \mathbb{E}_{q_\phi(z|x)}[\log p_\theta(x|z)] - D_{KL}(q_\phi(z|x) \| p(z))$$
+
+## 3. Attention Mechanisms and Transformers
+
+### Self-Attention
+
+$$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$
+
+### Multi-Head Attention
+
+$$\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \ldots, \text{head}_h)W^O$$
+
+The Transformer architecture consists of multi-head self-attention, feed-forward networks, layer normalization, and positional encodings.
+
+## 4. Generative Models
+
+### GANs
+
+$$\min_G \max_D V(D, G) = \mathbb{E}_{x \sim p_{data}}[\log D(x)] + \mathbb{E}_{z \sim p_z}[\log(1 - D(G(z)))]$$
+
+### Diffusion Models
+
+Forward process adds noise; reverse process learns to denoise. Powers DALL-E 2, Stable Diffusion, Midjourney.
+
+
+
+# Practical Guidelines
+
+## Hyperparameter Tuning
+
+| Hyperparameter | Typical Range |
+|----------------|---------------|
+| Learning Rate | 1e-5 to 1e-1 |
+| Batch Size | 16 to 512 |
+| Hidden Units | 32 to 4096 |
+| Dropout Rate | 0.1 to 0.5 |
+
+## Common Pitfalls
+
+| Problem | Solution |
+|---------|----------|
+| Loss not decreasing | Adjust LR, check gradients |
+| Overfitting | Add regularization, more data |
+| Vanishing gradients | Use ReLU, batch norm, residual connections |
+
+
+
+# Summary and Key Takeaways
+
+1. **Neural Networks** are universal function approximators learning hierarchical representations
+2. **Backpropagation** efficiently computes gradients using the chain rule
+3. **Activation Functions** introduce non-linearity for complex pattern learning
+4. **Optimization** uses gradient-based methods (Adam is the default choice)
+5. **Regularization** (dropout, batch norm) prevents overfitting
+
+## From Classical ML to Deep Learning
+
+| Aspect | Classical ML | Deep Learning |
+|--------|--------------|---------------|
+| Features | Hand-engineered | Learned automatically |
+| Data Needs | Small to medium | Large |
+| Best For | Tabular data | Images, text, speech |
+
+
+
+# Additional Reading
+
+## Essential Books
+
+1. @goodfellow2016deep — The definitive deep learning textbook
+2. @bishop2006pattern — Pattern recognition foundations
+3. @murphy2012machine — Probabilistic perspective
+
+## Online Courses
+
+1. Deep Learning Specialization (Andrew Ng, Coursera)
+2. Fast.ai — Practical deep learning
+3. CS231n — CNNs for Vision (Stanford)
+
+## Key Papers
+
+1. @rumelhart1986learning — Backpropagation
+2. @kingma2014adam — Adam optimizer
+3. He et al., "Deep Residual Learning" (2015)
+4. Vaswani et al., "Attention is All You Need" (2017)
+
+## Software Libraries
+
+| Library | Use Case |
+|---------|----------|
+| TensorFlow/Keras | General deep learning |
+| PyTorch | Research and production |
+| Hugging Face | NLP models |
+
+
+
+# Exercises
+
+## Conceptual Questions
+
+1. Why is non-linearity essential in neural networks?
+2. Derive backpropagation for a network with one hidden layer.
+3. Compare batch, stochastic, and mini-batch gradient descent.
+4. Explain the vanishing gradient problem and solutions.
+
+## Programming Exercises
+
+1. Implement a neural network from scratch to solve XOR.
+2. Compare activation functions on the same task.
+3. Build a CNN for CIFAR-10 achieving >70% accuracy.
+4. Implement batch normalization from scratch.
+
+## Mini-Projects
+
+1. Image classifier for a custom dataset
+2. Text sentiment analyzer
+3. Neural style transfer implementation
+4. Anomaly detection with autoencoders
+
+
+
+# References
