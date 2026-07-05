@@ -194,3 +194,114 @@ Stated in advance, honestly: Path A (HMAC-SHA256) is expected to perform at leas
 3. [To be populated — HMAC-SHA256 / keyed cryptographic transform references.]
 4. [To be populated — medical image authentication and threat modeling references.]
 5. [To be populated — IBM Qiskit documentation and NISQ hardware noise characterization references.]
+
+# Learning Path: Skills and Resources for the Quantum vs. Classical Watermarking Project
+
+This is organized by what the project actually needs, in the order you'll need it. Each section lists free resources only, checked as current. Skip anything you already know — this is a reference, not a checklist you have to complete top to bottom.
+
+---
+
+## 1. Python and Image Processing Basics (Month 1–2 need)
+
+You need enough NumPy and basic image handling to do ROI segmentation and block partitioning.
+
+- **NumPy official quickstart** — covers array slicing and indexing, which is really all you need for block partitioning: https://numpy.org/doc/stable/user/quickstart.html
+- **Real Python — NumPy image processing basics**: https://realpython.com/numpy-tutorial/
+- **OpenCV Python tutorials** (for reading images, converting to grayscale, basic thresholding for ROI segmentation): https://docs.opencv.org/4.x/d6/d00/tutorial_py_root.html
+- **scikit-image** (if you want a higher-level, more Python-native alternative to OpenCV for segmentation): https://scikit-image.org/docs/stable/user_guide.html
+
+You don't need deep computer vision knowledge here. Segmenting a fixed ROI (e.g. a rectangular diagnostic region) and splitting the rest into fixed-size blocks is a small amount of array indexing.
+
+---
+
+## 2. Classical Cryptography: HMAC and Keyed Transforms (Month 1–2 need)
+
+This is Path A. You need to understand what HMAC actually does, not just call a library function.
+
+- **Real Python — Hashing in Python (hashlib, hmac)**: https://realpython.com/python-hashlib/
+- **Python official docs — `hmac` module**: https://docs.python.org/3/library/hmac.html
+- **NIST FIPS 198-1 — the HMAC standard itself** (short, worth reading once so you understand what "keyed" actually secures): https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.198-1.pdf
+- **"Avalanche effect" and "collision resistance" — plain explanation** (Wikipedia is fine here, it's a stable reference for definitions, not a citation for your thesis): https://en.wikipedia.org/wiki/Avalanche_effect
+
+The one thing to actually understand, not just implement: why including the block's coordinates as part of the HMAC input is what binds the payload to that block. If you can explain that in one sentence without notes, you're ready to implement Path A.
+
+---
+
+## 3. Quantum Computing Fundamentals (Month 1–3 need)
+
+You do not need a full quantum computing course before starting. You need the basics: qubits, superposition, measurement, and simple gates. Everything past that can be learned as you go, tied to the specific circuit you're building.
+
+- **IBM Quantum Learning — "Basics of quantum information"** (the current, actively maintained IBM course, part of their "Understanding quantum information and computation" series hosted on their platform, now at quantum.cloud.ibm.com after their 2025 platform migration): https://quantum.cloud.ibm.com/learning
+- **The same series on YouTube** (if you prefer video first, reading second): search "Qiskit YouTube Understanding quantum information and computation" — the channel is youtube.com/@qiskit
+- **Qiskit Global Summer School** — a free, structured two-week program IBM runs annually, with a beginner track for people with no prior Qiskit experience. It's not always running, but recordings from past years are usually left up. Check: https://www.ibm.com/quantum/blog/qiskit-summer-school-2026
+- **Qiskit documentation — "Getting started"**: https://docs.quantum.ibm.com/start
+
+You need roughly: what a qubit is, what a quantum circuit diagram means, what measurement does (destroys superposition, gives classical bits), and how to build a circuit with basic gates (X, H, CNOT, and parameterized rotation gates like RY/RZ, since you'll need rotation gates for coordinate binding in Path B). That's a few days of focused study, not a semester.
+
+---
+
+## 4. NEQR Specifically (Month 1–4 need)
+
+This is the actual technique your Path B circuit is built on, so it's worth reading the original source rather than only secondary explanations.
+
+- **Original NEQR paper**: Zhang, Y., Lu, K., Gao, Y., Wang, M. (2013). "NEQR: a novel enhanced quantum representation of digital images." *Quantum Information Processing*, 12(8), 2833–2860. DOI: 10.1007/s11128-013-0567-z. A copy is available via ResearchGate: https://www.researchgate.net/publication/257641933_NEQR_A_novel_enhanced_quantum_representation_of_digital_images
+- **Working NEQR-in-Qiskit code examples** — genuinely useful since it shows a working implementation rather than only the math: https://github.com/t11s/NEQR-examples
+- **"Quantum Image Processing in Practice" (Agaian et al.)** — has a clear chapter on quantum image representations including NEQR, useful if the original paper's notation is hard going at first: available via Wiley Online Library (your institution's library access may be needed, check with your supervisor).
+
+Read the original paper for the state-preparation equation your proposal already cites, then go straight to the GitHub code to see how it's actually built in Qiskit. Going code-first after a first read of the paper is faster than trying to fully absorb the paper's math in isolation.
+
+---
+
+## 5. Real Hardware Execution (Month 6 need)
+
+- **IBM Quantum Platform** (where you request time on real hardware): https://quantum.cloud.ibm.com/ — sign-up gives a small free monthly allocation of execution time on real QPUs.
+- **Qiskit Runtime documentation** (Sampler/Estimator primitives, how jobs are actually submitted and queued): https://docs.quantum.ibm.com/run
+- **IBM's noise and error mitigation documentation** — relevant for understanding what you're actually measuring when you look at hardware-induced false positives: https://docs.quantum.ibm.com/guides/error-mitigation-and-suppression-techniques
+
+Check queue times before committing to a hardware-run date in your timeline — this varies and is the single most likely scheduling risk in the whole project, as already flagged in your proposal's risk table.
+
+---
+
+## 6. Statistics for the Comparison (Month 8–9 need)
+
+You need this to report FPR/FNR, avalanche, and collision rates honestly, with confidence intervals rather than bare numbers.
+
+- **Real Python — confidence intervals in Python**: https://realpython.com/python-confidence-intervals/
+- **StatQuest (YouTube channel) — "Confidence Intervals" and "Hypothesis Testing"** — genuinely clear, no-jargon explanations if statistics isn't your strong area: https://www.youtube.com/@statquest
+- **scipy.stats documentation** (for computing the actual intervals in code): https://docs.scipy.org/doc/scipy/reference/stats.html
+
+The specific thing to get right: at a 16-bit payload size, your sample size (the proposal specifies a minimum of 5,000 blocks) determines how much you can trust a measured rate. Don't skip the confidence interval step — a bare percentage at this scale is close to meaningless on its own.
+
+---
+
+## 7. Datasets (Month 1 need)
+
+Public, de-identified medical imaging data, so you avoid any patient-data ethics clearance requirement.
+
+- **MedMNIST** — a standardized collection of public medical imaging datasets (X-ray, ultrasound, OCT, CT), pre-processed and free to use for research/educational purposes under Creative Commons licensing. Install via `pip install medmnist`. Official site: https://medmnist.com/ (Note: MedMNIST's own documentation states the dataset is not intended for actual clinical use, which is fine for this project since you only need realistic-looking images to test a watermarking pipeline, not to make any diagnostic claims.)
+- **NIH Chest X-ray dataset** (larger, full-resolution X-rays, if you want higher-resolution test images than MedMNIST's default small size): https://www.kaggle.com/datasets/nih-chest-xrays/data
+
+MedMNIST's default images are quite small (28×28), so for your 128×128 windowed input you may want MedMNIST's larger-size variant (MedMNIST+, up to 224×224) or the NIH dataset directly, then crop/resize to your working size.
+
+---
+
+## 8. LaTeX for the Thesis (Month 9–10 need)
+
+- **Overleaf's free LaTeX tutorials** — the most beginner-friendly starting point, and lets you write without installing anything locally: https://www.overleaf.com/learn
+- **"Not So Short Introduction to LaTeX2e"** — the standard free reference document nearly every academic recommends: https://tobi.oetiker.ch/lshort/lshort.pdf
+
+If your `.tex` proposal file compiles already (it does — we tested it), you have most of the structure you'll need for the thesis; it's mostly a matter of extending the same document with your actual results.
+
+---
+
+## Suggested Order
+
+1. Python/NumPy image basics + HMAC (can be done in parallel, roughly week 1–3)
+2. Quantum computing fundamentals (week 2–4, can overlap with the above)
+3. NEQR paper + Qiskit code examples (week 4–6)
+4. Build Path A, then Path B, testing both independently before combining
+5. Statistics resources — read before Month 8, not during, so you're not learning confidence intervals under deadline pressure
+6. Dataset setup — do this early (Month 1), it's a common thing people leave too late and then lose a week to license/format issues
+7. LaTeX — start the thesis document skeleton early (even empty section headers), not just in Month 9
+
+None of this needs to be mastered in the deep, research-level sense. You need working competence: enough to implement, test, and explain what you built and why, in plain terms, to your supervisor and eventually a reviewer.
