@@ -218,7 +218,7 @@ You don't need deep computer vision knowledge here. Segmenting a fixed ROI (e.g.
 
 This is Path A. You need to understand what HMAC actually does, not just call a library function.
 
-- **Real Python — Hashing in Python (hashlib, hmac)**: https://realpython.com/python-hashlib/
+- **Real Python — Hashing in Python (hashlib, hmac)**: [https://realpython.com/python-hashlib/](https://realpython.com/ref/stdlib/hmac/)
 - **Python official docs — `hmac` module**: https://docs.python.org/3/library/hmac.html
 - **NIST FIPS 198-1 — the HMAC standard itself** (short, worth reading once so you understand what "keyed" actually secures): https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.198-1.pdf
 - **"Avalanche effect" and "collision resistance" — plain explanation** (Wikipedia is fine here, it's a stable reference for definitions, not a citation for your thesis): https://en.wikipedia.org/wiki/Avalanche_effect
