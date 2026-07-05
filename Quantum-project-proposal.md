@@ -266,7 +266,7 @@ Check queue times before committing to a hardware-run date in your timeline — 
 
 You need this to report FPR/FNR, avalanche, and collision rates honestly, with confidence intervals rather than bare numbers.
 
-- **Real Python — confidence intervals in Python**: https://realpython.com/python-confidence-intervals/
+- **Confidence intervals in Python**: [https://realpython.com/python-confidence-intervals/](https://towardsdatascience.com/confidence-intervals-with-python-bfa28ebb81c/)
 - **StatQuest (YouTube channel) — "Confidence Intervals" and "Hypothesis Testing"** — genuinely clear, no-jargon explanations if statistics isn't your strong area: https://www.youtube.com/@statquest
 - **scipy.stats documentation** (for computing the actual intervals in code): https://docs.scipy.org/doc/scipy/reference/stats.html
 
